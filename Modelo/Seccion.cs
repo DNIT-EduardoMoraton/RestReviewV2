@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GestorRestReview.Modelo
 {
-    class Seccion
+    class Seccion : SeccionEntity
     {
 
     }

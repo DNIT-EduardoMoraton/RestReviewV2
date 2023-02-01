@@ -58,7 +58,9 @@ namespace GestorRestReview.Modelo
             this.redsocial = redsocial;
         }
 
-
+        public AutorEntity()
+        {
+        }
     }
 
 

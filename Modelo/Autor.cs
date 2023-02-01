@@ -10,6 +10,10 @@ namespace GestorRestReview.Modelo
 {
     class Autor : AutorEntity
     {
+        public Autor()
+        {
+        }
+
         public Autor(int id, string nombre, string imagen, string nickName, string redsocial) : base(id, nombre, imagen, nickName, redsocial)
         {
         }

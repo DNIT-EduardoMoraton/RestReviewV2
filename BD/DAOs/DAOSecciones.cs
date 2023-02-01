@@ -21,7 +21,7 @@ namespace GestorRestReview.BD.DAOs
 
         public int Insert(SeccionEntity seccion)
         {
-            SqliteConnection con = bd.getNewConnection();
+            SqliteConnection con = bd.GetNewConnection();
             int result = -1;
 
             try
@@ -53,7 +53,7 @@ namespace GestorRestReview.BD.DAOs
         public List<SeccionEntity> GetAll()
         {
             List<SeccionEntity> sections = new List<SeccionEntity>();
-            SqliteConnection con = bd.getNewConnection();
+            SqliteConnection con = bd.GetNewConnection();
             try
             {
                
@@ -83,6 +83,25 @@ namespace GestorRestReview.BD.DAOs
             return sections;
         }
 
-        
+        public SeccionEntity GetById(int id)
+        {
+            SeccionEntity result = new SeccionEntity();
+            SqliteConnection con = bd.GetNewConnection();
+            con.Open();
+            SqliteCommand cmd = con.CreateCommand();
+            cmd.CommandText = "SELECT * FROM secciones WHERE id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            SqliteDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                result.Id = reader.GetInt32(0);
+                result.Nombre = reader.GetString(1);
+                result.Descripcion = reader.GetString(2);
+            }
+            con.Close();
+            return result;
+        }
+
+
     }
 }

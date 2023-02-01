@@ -4,13 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GestorRestReview.Vistas.UserControls.HomeWebPreview"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:Syncfusion="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
              mc:Ignorable="d" 
              xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <wpf:ChromiumWebBrowser
+    <DockPanel> 
+            <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+                <syncfusion:ButtonAdv Command="{Binding GuardarHTMLCommand}" Margin="20" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/check.ico"/>
+            </DockPanel>
+            <wpf:ChromiumWebBrowser
             x:Name="Browser"
             Address="{Binding Path=HTMLRuta}"
             />
-    </Grid>
+    </DockPanel>
 </UserControl>

@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GestorRestReview.Servicios;
+using RestReviewV2.Servicios.GuardarHTML;
 using RestReviewV2.Servicios.Web;
 using System;
 using System.Collections.Generic;
@@ -23,16 +24,21 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
         // Commands
 
-        public RelayCommand ArticuloComand { get; set; } // Son solo muestras no son de aqui
-        public RelayCommand HomeWebPreview { get; set; }
+        public RelayCommand GuardarHTMLCommand { get; set; } // Son solo muestras no son de aqui
 
         // Services
 
         private NavegacionServicio servicioNavegacion;
+        private GenerarHTML htmlService;
+        private SaveService saveService;
+        private AlertaServicio servicioAlerta;
 
         public HomeWebPreviewUserControlVM()
         {
             servicioNavegacion = new NavegacionServicio();
+            htmlService = new GenerarHTML();
+            saveService = new SaveService();
+            servicioAlerta = new AlertaServicio();
             InicioPorDefecto();
 
 
@@ -41,22 +47,27 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
         private void InicioPorDefecto()
         {
-            GenerarHTML generar = new GenerarHTML();
-            generar.GenerateHTML();
-            HTMLRuta = "file:///" + Path.GetFullPath("./Assets/web/webplantilla.html"); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
+            
+            htmlService.GenerateHTML();
+            HTMLRuta = "file:///" + Path.GetFullPath(htmlService.getPreview()); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
 
         }
 
         private void ManejadorCommands()
         {
-
+            GuardarHTMLCommand = new RelayCommand(GuardarHTMLFun);
         }
 
         // Commands Funcs
 
-        private void HomeWebPreviewFun()
+        private void GuardarHTMLFun()
         {
-
+            string path = saveService.MostrarSaveDialog();
+            if (path == null)
+            {
+                servicioAlerta.MessageBoxError("no se ha seleccionado nada");
+            }
+            htmlService.saveTo(path);
         }
     }
 }

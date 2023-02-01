@@ -35,5 +35,14 @@ namespace GestorRestReview.BD
 
             return newList;
         }
+
+        public bool add(Articulo articulo)
+        {
+            if(daoArticulos.insert(articulo) > 0)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

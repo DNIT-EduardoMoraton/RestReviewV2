@@ -296,6 +296,7 @@
     <Compile Include="Servicios\BD\BlobService.cs" />
     <Compile Include="Servicios\BD\SeccionService.cs" />
     <Compile Include="Servicios\NavegacionServicio.cs" />
+    <Compile Include="Servicios\SaveService.cs" />
     <Compile Include="Servicios\Web\GenerarHTML.cs" />
     <Compile Include="Utilidades\WebBrowserUtility.cs" />
     <Compile Include="Vistas\UserControls\ArticulosGestionar\ArticuloGestionarUserControl.xaml.cs">

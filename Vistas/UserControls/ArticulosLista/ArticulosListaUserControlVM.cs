@@ -8,6 +8,7 @@ using GestorRestReview.Servicios;
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,9 +28,9 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
         }
 
 
-        private List<Articulo> listaArticulosActual;
+        private ObservableCollection<Articulo> listaArticulosActual;
 
-        public List<Articulo> ListaArticulosActual
+        public ObservableCollection<Articulo> ListaArticulosActual
         {
             get { return listaArticulosActual; }
             set { SetProperty(ref listaArticulosActual, value); }

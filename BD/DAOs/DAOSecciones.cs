@@ -19,7 +19,7 @@ namespace GestorRestReview.BD.DAOs
             servicioAlerta = new AlertaServicio();
         }
 
-        public int insert(SeccionEntity seccion)
+        public int Insert(SeccionEntity seccion)
         {
             SqliteConnection con = bd.getNewConnection();
             int result = -1;
@@ -50,7 +50,7 @@ namespace GestorRestReview.BD.DAOs
 
         }
 
-        public List<SeccionEntity> getAll()
+        public List<SeccionEntity> GetAll()
         {
             List<SeccionEntity> sections = new List<SeccionEntity>();
             SqliteConnection con = bd.getNewConnection();

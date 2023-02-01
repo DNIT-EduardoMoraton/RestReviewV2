@@ -44,10 +44,7 @@ namespace GestorRestReview.Modelo
             this.descripcion = descripcion;
         }
 
-        public Seccion toModelo()
-        {
-            return new Seccion()
-        }
+
        
     }
 

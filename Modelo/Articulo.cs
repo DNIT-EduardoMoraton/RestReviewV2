@@ -13,17 +13,25 @@ namespace GestorRestReview.Modelo
     {
 
 
-        private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private Seccion seccion;
 
-        // Lo unico que cambia aqui es que ahora nos guardamo una instancia de objeto de el autor ademas del indice
+        public Seccion Seccion
+        {
+            get { return seccion; }
+            set { SetProperty(ref seccion, seccion); }
+        }
 
-        private int autor;
 
-        public int Autor
+        private Autor autor;
+
+        public Autor Autor
         {
             get { return autor; }
             set { SetProperty(ref autor, value); }
         }
+
+
+        private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         // Conversiones de fechas importantes
 

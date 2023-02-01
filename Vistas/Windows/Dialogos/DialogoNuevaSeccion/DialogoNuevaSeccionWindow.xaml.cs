@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevaSeccion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,18 @@ namespace GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevaSeccion
     /// </summary>
     public partial class DialogoNuevaSeccionWindow : Window
     {
+        DialogoNuevaSeccionVM vm;
         public DialogoNuevaSeccionWindow()
         {
+            vm = new DialogoNuevaSeccionVM();
             InitializeComponent();
+            this.DataContext = vm;
+        }
+
+        private void Cancelar_Click(object sender, RoutedEventArgs e)
+        {
+            DialogResult = false;
+            Close();
         }
     }
 }

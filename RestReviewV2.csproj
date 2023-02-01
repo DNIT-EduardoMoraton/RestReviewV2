@@ -287,12 +287,14 @@
       <DependentUpon>HomeUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\UserControls\Home\HomeUserControlVM.cs" />
+    <Compile Include="Vistas\Windows\Dialogos\DialogoNuevaSeccion\DialogoNuevaSeccionVM.cs" />
     <Compile Include="Vistas\Windows\Dialogos\DialogoNuevaSeccion\DialogoNuevaSeccionWindow.xaml.cs">
       <DependentUpon>DialogoNuevaSeccionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\Windows\Dialogos\DialogoNuevoAutor\DialogoAutorWindow.xaml.cs">
       <DependentUpon>DialogoAutorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Windows\Dialogos\DialogoNuevoAutor\DialogoNuevoAutorVM.cs" />
     <Compile Include="Vistas\Windows\Example\ExampleWindow.xaml.cs">
       <DependentUpon>ExampleWindow.xaml</DependentUpon>
     </Compile>

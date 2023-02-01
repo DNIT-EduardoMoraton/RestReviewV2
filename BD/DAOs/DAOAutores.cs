@@ -1,4 +1,5 @@
 ﻿using GestorRestReview.Modelo;
+using GestorRestReview.Servicios;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace GestorRestReview.BD.DAOs
     {
         private BDRevista bd;
         private AlertaServicio servicioAlerta;
-        public DAOSecciones()
+        public DAOAutores()
         {
             bd = new BDRevista();
             servicioAlerta = new AlertaServicio();
@@ -36,11 +37,13 @@ namespace GestorRestReview.BD.DAOs
                 con.Open();
 
                 string sql = "INSERT INTO autores (nombre, imagen, nickName, redsocial) " +
-                             "VALUES (@nombre, @descripcion)";
+                             "VALUES (@nombre, @imagen, @nickName, @redsocial)";
 
                 SqliteCommand command = new SqliteCommand(sql, con);
-                command.Parameters.AddWithValue("@nombre", seccion.Nombre);
-                command.Parameters.AddWithValue("@descripcion", seccion.Descripcion);
+                command.Parameters.AddWithValue("@nombre", autor.Nombre);
+                command.Parameters.AddWithValue("@imagen", autor.Imagen);
+                command.Parameters.AddWithValue("@nickName", autor.Imagen);
+                command.Parameters.AddWithValue("@redsocial", autor.Imagen);
 
                 result = command.ExecuteNonQuery();
             }
@@ -53,7 +56,7 @@ namespace GestorRestReview.BD.DAOs
                 con.Close();
             }
 
-            return result;
+            return (result, con.);
 
         }
 

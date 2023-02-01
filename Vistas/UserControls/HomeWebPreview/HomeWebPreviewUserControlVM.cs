@@ -42,7 +42,7 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
         {
             GenerarHTML generar = new GenerarHTML();
             generar.GenerateHTML();
-            HTMLRuta = "data.html";
+            HTMLRuta = "./Assets/web/webplantilla.html";
 
         }
 

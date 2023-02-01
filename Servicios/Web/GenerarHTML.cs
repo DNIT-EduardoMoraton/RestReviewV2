@@ -21,20 +21,22 @@ namespace RestReviewV2.Servicios.Web
         {
             // Iniciar la cadena HTML
             string html = "<html><body><h1>Revista</h1>";
-
+            int contador = 0;
 
             foreach (Seccion data in seccion.GetAll())
             {
-                html += "<h2>Seccion</h2>" +
+                html += "<h2>Seccion " +
+                        + contador + " </h2>" +
                         "<p>Nombre: " + data.Nombre + "</p>" +
                         "<p>Descripcion: " + data.Descripcion + "</p>";
+                contador++;
             }
 
             html += "</body></html>";
 
             
             // Escribir el HTML en un archivo
-            File.WriteAllText("data.html", html);
+            File.WriteAllText("./Assets/web/webplantilla.html", html);
         }
     }
 }

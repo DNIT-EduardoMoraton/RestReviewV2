@@ -46,15 +46,5 @@ namespace GestorRestReview.Modelo
             }
         }
 
-        public Articulo(int id, int autor, int idSeccion, string texto, string titulo, string imagen, DateTime fechaPublicacionDate)
-        {
-            Id = id;
-            Autor = autor;
-            IdSeccion = idSeccion;
-            Texto = texto;
-            Titulo = titulo;
-            Imagen = imagen;
-            FechaPublicacion = fechaPublicacion;
-        }
     }
 }

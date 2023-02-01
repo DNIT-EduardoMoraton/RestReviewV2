@@ -19,14 +19,6 @@ namespace GestorRestReview.BD.DAOs
             servicioAlerta = new AlertaServicio();
         }
 
-
-        autores.CommandText = @"CREATE TABLE IF NOT EXISTS autores (
-                                      id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                      nombre TEXT,
-                                      imagen TEXT,
-                                      nickName TEXT,
-                                      redsocial TEXT
-                                    );";
         public int insert(AutorEntity autor)
         {
             SqliteConnection con = bd.getNewConnection();

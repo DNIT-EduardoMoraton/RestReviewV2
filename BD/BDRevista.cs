@@ -1,4 +1,6 @@
 ﻿
+
+using Microsoft.Data;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -50,7 +52,7 @@ namespace GestorRestReview.BD
             // Create secciones
 
             SqliteCommand secciones = conexion.CreateCommand();
-            autores.CommandText = @"CREATE TABLE IF NOT EXISTS secciones (
+            secciones.CommandText = @"CREATE TABLE IF NOT EXISTS secciones (
                                       id INTEGER PRIMARY KEY AUTOINCREMENT,
                                       nombre TEXT,
                                       descripcion TEXT

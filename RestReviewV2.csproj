@@ -258,6 +258,7 @@
     <Compile Include="Servicios\BD\AutoresService.cs" />
     <Compile Include="Servicios\BD\SeccionService.cs" />
     <Compile Include="Servicios\NavegacionServicio.cs" />
+    <Compile Include="Servicios\Web\GenerarHTML.cs" />
     <Compile Include="Vistas\UserControls\ArticulosGestionar\ArticuloGestionarUserControl.xaml.cs">
       <DependentUpon>ArticuloGestionarUserControl.xaml</DependentUpon>
     </Compile>

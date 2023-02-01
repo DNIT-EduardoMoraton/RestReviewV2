@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using GestorRestReview.Servicios;
-
+using RestReviewV2.Servicios.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,7 +40,9 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
         private void InicioPorDefecto()
         {
-            HTMLRuta = "";
+            GenerarHTML generar = new GenerarHTML();
+            generar.GenerateHTML();
+            HTMLRuta = "data.html";
 
         }
 

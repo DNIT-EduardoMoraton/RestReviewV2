@@ -4,6 +4,7 @@ using GestorRestReview.Servicios;
 using RestReviewV2.Servicios.Web;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,7 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
         {
             GenerarHTML generar = new GenerarHTML();
             generar.GenerateHTML();
-            HTMLRuta = "./Assets/web/webplantilla.html";
+            HTMLRuta = "file:///" + Path.GetFullPath("./Assets/web/webplantilla.html"); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
 
         }
 

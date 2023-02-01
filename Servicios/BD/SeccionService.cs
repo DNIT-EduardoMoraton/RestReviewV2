@@ -14,7 +14,7 @@ namespace GestorRestReview.BD
         private DAOSecciones dao;
         public SeccionService()
         {
-
+            dao = new DAOSecciones();
         }
 
         public bool Add(Seccion seccion)

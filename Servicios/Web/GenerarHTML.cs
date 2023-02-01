@@ -12,16 +12,18 @@ namespace RestReviewV2.Servicios.Web
     class GenerarHTML
     {
         private SeccionService seccion = new SeccionService();
+        private string html;
+        private int contador;
 
         public GenerarHTML()
         {
+            html = "<html><body><h1>Revista</h1>";
+            contador = 0;
         }
 
         public void GenerateHTML()
         {
             // Iniciar la cadena HTML
-            string html = "<html><body><h1>Revista</h1>";
-            int contador = 0;
 
             foreach (Seccion data in seccion.GetAll())
             {
@@ -38,5 +40,12 @@ namespace RestReviewV2.Servicios.Web
             // Escribir el HTML en un archivo
             File.WriteAllText("./Assets/web/webplantilla.html", html);
         }
+
+        public string ReturnHTML()
+        {
+            return html;
+        }
+
+
     }
 }

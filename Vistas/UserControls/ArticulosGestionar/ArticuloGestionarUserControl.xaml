@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="GestorRestReview.Vistas.UserControls.ArticulosGestionar.ArticuloGestionarUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GestorRestReview.Vistas.UserControls.ArticulosGestionar"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:Syncfusion="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+             xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
+            <syncfusion:ButtonAdv Margin="20" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/check.ico"/>
+        </DockPanel>
+
+        <DockPanel>
+            <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Titulo" ContainerType="Filled" Margin="20">
+                <TextBox/>
+            </inputLayout:SfTextInputLayout>
+
+            
+            <Syncfusion:StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Left" Margin="20" Orientation="Horizontal">
+                <Syncfusion:StackPanel Orientation="Horizontal">
+                    <ComboBox Width="200"></ComboBox>
+                    <TextBlock Text="Nombre: "></TextBlock>
+                    <TextBlock x:Name="AutorNombre" Width="200"></TextBlock>
+                </Syncfusion:StackPanel>
+            </Syncfusion:StackPanel>
+            
+            <syncfusion:ButtonAdv DockPanel.Dock="Bottom" Width="100" Label="Subir Imagen" SmallIcon="/GestorRestReview;component/Assets/iconos/check.ico"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" ></ColumnDefinition>
+                    <ColumnDefinition Width="1*" ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <inputLayout:SfTextInputLayout Grid.Column="0" Hint="Contenido" ContainerType="Outlined" Margin="20">
+                    <TextBox Height="180"/>
+                </inputLayout:SfTextInputLayout>
+                <Image Grid.Column="1"></Image>
+
+            </Grid>
+        </DockPanel>
+        
+    </DockPanel>
+</UserControl>

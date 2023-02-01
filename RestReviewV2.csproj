@@ -393,10 +393,14 @@
   <ItemGroup>
     <Resource Include="Assets\cat_0.png" />
     <Resource Include="Assets\iconos\articulos.ico" />
-    <Resource Include="Assets\iconos\autores.ico" />
+    <Resource Include="Assets\iconos\autores.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Assets\iconos\check.ico" />
     <Resource Include="Assets\iconos\home.ico" />
-    <Content Include="Assets\web\webplantilla.html" />
+    <Content Include="Assets\web\webplantilla.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="packages\CommunityToolkit.Mvvm.8.0.0\build\netstandard2.0\CommunityToolkit.Mvvm.targets" Condition="Exists('packages\CommunityToolkit.Mvvm.8.0.0\build\netstandard2.0\CommunityToolkit.Mvvm.targets')" />

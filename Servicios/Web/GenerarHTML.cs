@@ -34,7 +34,7 @@ namespace RestReviewV2.Servicios.Web
 
             
             // Escribir el HTML en un archivo
-            File.WriteAllText("data.html", html);
+            File.WriteAllText("./Assets/web/webplantilla.html", html);
         }
     }
 }

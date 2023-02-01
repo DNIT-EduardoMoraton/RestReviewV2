@@ -52,7 +52,22 @@ namespace GestorRestReview.BD.DAOs
 
         }
 
+        public List<AutorEntity> getAll()
+        {
+            List<AutorEntity> autores = new List<AutorEntity>();
+            SqliteConnection con = bd.getNewConnection();
+            con.Open();
+            SqliteCommand cmd = con.CreateCommand();
+            cmd.CommandText = "SELECT * FROM autores";
+            SqliteDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                
 
+            }
+            con.Close();
+            return autores;
+        }
 
 
     }

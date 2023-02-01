@@ -54,9 +54,12 @@ namespace GestorRestReview.BD.DAOs
         {
             List<SeccionEntity> sections = new List<SeccionEntity>();
             SqliteConnection con = bd.getNewConnection();
+            try
+            {
+               
             con.Open();
             SqliteCommand cmd = con.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Secciones";
+            cmd.CommandText = "SELECT * FROM secciones";
             SqliteDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -67,6 +70,16 @@ namespace GestorRestReview.BD.DAOs
                 sections.Add(section);
             }
             con.Close();
+            
+                            }
+            catch (Exception e)
+            {
+                servicioAlerta.MessageBoxError(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
             return sections;
         }
 

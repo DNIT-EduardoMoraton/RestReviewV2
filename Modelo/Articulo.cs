@@ -36,6 +36,9 @@ namespace GestorRestReview.Modelo
         // Conversiones de fechas importantes
 
         public DateTime fechaPublicacionDate;
+
+
+
         public DateTime FechaPublicacionDate
         {
             get { return epoch.AddSeconds(this.FechaPublicacion);  }
@@ -45,6 +48,12 @@ namespace GestorRestReview.Modelo
                 SetProperty(ref fechaPublicacionDate, value); 
             }
         }
+
+
+        public Articulo(int id, int idAutor, int idSeccion, string texto, string titulo, string imagen, long fechaPublicacion) : base(id, idAutor, idSeccion, texto, titulo, imagen, fechaPublicacion)
+        {
+        }
+
 
     }
 }

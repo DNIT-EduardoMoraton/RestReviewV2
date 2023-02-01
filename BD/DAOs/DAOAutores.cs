@@ -48,21 +48,21 @@ namespace GestorRestReview.BD.DAOs
                 con.Close();
             }
 
-            return (result, con.);
+            return result;
 
         }
 
-        public List<SeccionEntity> getAll()
+        public List<Autor> getAll()
         {
             List<SeccionEntity> sections = new List<SeccionEntity>();
             SqliteConnection con = bd.getNewConnection();
             con.Open();
             SqliteCommand cmd = con.CreateCommand();
-            cmd.CommandText = "SELECT * FROM Secciones";
+            cmd.CommandText = "SELECT * FROM autores";
             SqliteDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                SeccionEntity section = new SeccionEntity();
+                AutorEntity autor = new AutorEntity();
                 section.Id = reader.GetInt32(0);
                 section.Nombre = reader.GetString(1);
                 section.Descripcion = reader.GetString(2);

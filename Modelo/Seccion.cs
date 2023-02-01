@@ -8,6 +8,8 @@ namespace GestorRestReview.Modelo
 {
     class Seccion : SeccionEntity
     {
-
+        public Seccion(int id, string nombre, string descripcion) : base(id, nombre, descripcion)
+        {
+        }
     }
 }

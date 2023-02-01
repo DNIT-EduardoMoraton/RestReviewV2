@@ -28,7 +28,7 @@
                 </Syncfusion:StackPanel>
             </Syncfusion:StackPanel>
             
-            <syncfusion:ButtonAdv DockPanel.Dock="Bottom" Width="100" Label="Subir Imagen" SmallIcon="/GestorRestReview;component/Assets/iconos/check.ico"/>
+            <syncfusion:ButtonAdv DockPanel.Dock="Bottom" Width="100" Label="Subir Imagen" SmallIcon="/RestReviewV2;component/Assets/iconos/check.ico"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" ></ColumnDefinition>

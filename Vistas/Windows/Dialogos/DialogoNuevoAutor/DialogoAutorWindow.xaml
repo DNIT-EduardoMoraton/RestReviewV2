@@ -7,12 +7,28 @@
         mc:Ignorable="d"
         Title="DialogoAutorWindow" Height="450" Width="800">
     <StackPanel>
-        <TextBlock Margin="10">Nombre</TextBlock>
-        <TextBox Text="{Binding Path=Nombre}" x:Name="NombreInput" Margin="10" Width="200" HorizontalAlignment="Left"></TextBox>
-        <TextBlock Margin="10">Nickname</TextBlock>
-        <TextBox Text="{Binding Path=NickName}" x:Name="NickNameInput" Margin="10" Width="200" HorizontalAlignment="Left" ></TextBox>
-        <TextBlock Margin="10">Nickname</TextBlock>
-        <TextBox Text="{Binding Path=NickName}" x:Name="NickNameInput" Margin="10" Width="200" HorizontalAlignment="Left" ></TextBox>
+        <StackPanel Orientation="Horizontal">
+
+            <TextBlock Margin="10">Nombre</TextBlock>
+            <TextBox Text="{Binding Path=Nombre}" x:Name="NombreInput" Margin="10" Width="200" HorizontalAlignment="Left"></TextBox>
+            <TextBlock Margin="10">Nickname</TextBlock>
+            <TextBox Text="{Binding Path=NickName}" x:Name="NickNameInput" Margin="10" Width="200" HorizontalAlignment="Left" ></TextBox>
+
+        </StackPanel>
+        
+        <TextBlock Margin="10">Imagen</TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <ComboBoxItem Content="Twitter"/>
+            <ComboBoxItem Content="Instagram"/>
+            <ComboBoxItem Content="Facebook"/>
+        </StackPanel>
+        <TextBlock Margin="10">Imagen</TextBlock>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding Path=NickName}" x:Name="SocialInput" Margin="10" Width="200" HorizontalAlignment="Left" ></TextBox>
+            <Button Margin="10">Examinar</Button>
+        </StackPanel>
+        
+        
         
         
         <StackPanel Orientation="Horizontal">

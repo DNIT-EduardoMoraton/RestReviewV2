@@ -20,11 +20,13 @@
             </inputLayout:SfTextInputLayout>
 
             
-            <Syncfusion:StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Left" Margin="20" Orientation="Horizontal">
+            <Syncfusion:StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Left" Margin="20" Orientation="Vertical">
                 <Syncfusion:StackPanel Orientation="Horizontal">
                     <ComboBox Width="200"></ComboBox>
-                    <TextBlock Text="Nombre: "></TextBlock>
-                    <TextBlock x:Name="AutorNombre" Width="200"></TextBlock>
+                </Syncfusion:StackPanel>
+                <Syncfusion:StackPanel Orientation="Horizontal">
+                    <ComboBox Width="200"></ComboBox>
+                    <syncfusion:ButtonAdv Command="{Binding AbrirDialogoNuevaSeccionCommand}" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
                 </Syncfusion:StackPanel>
             </Syncfusion:StackPanel>
             

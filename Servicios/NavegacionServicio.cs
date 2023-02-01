@@ -3,6 +3,7 @@ using GestorRestReview.Vistas.UserControls.ArticulosGestionar;
 using GestorRestReview.Vistas.UserControls.ArticulosLista;
 using GestorRestReview.Vistas.UserControls.Home;
 using GestorRestReview.Vistas.UserControls.HomeWebPreview;
+using GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevaSeccion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,14 +37,25 @@ namespace GestorRestReview.Servicios
             return new ArticulosUserControl();
         }
         
-        public ArticuloGestionarUserControl irArticulosGestionarUserControl()
+        public ArticuloGestionarUserControl IrArticulosGestionarUserControl()
         {
             return new ArticuloGestionarUserControl();
         }
 
-        public ArticulosListaUserControl irArticulosListaUserControl()
+        public ArticulosListaUserControl IrArticulosListaUserControl()
         {
             return new ArticulosListaUserControl();
+        }
+
+
+
+        // Dialogos
+
+        public bool? AbreDialogoNuevaSeccionWindow()
+        {
+            DialogoNuevaSeccionWindow w = new DialogoNuevaSeccionWindow();
+            return w.ShowDialog();
+            
         }
 
     }

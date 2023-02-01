@@ -11,5 +11,9 @@ namespace GestorRestReview.Modelo
         public Seccion(int id, string nombre, string descripcion) : base(id, nombre, descripcion)
         {
         }
+        public Seccion()
+        {
+
+        }
     }
 }

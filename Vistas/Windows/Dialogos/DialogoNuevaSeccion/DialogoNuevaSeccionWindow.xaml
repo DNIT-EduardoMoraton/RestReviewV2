@@ -4,18 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevaSeccion"
-        mc:Ignorable="d"
-        Title="DialogoNuevaSeccionWindow" Height="400" Width="700" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
-    <StackPanel>
-        <TextBlock Margin="10">Nombre</TextBlock>
-        <TextBox Text="{Binding Path=Nombre}" x:Name="NombreInput" Margin="10" Width="200" HorizontalAlignment="Left"></TextBox>
-        <TextBlock Margin="10">Descripcion</TextBlock>
-        <TextBox Text="{Binding Path=Descripcion}" x:Name="DescripcionInput" Margin="10" Width="200" HorizontalAlignment="Left" ></TextBox>
-        
-        <StackPanel Orientation="Horizontal">
-            <Button Command="{Binding Path=CrearCommand}" IsDefault="True" x:Name="Crear" Margin="200,100,0,0" Height="50" Width="75" >Crear</Button>
-            <Button Command="{Binding Path=CancelCommand}" IsCancel="True" x:Name="Cancelar" Margin="200,100,0,0" Width="75" >Cancelar</Button>
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:Syncfusion="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+             xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
+        Title="DialogoNuevaSeccionWindow" Height="250" Width="400" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" ResizeMode="NoResize">
+    
+    <DockPanel LastChildFill="False">
+        <StackPanel DockPanel.Dock="Top">
+            <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Nombre" ContainerType="Outlined" Margin="10">
+                <TextBox Text="{Binding Path=SeccionActual.Nombre}" x:Name="NombreInput" Width="200"></TextBox>
+            </inputLayout:SfTextInputLayout>
+        </StackPanel>
+
+
+
+        <StackPanel DockPanel.Dock="Top">
+            <inputLayout:SfTextInputLayout  Hint="Descrpción" ContainerType="Outlined" Margin="10">
+                <TextBox Text="{Binding Path=Descripcion}" x:Name="DescripcionInput" Width="200" HorizontalAlignment="Left" ></TextBox>
+            </inputLayout:SfTextInputLayout>
         </StackPanel>
         
-    </StackPanel>
+        
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+            <syncfusion:ButtonAdv Margin="10" DockPanel.Dock="Right" SizeMode="Normal" Label="Cancelar" IsCancel="True"/>
+            <syncfusion:ButtonAdv Margin="10" DockPanel.Dock="Right" SizeMode="Normal" Label="Crear" IsDefault="True" Click="ButtonAdv_Click"/>
+        </StackPanel>
+        
+    </DockPanel>
 </Window>

@@ -39,7 +39,7 @@ namespace GestorRestReview.Vistas.UserControls.Articulos
 
         private void InicioPorDefecto()
         {
-            CurrUserControl = servicioNavegacion.irArticulosListaUserControl();
+            CurrUserControl = servicioNavegacion.IrArticulosListaUserControl();
         }
 
 
@@ -49,7 +49,7 @@ namespace GestorRestReview.Vistas.UserControls.Articulos
             {
                 if (m.Value)
                 {
-                    CurrUserControl = servicioNavegacion.irArticulosGestionarUserControl();
+                    CurrUserControl = servicioNavegacion.IrArticulosGestionarUserControl();
                 }
             });
         }

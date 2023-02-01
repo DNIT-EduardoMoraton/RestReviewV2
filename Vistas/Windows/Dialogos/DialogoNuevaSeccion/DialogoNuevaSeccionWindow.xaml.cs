@@ -33,5 +33,11 @@ namespace GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevaSeccion
             DialogResult = false;
             Close();
         }
+
+        private void ButtonAdv_Click(object sender, RoutedEventArgs e)
+        {
+            vm.Crear();
+            DialogResult = true;
+        }
     }
 }

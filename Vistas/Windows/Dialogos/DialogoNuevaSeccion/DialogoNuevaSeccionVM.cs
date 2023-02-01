@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GestorRestReview.BD;
 using GestorRestReview.Modelo;
+using GestorRestReview.Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,34 +14,49 @@ namespace RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevaSeccion
     class DialogoNuevaSeccionVM : ObservableObject
     {
         public RelayCommand crearCommand;
-        private string nombre;
 
-        public string Nombre
-        {
-            get { return nombre; }
-            set { nombre = value; }
-        }
-        private string descripcion;
+        private Seccion seccionActual;
 
-        public string Descripcion
+        public Seccion SeccionActual
         {
-            get { return descripcion; }
-            set { descripcion = value; }
+            get { return seccionActual; }
+            set { SetProperty(ref seccionActual, value); }
         }
 
 
-        public SeccionService seccion;
+
+
+        private AlertaServicio servicioAlerta;
+        private SeccionService servicioSeccion;
 
         public DialogoNuevaSeccionVM()
         {
-            seccion = new SeccionService();
+            servicioAlerta = new AlertaServicio();
+            servicioSeccion = new SeccionService();
+
+            manejadorCommands();
+            InicioPorDefecto();
+        }
+
+        private void InicioPorDefecto()
+        {
+            SeccionActual = new Seccion();
+        }
+
+
+        private void manejadorCommands()
+        {
             crearCommand = new RelayCommand(Crear);
-            
         }
 
         public void Crear()
         {
-            seccion.Add(new Seccion(0,Nombre, Descripcion));
+            if (SeccionActual.Nombre==null)
+            {
+                servicioAlerta.MessageBoxCambio("El campo nombre no puede estar vacio");
+                return;
+            }
+            servicioSeccion.Add(SeccionActual);
         }
         
     }

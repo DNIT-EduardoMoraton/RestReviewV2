@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevoAutor
+namespace RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevoAutor
 {
     /// <summary>
-    /// Lógica de interacción para DialogoAutorWindow.xaml
+    /// Lógica de interacción para DialogoNuevoAutorWindow.xaml
     /// </summary>
-    public partial class DialogoAutorWindow : Window
+    public partial class DialogoNuevoAutorWindow : Window
     {
-        public DialogoAutorWindow()
+        public DialogoNuevoAutorWindow()
         {
             InitializeComponent();
         }

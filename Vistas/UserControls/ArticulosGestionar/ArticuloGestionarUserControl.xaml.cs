@@ -27,5 +27,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             vm = new ArticuloGestionarUserControlVM();
             this.DataContext = vm;
         }
+
+
     }
 }

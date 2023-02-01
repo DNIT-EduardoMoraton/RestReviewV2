@@ -12,7 +12,7 @@
         <TextBlock Margin="10">Nickname</TextBlock>
         <TextBox Text="{Binding Path=NickName}" x:Name="NickNameInput" Margin="10" Width="200" HorizontalAlignment="Left" ></TextBox>
         <TextBlock Margin="10">Nickname</TextBlock>
-        <TextBox Text="{Binding Path=NickName}" x:Name="NickNameInput" Margin="10" Width="200" HorizontalAlignment="Left" ></TextBox>
+        <TextBox Text="{Binding Path=NickName}" x:Name="NickNameInput2" Margin="10" Width="200" HorizontalAlignment="Left" ></TextBox>
         
         
         <StackPanel Orientation="Horizontal">

@@ -14,7 +14,7 @@ namespace GestorRestReview.BD
         private DAOSecciones dao;
         public SeccionService()
         {
-
+            dao = new DAOSecciones();
         }
 
         public bool Add(Seccion seccion)
@@ -29,8 +29,15 @@ namespace GestorRestReview.BD
 
         public ObservableCollection<Seccion> GetAll()
         {
-            List<SeccionEntity> list = dao.GetAll();
-            return new ObservableCollection<Seccion>(list.Select(n => (Seccion)n));
+            //List<SeccionEntity> list = dao.GetAll();
+            //return new ObservableCollection<Seccion>(list.Select(n => (Seccion)n));
+            ObservableCollection<Seccion> l = new ObservableCollection<Seccion>();
+            l.Add(new Seccion(0, "MARCOS MARCOS MARCOS", "MARCOS PERUUUUUUUUUUUUUUUUUUUUUUUUUU"));
+            l.Add(new Seccion(0, "MARCOS MARCOS MARCOS", "MARCOS PERUUUUUUUUUUUUUUUUUUUUUUUUUU"));
+            l.Add(new Seccion(0, "MARCOS MARCOS MARCOS", "MARCOS PERUUUUUUUUUUUUUUUUUUUUUUUUUU"));
+            l.Add(new Seccion(0, "MARCOS MARCOS MARCOS", "MARCOS PERUUUUUUUUUUUUUUUUUUUUUUUUUU"));
+            l.Add(new Seccion(0, "MARCOS MARCOS MARCOS", "MARCOS PERUUUUUUUUUUUUUUUUUUUUUUUUUU"));
+            return l;
         }
 
     }

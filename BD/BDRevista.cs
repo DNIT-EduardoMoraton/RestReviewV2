@@ -62,7 +62,7 @@ namespace GestorRestReview.BD
 
         } 
 
-        public SqliteConnection getNewConnection() => new SqliteConnection("Data Source=BDRevistasv2.db");
+        public SqliteConnection getNewConnection() => new SqliteConnection("Data Source=BASEDEDATOS");
 
     }
 }

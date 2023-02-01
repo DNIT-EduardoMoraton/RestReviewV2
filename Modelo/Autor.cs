@@ -8,41 +8,12 @@ using System.Threading.Tasks;
 
 namespace GestorRestReview.Modelo
 {
-    class Autor : ObservableObject
+    class Autor : AutorEntity
     {
-
-        private int id;
-
-        public int Id
+        public Autor(int id, string nombre, string imagen, string nickName, string redsocial) : base(id, nombre, imagen, nickName, redsocial)
         {
-            get { return id; }
-            set { SetProperty(ref id, value); }
-        }
-
-        private string nombre;
-        public string Nombre
-        {
-            get { return nombre; }
-            set { SetProperty(ref nombre, value); }
-        }
-
-        private string imagen;
-        public string Imagen
-        {
-            get { return imagen; }
-            set { SetProperty(ref imagen, value); }
-        }
-        private string nickName;
-        public string NickName
-        {
-            get { return nickName; }
-            set { SetProperty(ref nickName, value); }
-        }
-        private string redsocial;
-        public string Redsocial
-        {
-            get { return redsocial; }
-            set { SetProperty(ref redsocial, value); }
         }
     }
+
+
 }

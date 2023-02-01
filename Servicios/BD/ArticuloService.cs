@@ -17,14 +17,12 @@ namespace GestorRestReview.BD
         public List<Articulo> getAll()
         {
             List<Articulo> list = new List<Articulo>();
-            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", new DateTime().Date));
-            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", new DateTime().Date));
-            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", new DateTime().Date));
-            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", new DateTime().Date));
-            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", new DateTime().Date));
-            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", new DateTime().Date));
-            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", new DateTime().Date));
-            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", new DateTime().Date));
+            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", 111111111l));
+            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", 111111111l));
+            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", 111111111l));
+            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", 111111111l));
+            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", 111111111l));
+            list.Add(new Articulo(1, 4, 2, "hahahaha", "siiii", "url", 111111111l));
 
             return list;
         }

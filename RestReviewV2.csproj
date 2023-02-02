@@ -296,6 +296,7 @@
     <Compile Include="Servicios\BD\AutoresService.cs" />
     <Compile Include="Servicios\BD\BlobService.cs" />
     <Compile Include="Servicios\BD\SeccionService.cs" />
+    <Compile Include="Servicios\Moderacion\Moderator.cs" />
     <Compile Include="Servicios\NavegacionServicio.cs" />
     <Compile Include="Servicios\SaveService.cs" />
     <Compile Include="Servicios\Web\GenerarHTML.cs" />

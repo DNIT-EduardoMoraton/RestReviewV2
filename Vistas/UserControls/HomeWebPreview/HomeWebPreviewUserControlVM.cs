@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using GestorRestReview.Servicios;
 using RestReviewV2.Servicios.GuardarHTML;
+using RestReviewV2.Servicios.Moderacion;
 using RestReviewV2.Servicios.Web;
 using System;
 using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
         private void InicioPorDefecto()
         {
-            
+            servicioAlerta.MessageBoxError(new Moderator().ModerarTexto("hijo de puta"));
             htmlService.GenerateHTML();
             HTMLRuta = "file:///" + Path.GetFullPath(htmlService.getPreview()); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
 

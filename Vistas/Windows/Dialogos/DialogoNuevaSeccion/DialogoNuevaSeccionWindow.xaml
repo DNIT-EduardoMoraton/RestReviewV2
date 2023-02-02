@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevaSeccion"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:Syncfusion="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
-             xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
+        xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
         Title="DialogoNuevaSeccionWindow" Height="250" Width="400" WindowStartupLocation="CenterScreen" ShowInTaskbar="False" ResizeMode="NoResize">
     
     <DockPanel LastChildFill="False">
         <StackPanel DockPanel.Dock="Top">
             <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Nombre" ContainerType="Outlined" Margin="10">
-                <TextBox Text="{Binding Path=SeccionActual.Nombre}" x:Name="NombreInput" Width="200"></TextBox>
+                <TextBox Text="{Binding Path=SeccionActual.Nombre}" x:Name="NombreInput"></TextBox>
             </inputLayout:SfTextInputLayout>
         </StackPanel>
 
@@ -20,7 +20,7 @@
 
         <StackPanel DockPanel.Dock="Top">
             <inputLayout:SfTextInputLayout  Hint="Descrpción" ContainerType="Outlined" Margin="10">
-                <TextBox Text="{Binding Path=Descripcion}" x:Name="DescripcionInput" Width="200" HorizontalAlignment="Left" ></TextBox>
+                <TextBox Text="{Binding Path=SeccionActual.Descripcion}" x:Name="DescripcionInput" Width="200" HorizontalAlignment="Left" ></TextBox>
             </inputLayout:SfTextInputLayout>
         </StackPanel>
         

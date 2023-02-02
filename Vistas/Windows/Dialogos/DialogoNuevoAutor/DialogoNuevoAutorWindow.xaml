@@ -6,9 +6,20 @@
         xmlns:local="clr-namespace:RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevoAutor"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
         xmlns:Syncfusion="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+        xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
         mc:Ignorable="d"
         Title="DialogoNuevoAutorWindow" Height="300" Width="500">
-    <DockPanel>
-        
+    <DockPanel LastChildFill="False">
+        <Image DockPanel.Dock="Right"/>
+        <StackPanel DockPanel.Dock="Left">
+            <inputLayout:SfTextInputLayout Hint="Nombre" ContainerType="Outlined" Margin="10" Width="200">
+                <TextBox  ></TextBox>
+            </inputLayout:SfTextInputLayout>
+            <inputLayout:SfTextInputLayout Hint="Nickname" ContainerType="Outlined" Margin="10" Width="200">
+                <TextBox  ></TextBox>
+            </inputLayout:SfTextInputLayout>
+            
+        </StackPanel>
+            
     </DockPanel>
 </Window>

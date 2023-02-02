@@ -11,9 +11,20 @@ namespace GestorRestReview.Modelo
         public Seccion(int id, string nombre, string descripcion) : base(id, nombre, descripcion)
         {
         }
+        public Seccion(SeccionEntity seccion)
+        {
+            this.Id = seccion.Id;
+            this.Nombre = seccion.Nombre;
+            this.Descripcion = seccion.Descripcion;
+        }
         public Seccion()
         {
 
+        }
+
+        public override string ToString()
+        {
+            return this.Nombre;
         }
     }
 }

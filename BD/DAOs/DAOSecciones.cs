@@ -39,7 +39,7 @@ namespace GestorRestReview.BD.DAOs
             }
             catch (Exception e)
             {
-                servicioAlerta.MessageBoxError(e.Message);
+                servicioAlerta.MessageBoxError(e.Message + "DAOSECCIONES");
             }
             finally
             {

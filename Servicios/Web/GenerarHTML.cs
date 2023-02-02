@@ -44,12 +44,12 @@ namespace RestReviewV2.Servicios.Web
 
         public void saveTo(string path) 
         {
-            File.WriteAllText(path, GenerateHTML());
+            File.WriteAllText(path, GenerateHTML()); // Controlar errores
         }
 
         public string getPreview()
         {
-            saveTo("./Assets/web/webplantilla.html");
+            saveTo("./Assets/web/webplantilla.html"); // G
             return "./Assets/web/webplantilla.html";
         }
 

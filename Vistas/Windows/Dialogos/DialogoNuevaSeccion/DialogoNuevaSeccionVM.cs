@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Messaging;
 using GestorRestReview.BD;
 using GestorRestReview.Modelo;
 using GestorRestReview.Servicios;
+using RestReviewV2.Mensajes.Difusion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +59,7 @@ namespace RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevaSeccion
                 return;
             }
             servicioSeccion.Add(SeccionActual);
+            WeakReferenceMessenger.Default.Send(new AnyadirSeccionValueChangedMessage(true));
         }
         
     }

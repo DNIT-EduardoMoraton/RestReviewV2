@@ -288,8 +288,9 @@
     <Compile Include="BD\DAOs\DAOAutores.cs" />
     <Compile Include="BD\DAOs\DAOSecciones.cs" />
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Mensajes\Difusion\AnyadirSeccionValueChangedMessage.cs" />
     <Compile Include="Mensajes\Difusion\ArticuloNavValueChangedMesage.cs" />
-    <Compile Include="Mensajes\Solicitud\ExampleValueChangedMessage.cs" />
+    <Compile Include="Mensajes\Solicitud\AnyadirSeccionRequestMessage.cs" />
     <Compile Include="Servicios\AlertaServicio.cs" />
     <Compile Include="Servicios\BD\ArticuloService.cs" />
     <Compile Include="Servicios\BD\AutoresService.cs" />

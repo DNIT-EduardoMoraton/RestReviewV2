@@ -41,7 +41,7 @@
     <DockPanel>
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
                 <syncfusion:ButtonAdv Margin="10" DockPanel.Dock="Right" SizeMode="Normal" Label="Cancelar" IsCancel="True"/>
-                <syncfusion:ButtonAdv Margin="10" DockPanel.Dock="Right" SizeMode="Normal" Label="Crear" IsDefault="True" Click="ButtonAdv_Click"/>
+                <syncfusion:ButtonAdv Margin="10" DockPanel.Dock="Right" SizeMode="Normal" Label="Crear" IsDefault="True"/>
             </StackPanel>
             <DockPanel>
             <Button Name="btn5" Width="200" Height="200" Template="{DynamicResource BotonImagenPerfilRedonda}">

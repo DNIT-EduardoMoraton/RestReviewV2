@@ -23,7 +23,7 @@ namespace GestorRestReview.BD
 
         public ObservableCollection<Articulo> getAll()
         {
-            List<ArticuloEntity> list = daoArticulos.getAll();
+            /*List<ArticuloEntity> list = daoArticulos.getAll();
             ObservableCollection<Articulo> newList;
             newList = new ObservableCollection<Articulo>(list.Select(m =>
             {
@@ -32,7 +32,17 @@ namespace GestorRestReview.BD
                 return (Articulo)m;
             }));
             
-
+            */
+            ObservableCollection<Articulo> newList;
+            newList = new ObservableCollection<Articulo>();
+            newList.Add(new Articulo(1, 2, 3, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Las aventuras",
+                "https://preview.redd.it/n2vsoettqi291.png?width=640&crop=smart&auto=webp&s=78edff3227820b98500ddefaba98ed521ac20caa", 111111111l));
+            newList.Add(new Articulo(1, 2, 3, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Las aventuras",
+    "https://preview.redd.it/n2vsoettqi291.png?width=640&crop=smart&auto=webp&s=78edff3227820b98500ddefaba98ed521ac20caa", 111111111l));
+            newList.Add(new Articulo(1, 3, 3, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Las aventuras",
+    "https://preview.redd.it/n2vsoettqi291.png?width=640&crop=smart&auto=webp&s=78edff3227820b98500ddefaba98ed521ac20caa", 111111111l));
+            newList.Add(new Articulo(1, 3, 3, "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "Las aventuras",
+    "https://preview.redd.it/n2vsoettqi291.png?width=640&crop=smart&auto=webp&s=78edff3227820b98500ddefaba98ed521ac20caa", 111111111l));
             return newList;
 
         }

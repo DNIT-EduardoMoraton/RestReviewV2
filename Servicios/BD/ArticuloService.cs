@@ -34,6 +34,22 @@ namespace GestorRestReview.BD
             
 
             return newList;
+
+        }
+
+        public ObservableCollection<Articulo> GetAllBySeccion(Seccion seccion)
+        {
+            List<ArticuloEntity> list = daoArticulos.GetAllByIdSeccion(seccion);
+            ObservableCollection<Articulo> newList;
+            newList = new ObservableCollection<Articulo>(list.Select(m =>
+            {
+                (m as Articulo).Autor = (Autor)daoAutores.geById(m.IdAutor);
+                (m as Articulo).Seccion = seccion;
+                return (Articulo)m;
+            }));
+
+            return newList;
+
         }
 
         public bool add(Articulo articulo)

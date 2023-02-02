@@ -72,7 +72,7 @@ namespace GestorRestReview.BD.DAOs
             return articulos;
         }
 
-        public List<ArticuloEntity> getAllByIdSeccion(SeccionEntity seccion)
+        public List<ArticuloEntity> GetAllByIdSeccion(SeccionEntity seccion)
         {
             SqliteConnection con = bd.GetNewConnection();
             con.Open();

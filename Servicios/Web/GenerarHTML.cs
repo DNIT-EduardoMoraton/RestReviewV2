@@ -11,8 +11,9 @@ namespace RestReviewV2.Servicios.Web
 {
     class GenerarHTML
     {
-        private SeccionService seccion = new SeccionService();
-
+        private SeccionService seccions = new SeccionService();
+        private ArticuloService articulos = new ArticuloService();
+        private SeccionService secciones = new SeccionService();
 
         public GenerarHTML()
         {
@@ -21,22 +22,8 @@ namespace RestReviewV2.Servicios.Web
 
         public string GenerateHTML()
         {
-            string html;
-            int contador;
-            html = "<html><body><h1>Revista</h1>";
-            contador = 0;
-
-            foreach (Seccion data in seccion.GetAll())
-            {
-                html += "<h2>Seccion " +
-                        + contador + " </h2>" +
-                        "<p>Nombre: " + data.Nombre + "</p>" +
-                        "<p>Descripcion: " + data.Descripcion + "</p>";
-                contador++;
-            }
-
-            html += "</body></html>";
-
+            string html = "";
+                
 
             return html;
             

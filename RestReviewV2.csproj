@@ -300,6 +300,8 @@
     <Compile Include="BD\DAOs\DAOAutores.cs" />
     <Compile Include="BD\DAOs\DAOSecciones.cs" />
     <Compile Include="MainWindowVM.cs" />
+    <Compile Include="Mensajes\Difusion\AnyadirArticuloValueChangedMessage.cs" />
+    <Compile Include="Mensajes\Difusion\AnyadirAutorValueChangedMessage.cs" />
     <Compile Include="Mensajes\Difusion\AnyadirSeccionValueChangedMessage.cs" />
     <Compile Include="Mensajes\Difusion\ArticuloNavValueChangedMesage.cs" />
     <Compile Include="Mensajes\Solicitud\AnyadirSeccionRequestMessage.cs" />
@@ -311,7 +313,8 @@
     <Compile Include="Servicios\Moderacion\Moderator.cs" />
     <Compile Include="Servicios\NavegacionServicio.cs" />
     <Compile Include="Servicios\PDF\PDFGenerator.cs" />
-    <Compile Include="Servicios\SaveService.cs" />
+    <Compile Include="Servicios\LoadSaveDialogService.cs" />
+    <Compile Include="Servicios\RedesSocialesServicio.cs" />
     <Compile Include="Servicios\Web\GenerarHTML.cs" />
     <Compile Include="Utilidades\WebBrowserUtility.cs" />
     <Compile Include="Vistas\UserControls\ArticulosGestionar\ArticuloGestionarUserControl.xaml.cs">

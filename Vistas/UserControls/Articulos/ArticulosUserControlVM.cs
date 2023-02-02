@@ -50,6 +50,9 @@ namespace GestorRestReview.Vistas.UserControls.Articulos
                 if (m.Value)
                 {
                     CurrUserControl = servicioNavegacion.IrArticulosGestionarUserControl();
+                } else
+                {
+                    CurrUserControl = servicioNavegacion.IrArticulosListaUserControl();
                 }
             });
         }

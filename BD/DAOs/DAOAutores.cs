@@ -34,8 +34,8 @@ namespace GestorRestReview.BD.DAOs
                 SqliteCommand command = new SqliteCommand(sql, con);
                 command.Parameters.AddWithValue("@nombre", autor.Nombre);
                 command.Parameters.AddWithValue("@imagen", autor.Imagen);
-                command.Parameters.AddWithValue("@nickName", autor.Imagen);
-                command.Parameters.AddWithValue("@redsocial", autor.Imagen);
+                command.Parameters.AddWithValue("@nickName", autor.NickName);
+                command.Parameters.AddWithValue("@redsocial", autor.Redsocial);
 
                 result = command.ExecuteNonQuery();
             }

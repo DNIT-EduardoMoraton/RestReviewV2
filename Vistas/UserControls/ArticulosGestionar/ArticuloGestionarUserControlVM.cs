@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using CommunityToolkit.Mvvm.Messaging;
 using GestorRestReview.BD;
+using GestorRestReview.Mensajes.Difusion;
 using GestorRestReview.Modelo;
 using GestorRestReview.Servicios;
 using RestReviewV2.Mensajes.Difusion;
@@ -34,6 +35,13 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             set { SetProperty(ref seccionLista, value); }
         }
 
+        private ObservableCollection<Autor> autorLista;
+
+        public ObservableCollection<Autor> AutorLista
+        {
+            get { return autorLista; }
+            set { SetProperty(ref autorLista, value); }
+        }
 
 
         // Commands
@@ -42,19 +50,24 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         public RelayCommand AbirDialogoNuevoAutorCommand { get; set; }
         public RelayCommand ExaminarImagenCommand { get; set; }
 
+        public RelayCommand GuardarArticuloCommand { get; set; }
+
         // Services
 
         private NavegacionServicio servicioNavegacion;
         private ArticuloService servicioArticulos;
+        private AutoresService servicioAutores;
         private SeccionService servicioSeccion;
-        private SaveService saveService;
+        private LoadSaveDialogService saveService;
 
         public ArticuloGestionarUserControlVM()
         {
             servicioNavegacion = new NavegacionServicio();
             servicioArticulos = new ArticuloService();
+            servicioAutores = new AutoresService();
+
             servicioSeccion = new SeccionService();
-            saveService = new SaveService();
+            saveService = new LoadSaveDialogService();
             InicioPorDefecto();
 
             ManejadorCommands();
@@ -65,7 +78,9 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         private void InicioPorDefecto()
         {
+            ArticuloActual = new Articulo();
             SeccionLista = servicioSeccion.GetAll();
+            AutorLista = servicioAutores.GetAll();
         }
 
         private void ManejadorCommands()
@@ -73,6 +88,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             AbrirDialogoNuevaSeccionCommand = new RelayCommand(AbrirDialogoNuevaSeccionFun);
             AbirDialogoNuevoAutorCommand = new RelayCommand(AbirDialogoNuevoAutorFun);
             ExaminarImagenCommand = new RelayCommand(ExaminarImagenFun);
+            GuardarArticuloCommand = new RelayCommand(GuardarArticuloFun);
         }
 
         // Commands functions
@@ -89,7 +105,22 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         private void ExaminarImagenFun()
         {
-            ArticuloActual.Imagen = saveService.MostrarSaveDialog();
+            string path = saveService.MostrarOpenDialogImages();
+            if (path == null)
+            {
+                return;
+            }
+            ArticuloActual.Imagen = path;
+
+        }
+
+        private void GuardarArticuloFun()
+        {
+            // MODERAR VA AQUI
+            // Comprobar que todo articulo actual esta bien
+
+            servicioArticulos.add(ArticuloActual);
+            WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(false));
         }
 
 
@@ -100,6 +131,13 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
                 if (m.Value)
                 {
                     SeccionLista = servicioSeccion.GetAll();
+                }
+            });
+            WeakReferenceMessenger.Default.Register<AnyadirAutorValueChangedMessage>(this, (r, m) =>
+            {
+                if (m.Value)
+                {
+                    AutorLista = servicioAutores.GetAll();
                 }
             });
         }

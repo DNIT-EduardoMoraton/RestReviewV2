@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace RestReviewV2.Servicios.GuardarHTML
 {
-    class SaveService
+    class LoadSaveDialogService
     {
-        public string MostrarSaveDialog()
+        public string MostrarSaveDialogHTML()
         {
             GenerarHTML generar = new GenerarHTML();
             string htmlContent = "";
@@ -28,5 +28,19 @@ namespace RestReviewV2.Servicios.GuardarHTML
             return null;
         }
 
+
+        public string MostrarOpenDialogImages()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                return openFileDialog.FileName;
+            }
+
+            return null;
+        }
     }
 }

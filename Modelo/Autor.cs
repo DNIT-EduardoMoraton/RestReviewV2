@@ -17,6 +17,14 @@ namespace GestorRestReview.Modelo
         public Autor(int id, string nombre, string imagen, string nickName, string redsocial) : base(id, nombre, imagen, nickName, redsocial)
         {
         }
+
+
+
+
+        public override string ToString()
+        {
+            return this.Nombre; 
+        }
     }
 
 

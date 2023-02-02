@@ -29,7 +29,7 @@ namespace GestorRestReview.BD.DAOs
             {
                 con.Open();
 
-                string sql = "INSERT INTO autores (idAutor, idSeccion, texto, titulo, imagen, fechaPublicacion) " +
+                string sql = "INSERT INTO articulos (idAutor, idSeccion, texto, titulo, imagen, fechaPublicacion) " +
                              "VALUES (@idAutor, @idSeccion, @texto, @titulo, @imagen, @fechaPublicacion)";
 
                 SqliteCommand command = new SqliteCommand(sql, con);

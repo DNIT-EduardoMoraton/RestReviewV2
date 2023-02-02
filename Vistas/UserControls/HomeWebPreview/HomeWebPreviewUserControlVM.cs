@@ -33,14 +33,14 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
         private NavegacionServicio servicioNavegacion;
         private GenerarHTML htmlService;
-        private SaveService saveService;
+        private LoadSaveDialogService saveService;
         private AlertaServicio servicioAlerta;
 
         public HomeWebPreviewUserControlVM()
         {
             servicioNavegacion = new NavegacionServicio();
             htmlService = new GenerarHTML();
-            saveService = new SaveService();
+            saveService = new LoadSaveDialogService();
             servicioAlerta = new AlertaServicio();
             InicioPorDefecto();
 
@@ -70,7 +70,7 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
         private void GuardarHTMLFun()
         {
-            string path = saveService.MostrarSaveDialog();
+            string path = saveService.MostrarSaveDialogHTML();
             if (path == null)
             {
                 servicioAlerta.MessageBoxError("no se ha seleccionado nada");

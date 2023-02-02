@@ -61,6 +61,24 @@ namespace RestReviewV2.Properties {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a DefaultEndpointsProtocol=https;AccountName=trivialedu;AccountKey=ZLNCSVkZB/C4pBLnbUODrNZwNQOfYMq6Jo7MGAgQm2eSunYX/3eFWLAkzMCPtZwvjIZFTyduzis0+AStiwWiQw==;EndpointSuffix=core.windows.net.
+        /// </summary>
+        internal static string BlobCadenaConexion {
+            get {
+                return ResourceManager.GetString("BlobCadenaConexion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a trivial.
+        /// </summary>
+        internal static string ContenedorDeBlobs {
+            get {
+                return ResourceManager.GetString("ContenedorDeBlobs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a OTE4NTAxQDMyMzAyZTM0MmUzMEZPU0Q5VEtWQzB3WXlDZGFvNVM2dEw0cFNPVlVpUTgyWVFMdkFQNzAwckk9.
         /// </summary>
         internal static string SFLicense {

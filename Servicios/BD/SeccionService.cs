@@ -19,6 +19,7 @@ namespace GestorRestReview.BD
 
         public bool Add(Seccion seccion)
         {
+
             if (dao.Insert(seccion)>0)
             {
                 return true;

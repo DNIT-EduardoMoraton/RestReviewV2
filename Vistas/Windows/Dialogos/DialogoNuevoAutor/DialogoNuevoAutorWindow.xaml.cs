@@ -19,9 +19,19 @@ namespace RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevoAutor
     /// </summary>
     public partial class DialogoNuevoAutorWindow : Window
     {
+        private DialogoNuevoAutorWindowVM vm;
         public DialogoNuevoAutorWindow()
         {
+            
             InitializeComponent();
+            vm = new DialogoNuevoAutorWindowVM();
+            this.DataContext = vm;
+        }
+
+        private void ButtonAdv_Click(object sender, RoutedEventArgs e)
+        {
+            vm.createFun();
+            DialogResult = true;
         }
     }
 }

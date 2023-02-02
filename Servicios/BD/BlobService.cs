@@ -25,9 +25,9 @@ namespace RestReviewV2.Servicios.BD
             }
 
 
-
-            string cadenaConexion = "DefaultEndpointsProtocol=https;AccountName=trivialedu;AccountKey=ZLNCSVkZB/C4pBLnbUODrNZwNQOfYMq6Jo7MGAgQm2eSunYX/3eFWLAkzMCPtZwvjIZFTyduzis0+AStiwWiQw==;EndpointSuffix=core.windows.net";
-            string nombreContenedorBlobs = "trivial";
+           
+            string cadenaConexion = Properties.Resources.BlobCadenaConexion;
+            string nombreContenedorBlobs = Properties.Resources.ContenedorDeBlobs;
 
 
 

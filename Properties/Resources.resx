@@ -117,6 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BlobCadenaConexion" xml:space="preserve">
+    <value>DefaultEndpointsProtocol=https;AccountName=trivialedu;AccountKey=ZLNCSVkZB/C4pBLnbUODrNZwNQOfYMq6Jo7MGAgQm2eSunYX/3eFWLAkzMCPtZwvjIZFTyduzis0+AStiwWiQw==;EndpointSuffix=core.windows.net</value>
+    <comment>Cadena de conexion de blob</comment>
+  </data>
+  <data name="ContenedorDeBlobs" xml:space="preserve">
+    <value>trivial</value>
+    <comment>ContenedorDeBlobs</comment>
+  </data>
   <data name="SFLicense" xml:space="preserve">
     <value>OTE4NTAxQDMyMzAyZTM0MmUzMEZPU0Q5VEtWQzB3WXlDZGFvNVM2dEw0cFNPVlVpUTgyWVFMdkFQNzAwckk9</value>
     <comment>Licencia de syncfusion</comment>

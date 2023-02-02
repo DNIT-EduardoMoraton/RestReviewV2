@@ -5,7 +5,7 @@ using GestorRestReview.BD;
 using GestorRestReview.Mensajes.Difusion;
 using GestorRestReview.Modelo;
 using GestorRestReview.Servicios;
-
+using RestReviewV2.Mensajes.Difusion;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -64,6 +64,16 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
         private void ManejadorCommands()
         {
             AnyadirArticuloCommand = new RelayCommand(AnyadirArticuloCommandFun);
+
+
+
+            WeakReferenceMessenger.Default.Register<AnyadirArticuloValueChangedMessage>(this, (r, m) =>
+            {
+                if (m.Value)
+                {
+                    ListaArticulosActual = servicioArticulos.getAll(); // No seria necesario ya que la vista se carga otra vez al navegar
+                }
+            });
         }
 
         // Commands functions

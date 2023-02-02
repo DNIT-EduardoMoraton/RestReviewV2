@@ -15,7 +15,7 @@ namespace RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevaSeccion
 {
     class DialogoNuevaSeccionVM : ObservableObject
     {
-        public RelayCommand crearCommand;
+        
 
         private Seccion seccionActual;
 
@@ -25,8 +25,11 @@ namespace RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevaSeccion
             set { SetProperty(ref seccionActual, value); }
         }
 
+        // Commands
 
+        public RelayCommand crearCommand;
 
+        //
 
         private AlertaServicio servicioAlerta;
         private SeccionService servicioSeccion;

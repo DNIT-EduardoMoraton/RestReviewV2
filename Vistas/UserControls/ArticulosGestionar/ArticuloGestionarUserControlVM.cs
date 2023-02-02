@@ -39,6 +39,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         // Commands
 
         public RelayCommand AbrirDialogoNuevaSeccionCommand { get; set; }
+        public RelayCommand AbirDialogoNuevoAutorCommand { get; set; }
         public RelayCommand ExaminarImagenCommand { get; set; }
 
         // Services
@@ -70,6 +71,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         private void ManejadorCommands()
         {
             AbrirDialogoNuevaSeccionCommand = new RelayCommand(AbrirDialogoNuevaSeccionFun);
+            AbirDialogoNuevoAutorCommand = new RelayCommand(AbirDialogoNuevoAutorFun);
             ExaminarImagenCommand = new RelayCommand(ExaminarImagenFun);
         }
 
@@ -78,6 +80,11 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         private void AbrirDialogoNuevaSeccionFun()
         {
             servicioNavegacion.AbreDialogoNuevaSeccionWindow();
+        }
+
+        private void AbirDialogoNuevoAutorFun()
+        {
+            servicioNavegacion.AbreDialogoNuevoAutor();
         }
 
         private void ExaminarImagenFun()

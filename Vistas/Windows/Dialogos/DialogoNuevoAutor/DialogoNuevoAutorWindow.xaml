@@ -9,26 +9,67 @@
         xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
         mc:Ignorable="d"
         Title="DialogoNuevoAutorWindow" Height="300" Width="500">
-    <DockPanel LastChildFill="False">
-        <Border CornerRadius="200" Height="200" Width="200" >
-            <Border.Background>
-                <ImageBrush Stretch="Fill" ImageSource="/RestReviewV2;component/Assets/imgs/placeholder.png"/>
-            </Border.Background>
-        </Border>
-        
-        <Image DockPanel.Dock="Right"/>
-        <StackPanel DockPanel.Dock="Left" Margin="10">
-            <inputLayout:SfTextInputLayout Hint="Nombre" ContainerType="Outlined" Width="200">
-                <TextBox  ></TextBox>
-            </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout Hint="Nickname" ContainerType="Outlined" Width="200">
-                <TextBox  ></TextBox>
-            </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout Hint="Red Social" ContainerType="Outlined" Width="200">
-                <ComboBox></ComboBox>
-            </inputLayout:SfTextInputLayout>
+    <Window.Resources>
+        <ControlTemplate x:Key="BotonImagenPerfilRedonda" TargetType="{x:Type Button}">
+            <Border x:Name="border" SnapsToDevicePixels="True" CornerRadius="200">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBEE6FD"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF3C7FB1"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF2C628B"/>
+                </Trigger>
+                <Trigger Property="ToggleButton.IsChecked" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#FFBCDDEE"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FF245A83"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+    <DockPanel>
+        <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom" HorizontalAlignment="Right">
+                <syncfusion:ButtonAdv Margin="10" DockPanel.Dock="Right" SizeMode="Normal" Label="Cancelar" IsCancel="True"/>
+                <syncfusion:ButtonAdv Margin="10" DockPanel.Dock="Right" SizeMode="Normal" Label="Crear" IsDefault="True" Click="ButtonAdv_Click"/>
+            </StackPanel>
+            <DockPanel>
+            <Button Name="btn5" Width="200" Height="200" Template="{DynamicResource BotonImagenPerfilRedonda}">
+                <Border  CornerRadius="200" BorderBrush="Black" BorderThickness="2" Background="White">
+                    <Grid>
+                        <Border Name="buttonImage" CornerRadius="200" Background="White"></Border>
+                        <Image Source="/RestReviewV2;component/Assets/imgs/placeholder.png">
+                            <Image.OpacityMask>
+                                <VisualBrush Visual="{Binding ElementName=buttonImage}"/>
+                            </Image.OpacityMask>
+                        </Image>
+                    </Grid>
+                </Border>
+            </Button>
+            <StackPanel DockPanel.Dock="Left" Margin="10" VerticalAlignment="Center">
+                <inputLayout:SfTextInputLayout Hint="Nombre" ContainerType="Outlined" Width="200">
+                    <TextBox  ></TextBox>
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Hint="Nickname" ContainerType="Outlined" Width="200">
+                    <TextBox  ></TextBox>
+                </inputLayout:SfTextInputLayout>
+                <inputLayout:SfTextInputLayout Hint="Red Social" ContainerType="Outlined" Width="200">
+                    <ComboBox></ComboBox>
+                </inputLayout:SfTextInputLayout>
 
-        </StackPanel>
-            
+            </StackPanel>
+        </DockPanel>
+        
+
     </DockPanel>
 </Window>

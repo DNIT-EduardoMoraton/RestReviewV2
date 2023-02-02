@@ -349,6 +349,7 @@
     <Compile Include="Vistas\Windows\Dialogos\DialogoNuevoAutor\DialogoNuevoAutorWindow.xaml.cs">
       <DependentUpon>DialogoNuevoAutorWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\Windows\Dialogos\DialogoNuevoAutor\DialogoNuevoAutorWindowVM.cs" />
     <Compile Include="Vistas\Windows\Example\ExampleWindow.xaml.cs">
       <DependentUpon>ExampleWindow.xaml</DependentUpon>
     </Compile>

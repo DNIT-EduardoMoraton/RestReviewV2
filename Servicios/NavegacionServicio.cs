@@ -4,6 +4,7 @@ using GestorRestReview.Vistas.UserControls.ArticulosLista;
 using GestorRestReview.Vistas.UserControls.Home;
 using GestorRestReview.Vistas.UserControls.HomeWebPreview;
 using GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevaSeccion;
+using RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevoAutor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,6 +57,12 @@ namespace GestorRestReview.Servicios
             DialogoNuevaSeccionWindow w = new DialogoNuevaSeccionWindow();
             return w.ShowDialog();
             
+        }
+
+        public bool? AbreDialogoNuevoAutor()
+        {
+            DialogoNuevoAutorWindow w = new DialogoNuevoAutorWindow();
+            return w.ShowDialog(); 
         }
 
     }

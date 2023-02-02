@@ -21,11 +21,27 @@
 
             
             <Syncfusion:StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Left" Margin="20" Orientation="Vertical">
-                <Syncfusion:StackPanel Orientation="Horizontal">
-                    <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Autor" ContainerType="Filled" Margin="20">
-                        <ComboBox Width="200"></ComboBox>
-                    </inputLayout:SfTextInputLayout>
-                </Syncfusion:StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Syncfusion:StackPanel Orientation="Horizontal">
+                        <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Autor" ContainerType="Filled">
+                            <ComboBox Width="200"></ComboBox>
+                        </inputLayout:SfTextInputLayout>
+                        <syncfusion:ButtonAdv Command="{Binding AbirDialogoNuevoAutorCommand}" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
+                    </Syncfusion:StackPanel>
+                    <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
+                        <Ellipse Height="100" Width="100">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/RestReviewV2;component/Assets/imgs/placeholder.png"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock>MARCOS MAARCOS MARCOS</TextBlock>
+                        <TextBlock>
+                            <Run>@</Run>
+                            <Run></Run>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+                
                 <Syncfusion:StackPanel Orientation="Horizontal">
                     <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Seccion" ContainerType="Filled" >
                         <ComboBox Width="200" ItemsSource="{Binding Path=SeccionLista}" SelectedItem="{Binding Path=ArticuloActual.Seccion}"></ComboBox>

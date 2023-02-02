@@ -29,11 +29,7 @@
                 <Image Source="/RestReviewV2;component/Assets/iconos/articulos.ico"></Image>
             </syncfusion:NavigationItem.Icon>
         </syncfusion:NavigationItem>
-        <syncfusion:NavigationItem Header="Autores">
-            <syncfusion:NavigationItem.Icon>
-                <Image Source="/RestReviewV2;component/Assets/iconos/autores.ico"></Image>
-            </syncfusion:NavigationItem.Icon>
-        </syncfusion:NavigationItem>
+        
 
 
         <syncfusion:SfNavigationDrawer.ContentView>

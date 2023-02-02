@@ -22,12 +22,14 @@
             
             <Syncfusion:StackPanel DockPanel.Dock="Bottom" HorizontalAlignment="Left" Margin="20" Orientation="Vertical">
                 <Syncfusion:StackPanel Orientation="Horizontal">
-                    <TextBlock>Autor:</TextBlock>
-                    <ComboBox Width="200"></ComboBox>
+                    <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Autor" ContainerType="Filled" Margin="20">
+                        <ComboBox Width="200"></ComboBox>
+                    </inputLayout:SfTextInputLayout>
                 </Syncfusion:StackPanel>
                 <Syncfusion:StackPanel Orientation="Horizontal">
-                    <TextBlock>Seccion:</TextBlock>
-                    <ComboBox Width="200" ItemsSource="{Binding Path=SeccionLista}" SelectedItem="{Binding Path=ArticuloActual.Seccion}"></ComboBox>
+                    <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Seccion" ContainerType="Filled" >
+                        <ComboBox Width="200" ItemsSource="{Binding Path=SeccionLista}" SelectedItem="{Binding Path=ArticuloActual.Seccion}"></ComboBox>
+                    </inputLayout:SfTextInputLayout>
                     <syncfusion:ButtonAdv Command="{Binding AbrirDialogoNuevaSeccionCommand}" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
                 </Syncfusion:StackPanel>
             </Syncfusion:StackPanel>

@@ -10,15 +10,24 @@
         mc:Ignorable="d"
         Title="DialogoNuevoAutorWindow" Height="300" Width="500">
     <DockPanel LastChildFill="False">
+        <Border CornerRadius="200" Height="200" Width="200" >
+            <Border.Background>
+                <ImageBrush Stretch="Fill" ImageSource="/RestReviewV2;component/Assets/imgs/placeholder.png"/>
+            </Border.Background>
+        </Border>
+        
         <Image DockPanel.Dock="Right"/>
-        <StackPanel DockPanel.Dock="Left">
-            <inputLayout:SfTextInputLayout Hint="Nombre" ContainerType="Outlined" Margin="10" Width="200">
+        <StackPanel DockPanel.Dock="Left" Margin="10">
+            <inputLayout:SfTextInputLayout Hint="Nombre" ContainerType="Outlined" Width="200">
                 <TextBox  ></TextBox>
             </inputLayout:SfTextInputLayout>
-            <inputLayout:SfTextInputLayout Hint="Nickname" ContainerType="Outlined" Margin="10" Width="200">
+            <inputLayout:SfTextInputLayout Hint="Nickname" ContainerType="Outlined" Width="200">
                 <TextBox  ></TextBox>
             </inputLayout:SfTextInputLayout>
-            
+            <inputLayout:SfTextInputLayout Hint="Red Social" ContainerType="Outlined" Width="200">
+                <ComboBox></ComboBox>
+            </inputLayout:SfTextInputLayout>
+
         </StackPanel>
             
     </DockPanel>

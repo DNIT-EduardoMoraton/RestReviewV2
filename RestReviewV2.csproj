@@ -455,6 +455,7 @@
     <Resource Include="Assets\iconos\check.ico" />
     <Resource Include="Assets\iconos\home.ico" />
     <Resource Include="Assets\iconos\add.ico" />
+    <Resource Include="Assets\imgs\placeholder.png" />
     <Content Include="Assets\web\webplantilla.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

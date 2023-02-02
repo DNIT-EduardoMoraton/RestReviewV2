@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using GestorRestReview.Modelo;
 using GestorRestReview.Servicios;
 using RestReviewV2.Servicios.GuardarHTML;
 using RestReviewV2.Servicios.Moderacion;
@@ -49,7 +50,10 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
         private void InicioPorDefecto()
         {
-            PDFGenerator pdf = new PDFGenerator();
+            Articulo articulo = new Articulo(23, 23, 34, "eduardo", "me come", "el nardo", 5555555l);
+            articulo.Autor = new Autor(21, "hety", "img", "jofri", "poppo");
+            PDFGenerator pdf = new PDFGenerator(articulo);
+            pdf.Generate();
             //servicioAlerta.MessageBoxError(new Moderator().ModerarTexto("hijo de puta"));
             htmlService.GenerateHTML();
             //HTMLRuta = "file:///" + Path.GetFullPath(htmlService.getPreview()); // Aqui solamente poner la ruta del archivo temporal para la pagina web 

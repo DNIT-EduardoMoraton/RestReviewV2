@@ -31,6 +31,8 @@ namespace RestReviewV2.Servicios.Web
 
         public void saveTo(string path) 
         {
+            if (path==null)
+                return;
             File.WriteAllText(path, GenerateHTML()); // Controlar errores
         }
 

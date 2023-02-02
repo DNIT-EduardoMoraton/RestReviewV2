@@ -49,7 +49,8 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
         {
             
             htmlService.GenerateHTML();
-            HTMLRuta = "file:///" + Path.GetFullPath(htmlService.getPreview()); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
+            //HTMLRuta = "file:///" + Path.GetFullPath(htmlService.getPreview()); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
+            HTMLRuta = "www.google.es";
 
         }
 

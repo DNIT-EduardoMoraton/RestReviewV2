@@ -1,113 +1,31 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HTML 5 Boilerplate</title>
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: segoe-ui_normal,Segoe UI,Segoe,Segoe WP,Helvetica Neue,Helvetica,sans-serif;
-            display: grid;
-            grid-template-areas:
-                "header header header"
-                "nav section aside"
-                "footer footer footer";
-            grid-template-rows: 80px 1fr 50px;
-            grid-template-columns: 15% 1fr 15%;
-            height: 100vh;
-        }
-
-        header {
-            background: #707070;
-            grid-area: header;
-        }
-
-
-        section {
-            background: #ABABAB;
-            grid-area: section;
-        }
-
-        aside {
-            background: #C9C9C9;
-            grid-area: aside;
-        }
-
-        footer {
-            background: #707070;
-            grid-area: footer;
-            display: flex;
-            flex-direction: row-reverse;
-            align-items: end;
-            font-size: 1rem;
-        }
-
-        header, nav, section, aside, footer {
-            padding: 5px;
-        }
-
-        .tittle {
-            font-size: 2rem;
-        }
-
-
-        details {
-            border: 1px solid #aaa;
-            border-radius: 4px;
-            padding: 0.5em 0.5em 0;
-        }
-
-        summary {
-            font-weight: bold;
-            margin: -0.5em -0.5em 0;
-            padding: 0.5em;
-        }
-
-        details[open] {
-            padding: 0.5em;
-        }
-
-        details[open] summary {
-            border-bottom: 1px solid #aaa;
-            margin-bottom: 0.5em;
-        }
-
-
-
-
-    </style>
+<title>GustoGuru</title>
+<meta charset = 'UTF-8'>
+<meta name = 'viewport' content = 'width=device-width, initial-scale=1'>
+<link rel = 'stylesheet' href = 'w3.css'>
+<link rel = 'stylesheet' href = 'fontface.css'>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font - family: 'Raleway', sans - serif}
+</style>
 </head>
-<body>
-    <header>
-        <div class="tittle">
-            RestReview
-        </div>
-        
-    </header>
-    <section>
-
-        <details>
-            <summary>%%CATEGORIA%%</summary>
-            <ul>
-                <li>
-                    <a href="%%LINK%%" class="categoria">%%NOMBRE_ARTICULO%%</a>
-                </li>
-            </ul>
-        </details>
-
-    </section>
-    <footer>
-        <div>
-            Todos los derechos reservados 2023 ©
-        </div>
-    </footer>
-
-    <script>
-
-    </script>
+<body class='w3-light-grey w3-content'>
+<div class='w3-main'>
+<header id = 'portfolio'>
+<div class='w3-container'>
+<h1><b>Gusto Guru</b></h1>
+<div class='w3-section w3-bottombar w3-padding-16'>
+<span class='w3-margin-right'>Filter:</span>
+<button class='w3-button w3-black'>ALL</button>
+<button class='w3-button w3-white'>Design</button>
+<button class='w3-button w3-white w3-hide-small'>Photos</button>
+<button class='w3-button w3-white w3-hide-small'>Art</button>
+</div>
+</div>
+</header>
+<div class='w3-row-padding'>
+</div>
+</div>
 </body>
-</html>
+</html> 

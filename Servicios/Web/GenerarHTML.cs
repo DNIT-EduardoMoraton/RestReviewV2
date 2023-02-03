@@ -14,17 +14,19 @@ namespace RestReviewV2.Servicios.Web
     {
         private SeccionService seccions = new SeccionService();
         private ArticuloService articulos = new ArticuloService();
-        string imagen, titulo, texto, htmlHeader, htmlArticulo, htmlContenido = "", div;
+        string imagen, titulo, texto, htmlHeader, htmlArticulo, htmlContenido = "";
         int contador = 0;
         ObservableCollection<Articulo> articuloscargados;
 
         public GenerarHTML()
         {
-            articuloscargados = articulos.getAll();
+            
         }
 
         public string GenerateHTML()
         {
+            articuloscargados = articulos.getAll();
+
             htmlContenido =
                 "<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -53,7 +55,7 @@ namespace RestReviewV2.Servicios.Web
                 "</div>\n" +
                 "</header>\n" +
                 "<body class='w3-light-grey w3-content'>\n" +
-                "< div class='w3-main'>\n" +
+                "<div class='w3-main'>\n" +
                 "<div class='w3-row-padding'>\n";
 
 
@@ -70,7 +72,7 @@ namespace RestReviewV2.Servicios.Web
                     "<p><b>" + titulo + "</b></p>\n" +
                     "<p>" + texto + "</p>\n</div>\n</div>\n";
 
-                htmlContenido = htmlContenido + htmlArticulo;
+                htmlContenido += htmlArticulo;
                 contador++;
 
                 if (contador % 3 == 0)
@@ -78,13 +80,13 @@ namespace RestReviewV2.Servicios.Web
                     htmlContenido = htmlContenido + "/div\n" + "<div class='w3-row-padding'>\n";
                 }
             }
-            htmlContenido = htmlContenido + "/div\n";
+            htmlContenido += "/div\n";
                 
 
             return htmlHeader + htmlContenido + "</body>\n" + "</html> ";
         }
 
-        public void saveTo(string path)
+        public void SaveTo(string path)
         {
             if (path==null)
                 return;
@@ -93,8 +95,8 @@ namespace RestReviewV2.Servicios.Web
 
         public string getPreview()
         {
-            saveTo("./Assets/web/webplantilla.html"); // G
-            return "./Assets/web/webplantilla.html";
+            SaveTo(@"C:\Users\grego\source\repos\miproyecto\RestReviewV2\Assets\web\plantilla.html"); // G
+            return @"C:\Users\grego\source\repos\miproyecto\RestReviewV2\Assets\web\plantilla.html";
         }
 
 

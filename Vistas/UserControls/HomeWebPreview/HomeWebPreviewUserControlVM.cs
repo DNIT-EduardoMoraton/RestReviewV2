@@ -55,9 +55,8 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
             PDFGenerator pdf = new PDFGenerator(articulo);
             pdf.Generate();
             //servicioAlerta.MessageBoxError(new Moderator().ModerarTexto("hijo de puta"));
-            htmlService.GenerateHTML();
-            //HTMLRuta = "file:///" + Path.GetFullPath(htmlService.getPreview()); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
-            HTMLRuta = "www.google.es";
+            HTMLRuta = htmlService.getPreview(); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
+            //HTMLRuta = "www.google.es";
 
         }
 
@@ -75,7 +74,7 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
             {
                 servicioAlerta.MessageBoxError("no se ha seleccionado nada");
             }
-            htmlService.saveTo(path);
+            htmlService.SaveTo(path);
         }
     }
 }

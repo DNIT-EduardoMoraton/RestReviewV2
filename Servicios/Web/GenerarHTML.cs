@@ -25,7 +25,7 @@ namespace RestReviewV2.Servicios.Web
 
         public string GenerateHTML()
         {
-            articuloscargados = articulos.getAll();
+            articuloscargados = articulos.GetAll();
 
             htmlContenido =
                 "<!DOCTYPE html>\n" +

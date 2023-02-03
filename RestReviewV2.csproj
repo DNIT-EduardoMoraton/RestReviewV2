@@ -460,6 +460,18 @@
     <Resource Include="Assets\iconos\home.ico" />
     <Resource Include="Assets\iconos\add.ico" />
     <Resource Include="Assets\imgs\placeholder.png" />
+    <Content Include="Assets\web\fontawesome.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\web\fontface.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\web\scripts.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\web\w3.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Assets\imgs\facebook.png" />
     <Resource Include="Assets\imgs\instagram.png" />
     <Resource Include="Assets\imgs\twitter.png" />

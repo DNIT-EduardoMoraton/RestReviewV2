@@ -53,7 +53,7 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
         {
 
             //servicioAlerta.MessageBoxError(new Moderator().ModerarTexto("hijo de puta"));
-            HTMLRuta = "file:///" + htmlService.getPreview(); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
+            HTMLRuta = "file:///" + htmlService.GetPreview(); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
             //HTMLRuta = "www.google.es";
 
             //Servicio Articulo(Pruebas)

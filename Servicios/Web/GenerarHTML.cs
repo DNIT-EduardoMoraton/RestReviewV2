@@ -26,6 +26,7 @@ namespace RestReviewV2.Servicios.Web
         public string GenerateHTML()
         {
             articuloscargados = articulos.getAll();
+
             htmlContenido =
                 "<!DOCTYPE html>\n" +
                 "<html>\n" +
@@ -49,6 +50,7 @@ namespace RestReviewV2.Servicios.Web
                 "<div class='w3-section w3-bottombar w3-padding-16'>\n" +
                 "<span class='w3-margin-right'>Filtro:</span>\n" +
                 "<button class='w3-button w3-black'>TODOS</button>\n";
+
             foreach (Articulo a in articuloscargados)
             {
                 seccion = a.Seccion.Nombre;
@@ -99,9 +101,5 @@ namespace RestReviewV2.Servicios.Web
             SaveTo("./Assets/web/webplantilla.html"); // G
             return "./Assets/web/webplantilla.html";
         }
-
-
-
-
     }
 }

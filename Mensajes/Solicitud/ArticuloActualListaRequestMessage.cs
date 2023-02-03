@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace RestReviewV2.Mensajes.Solicitud
 {
-    class AnyadirSeccionRequestMessage : RequestMessage<bool> { }
+    class ArticuloActualListaRequestMessage : RequestMessage<string> { }
 }

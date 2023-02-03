@@ -11,7 +11,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <DockPanel> 
             <DockPanel DockPanel.Dock="Bottom" LastChildFill="False">
-                <syncfusion:ButtonAdv Command="{Binding GuardarHTMLCommand}" Margin="20" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/check.ico"/>
+                <syncfusion:ButtonAdv Command="{Binding GuardarHTMLCommand}" Margin="20" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/save.ico"/>
             </DockPanel>
             <wpf:ChromiumWebBrowser
             x:Name="Browser"

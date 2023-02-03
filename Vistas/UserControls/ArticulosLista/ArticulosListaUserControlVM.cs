@@ -40,6 +40,9 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
         // Commands
 
         public RelayCommand AnyadirArticuloCommand { get; set; }
+        public RelayCommand EditarArticuloCommand { get; set; }
+        public RelayCommand BorrarArticuloCommand { get; set; }
+
 
         // Services
 

@@ -132,8 +132,9 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             {
                 servicioAlerta.MessageBoxError("Se ha guardado");
                 WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(false));
+                return;
             }
-            servicioAlerta.MessageBoxError("NOOOOOOOOOOOOOOOOOOOOOOOOOO");
+            servicioAlerta.MessageBoxError("No se ha creado");
         }
 
 

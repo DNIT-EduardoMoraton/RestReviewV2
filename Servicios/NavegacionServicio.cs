@@ -15,6 +15,9 @@ namespace GestorRestReview.Servicios
 {
     class NavegacionServicio
     {
+
+
+        private ArticulosListaUserControl listaArticulosUserControl;
         public NavegacionServicio()
         {
             
@@ -45,7 +48,9 @@ namespace GestorRestReview.Servicios
 
         public ArticulosListaUserControl IrArticulosListaUserControl()
         {
-            return new ArticulosListaUserControl();
+            if (listaArticulosUserControl == null)
+                listaArticulosUserControl = new ArticulosListaUserControl();
+            return listaArticulosUserControl;
         }
 
 

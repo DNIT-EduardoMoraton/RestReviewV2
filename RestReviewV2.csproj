@@ -304,7 +304,7 @@
     <Compile Include="Mensajes\Difusion\AnyadirAutorValueChangedMessage.cs" />
     <Compile Include="Mensajes\Difusion\AnyadirSeccionValueChangedMessage.cs" />
     <Compile Include="Mensajes\Difusion\ArticuloNavValueChangedMesage.cs" />
-    <Compile Include="Mensajes\Solicitud\AnyadirSeccionRequestMessage.cs" />
+    <Compile Include="Mensajes\Solicitud\ArticuloActualListaRequestMessage.cs" />
     <Compile Include="Servicios\AlertaServicio.cs" />
     <Compile Include="Servicios\BD\ArticuloService.cs" />
     <Compile Include="Servicios\BD\AutoresService.cs" />
@@ -460,6 +460,9 @@
     <Resource Include="Assets\iconos\home.ico" />
     <Resource Include="Assets\iconos\add.ico" />
     <Resource Include="Assets\imgs\placeholder.png" />
+    <Resource Include="Assets\iconos\save.ico" />
+    <Resource Include="Assets\iconos\trash.ico" />
+    <Resource Include="Assets\iconos\edit.ico" />
     <Content Include="Assets\web\webplantilla.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -18,11 +18,13 @@ namespace RestReviewV2.Servicios.PDF
 
         BlobService azureService;
         private Articulo articulo;
+        private Autor autor;
 
-        public PDFGenerator(Articulo articulo)
+        public PDFGenerator(Articulo articulo,Autor autor)
         {
             azureService = new BlobService();
             this.articulo = articulo;
+            this.autor = autor;
 
         }
 
@@ -52,7 +54,23 @@ namespace RestReviewV2.Servicios.PDF
                         column.Item()
                         .AspectRatio(16 / 9f)
                         .Image(archivo);
-                         
+
+                    string redSocial = autor.Redsocial;
+                        column.Item()
+                        .Text(autor.Redsocial)
+                        .FontSize(18);
+
+                        switch(redSocial)
+                        {
+                            case "Twitter":
+                                break;
+                            case "Instagram":
+                                break;
+                            case "Facebook":
+                                break;
+                            default:
+                                break;
+                        }
                     });
 
                     page.Footer()
@@ -65,7 +83,7 @@ namespace RestReviewV2.Servicios.PDF
                         text.TotalPages();
                     });
                 });
-            }).GeneratePdf("output.pdf");
+            }).GeneratePdf("pdfarticulos/" + "Articulo_" + articulo.Id +".pdf");
         }
     }
 }

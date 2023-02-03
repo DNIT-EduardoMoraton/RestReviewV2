@@ -21,7 +21,7 @@ namespace GestorRestReview.BD
 
         public void inicializar()
         {
-            conexion = new SqliteConnection("Data Source=BASEDEDATOS");
+            conexion = new SqliteConnection("Data Source=BDRevista.db");
             conexion.Open();
 
             // Create Articulos
@@ -33,7 +33,8 @@ namespace GestorRestReview.BD
                                       texto TEXT,
                                       titulo TEXT,
                                       imagen TEXT,
-                                      fechaPublicacion INTEGER
+                                      fechaPublicacion INTEGER,
+                                      url TEXT
                                     );";
             articulos.ExecuteNonQuery();
 
@@ -62,7 +63,7 @@ namespace GestorRestReview.BD
 
         } 
 
-        public SqliteConnection GetNewConnection() => new SqliteConnection("Data Source=BASEDEDATOS");
+        public SqliteConnection GetNewConnection() => new SqliteConnection("Data Source=BDRevista.db");
 
     }
 }

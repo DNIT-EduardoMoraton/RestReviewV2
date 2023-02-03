@@ -63,7 +63,7 @@ namespace RestReviewV2.Servicios.Web
             {
                 imagen = a.Imagen;
                 titulo = a.Titulo;
-                texto = a.Texto.Substring(0, 100) + "...";
+                texto = a.Texto.Substring(0, 1) + "...";
                 htmlArticulo =
                     "<div class='w3-row-padding'>\n" +
                     "<div class='w3-third w3-container w3-margin-bottom'>\n" +
@@ -95,8 +95,8 @@ namespace RestReviewV2.Servicios.Web
 
         public string getPreview()
         {
-            SaveTo(@"C:\Users\grego\source\repos\miproyecto\RestReviewV2\Assets\web\plantilla.html"); // G
-            return @"C:\Users\grego\source\repos\miproyecto\RestReviewV2\Assets\web\plantilla.html";
+            SaveTo("./Assets/web/plantilla.html"); // G
+            return "./Assets/web/plantilla.html";
         }
 
 

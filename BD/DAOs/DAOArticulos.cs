@@ -29,8 +29,8 @@ namespace GestorRestReview.BD.DAOs
             {
                 con.Open();
 
-                string sql = "INSERT INTO articulos (idAutor, idSeccion, texto, titulo, imagen, fechaPublicacion) " +
-                             "VALUES (@idAutor, @idSeccion, @texto, @titulo, @imagen, @fechaPublicacion)";
+                string sql = "INSERT INTO articulos (idAutor, idSeccion, texto, titulo, imagen, fechaPublicacion, url) " +
+                             "VALUES (@idAutor, @idSeccion, @texto, @titulo, @imagen, @fechaPublicacion, @url)";
 
                 SqliteCommand command = new SqliteCommand(sql, con);
                 command.Parameters.AddWithValue("@idAutor", articulo.IdAutor);
@@ -39,6 +39,7 @@ namespace GestorRestReview.BD.DAOs
                 command.Parameters.AddWithValue("@titulo", articulo.Titulo);
                 command.Parameters.AddWithValue("@imagen", articulo.Imagen);
                 command.Parameters.AddWithValue("@fechaPublicacion", articulo.FechaPublicacion);
+                command.Parameters.AddWithValue("@url", articulo.FechaPublicacion);
 
                 result = command.ExecuteNonQuery();
             }
@@ -66,6 +67,7 @@ namespace GestorRestReview.BD.DAOs
             while (reader.Read())
             {
                 ArticuloEntity articulo = readOne(reader);
+                articulos.Add(articulo);
 
             }
             con.Close();
@@ -105,6 +107,7 @@ namespace GestorRestReview.BD.DAOs
             articulo.Titulo = reader.GetString(4);
             articulo.Imagen = reader.GetString(5);
             articulo.FechaPublicacion = reader.GetInt64(6);
+            articulo.Url = reader.GetString(7);
             return articulo;
         }
     }

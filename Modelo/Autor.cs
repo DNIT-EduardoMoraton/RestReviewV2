@@ -18,7 +18,9 @@ namespace GestorRestReview.Modelo
         {
         }
 
-
+        public Autor(AutorEntity autorEntity) : base(autorEntity.Id, autorEntity.Nombre, autorEntity.Imagen, autorEntity.NickName, autorEntity.Redsocial)
+        {
+        }
 
 
         public override string ToString()

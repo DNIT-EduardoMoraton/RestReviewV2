@@ -6,6 +6,7 @@ using GestorRestReview.Mensajes.Difusion;
 using GestorRestReview.Modelo;
 using GestorRestReview.Servicios;
 using RestReviewV2.Mensajes.Difusion;
+using RestReviewV2.Servicios.BD;
 using RestReviewV2.Servicios.GuardarHTML;
 using System;
 using System.Collections.Generic;
@@ -59,6 +60,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         private AutoresService servicioAutores;
         private SeccionService servicioSeccion;
         private LoadSaveDialogService saveService;
+        private BlobService servicioBlob;
+        private AlertaServicio servicioAlerta;
 
         public ArticuloGestionarUserControlVM()
         {
@@ -68,6 +71,9 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
             servicioSeccion = new SeccionService();
             saveService = new LoadSaveDialogService();
+            servicioBlob = new BlobService();
+            servicioAlerta = new AlertaServicio();
+
             InicioPorDefecto();
 
             ManejadorCommands();
@@ -118,9 +124,16 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         {
             // MODERAR VA AQUI
             // Comprobar que todo articulo actual esta bien
+            ArticuloActual.Url = "https://thixalongmy.haugiang.gov.vn/media/1175/clean_code.pdf";
 
-            servicioArticulos.add(ArticuloActual);
-            WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(false));
+            ArticuloActual.Imagen = servicioBlob.upload(ArticuloActual.Imagen);
+            
+            if (servicioArticulos.add(ArticuloActual))
+            {
+                servicioAlerta.MessageBoxError("Se ha guardado");
+                WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(false));
+            }
+            servicioAlerta.MessageBoxError("NOOOOOOOOOOOOOOOOOOOOOOOOOO");
         }
 
 

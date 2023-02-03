@@ -27,9 +27,12 @@ namespace GestorRestReview.BD
             ObservableCollection<Articulo> newList;
             newList = new ObservableCollection<Articulo>(list.Select(m =>
             {
-                (m as Articulo).Autor = (Autor)daoAutores.geById(m.IdAutor);
-                (m as Articulo).Seccion = (Seccion)daoSecciones.GetById(m.IdSeccion);
-                return (Articulo)m;
+                AutorEntity autorent = daoAutores.geById(m.IdAutor);
+                Articulo art = new Articulo(m);
+
+                art.Autor = new Autor(autorent);
+                art.Seccion = new Seccion(daoSecciones.GetById(m.IdSeccion));
+                return art;
             }));
             
             
@@ -54,6 +57,10 @@ namespace GestorRestReview.BD
 
         public bool add(Articulo articulo)
         {
+            articulo.IdAutor = articulo.Autor.Id;
+            articulo.IdSeccion = articulo.Seccion.Id;
+            articulo.FechaPublicacionDate = DateTime.Now;
+
             if(daoArticulos.insert(articulo) > 0)
             {
                 return true;

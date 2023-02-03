@@ -18,7 +18,7 @@ namespace GestorRestReview.Modelo
         public Seccion Seccion
         {
             get { return seccion; }
-            set { SetProperty(ref seccion, seccion); }
+            set { SetProperty(ref seccion, value); }
         }
 
 
@@ -50,12 +50,26 @@ namespace GestorRestReview.Modelo
         }
 
 
-        public Articulo(int id, int idAutor, int idSeccion, string texto, string titulo, string imagen, long fechaPublicacion) : base(id, idAutor, idSeccion, texto, titulo, imagen, fechaPublicacion)
-        {
-        }
+        
 
         public Articulo()
         {
+        }
+
+        public Articulo(int id, int idAutor, int idSeccion, string texto, string titulo, string imagen, long fechaPublicacion, string url) : base(id, idAutor, idSeccion, texto, titulo, imagen, fechaPublicacion, url)
+        {
+        }
+
+        public Articulo(ArticuloEntity art)
+        {
+            this.Id = art.Id;
+            this.IdAutor = art.IdAutor;
+            this.IdSeccion = art.IdSeccion;
+            this.Texto = art.Texto;
+            this.Titulo = art.Titulo;
+            this.Imagen = art.Imagen;
+            this.FechaPublicacion = art.FechaPublicacion;
+            this.Url = art.Url;
         }
     }
 }

@@ -50,12 +50,9 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
         private void InicioPorDefecto()
         {
-            Articulo articulo = new Articulo(23, 23, 34, "eduardo", "me come", "el nardo", 5555555l);
-            articulo.Autor = new Autor(21, "hety", "img", "jofri", "poppo");
-            PDFGenerator pdf = new PDFGenerator(articulo);
-            pdf.Generate();
+
             //servicioAlerta.MessageBoxError(new Moderator().ModerarTexto("hijo de puta"));
-            HTMLRuta = htmlService.getPreview(); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
+            HTMLRuta = "file:///" + htmlService.getPreview(); // Aqui solamente poner la ruta del archivo temporal para la pagina web 
             //HTMLRuta = "www.google.es";
 
         }

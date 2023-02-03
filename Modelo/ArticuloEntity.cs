@@ -67,11 +67,20 @@ namespace GestorRestReview.Modelo
             set { SetProperty(ref fechaPublicacion, value); }
         }
 
+        private string url;
+
+        public string Url
+        {
+            get { return url; }
+            set { SetProperty(ref url, value); }
+        }
+
+
         public ArticuloEntity()
         {
         }
 
-        public ArticuloEntity(int id, int idAutor, int idSeccion, string texto, string titulo, string imagen, long fechaPublicacion)
+        public ArticuloEntity(int id, int idAutor, int idSeccion, string texto, string titulo, string imagen, long fechaPublicacion, string url)
         {
             Id = id;
             IdAutor = idAutor;
@@ -80,6 +89,7 @@ namespace GestorRestReview.Modelo
             Titulo = titulo;
             Imagen = imagen;
             FechaPublicacion = fechaPublicacion;
+            Url = url;
         }
     }
 }

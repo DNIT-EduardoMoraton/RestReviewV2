@@ -23,6 +23,13 @@
           
         </syncfusion:NavigationItem>
         
+        <syncfusion:NavigationItem Header="Autores"
+                                   Command="{Binding ArticuloComand}">
+            <syncfusion:NavigationItem.Icon>
+                <Image Source="/RestReviewV2;component/Assets/iconos/autores.ico"></Image>
+            </syncfusion:NavigationItem.Icon>
+        </syncfusion:NavigationItem>
+        
         <syncfusion:NavigationItem Header="Articulos"
                                    Command="{Binding ArticuloComand}">
             <syncfusion:NavigationItem.Icon>

@@ -21,7 +21,7 @@ namespace GestorRestReview.BD
             daoSecciones = new DAOSecciones();
         }
 
-        public ObservableCollection<Articulo> getAll()
+        public ObservableCollection<Articulo> GetAll()
         {
             List<ArticuloEntity> list = daoArticulos.getAll();
             ObservableCollection<Articulo> newList;
@@ -40,18 +40,34 @@ namespace GestorRestReview.BD
 
         }
 
+        public ObservableCollection<Articulo> GetAllPublicados()
+        {
+            return new ObservableCollection<Articulo>(this.GetAll().Where(m => m.IsPublicado));
+        }
+
         public ObservableCollection<Articulo> GetAllBySeccion(Seccion seccion)
         {
             List<ArticuloEntity> list = daoArticulos.GetAllByIdSeccion(seccion);
             ObservableCollection<Articulo> newList;
             newList = new ObservableCollection<Articulo>(list.Select(m =>
             {
-                (m as Articulo).Autor = (Autor)daoAutores.geById(m.IdAutor);
-                (m as Articulo).Seccion = seccion;
-                return (Articulo)m;
+                AutorEntity autorent = daoAutores.geById(m.IdAutor);
+                Articulo art = new Articulo(m);
+
+                art.Autor = new Autor(autorent);
+                art.Seccion = seccion;
+                return art;
             }));
 
             return newList;
+
+        }
+
+        public ObservableCollection<Articulo> GetAllBySeccionPublicados(Seccion seccion)
+        {
+            ObservableCollection<Articulo> newList = GetAllBySeccion(seccion);
+            
+            return new ObservableCollection<Articulo>(newList.Where(m => m.IsPublicado));
 
         }
 

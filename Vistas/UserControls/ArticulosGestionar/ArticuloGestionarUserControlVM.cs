@@ -124,7 +124,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         {
             // MODERAR VA AQUI
             // Comprobar que todo articulo actual esta bien
-            ArticuloActual.Url = "https://thixalongmy.haugiang.gov.vn/media/1175/clean_code.pdf";
+            ArticuloActual.Url = "NULL";
 
             ArticuloActual.Imagen = servicioBlob.upload(ArticuloActual.Imagen);
             

@@ -25,6 +25,7 @@ namespace GestorRestReview.Vistas.UserControls.Home
 
         // Commands
 
+        public RelayCommand AutorCommand { get; set; }
         public RelayCommand ArticuloComand { get; set; }
         public RelayCommand HomeWebPreview { get; set; }
 

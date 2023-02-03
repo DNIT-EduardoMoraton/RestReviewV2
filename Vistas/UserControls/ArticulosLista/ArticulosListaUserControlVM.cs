@@ -58,7 +58,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
 
         private void InicioPorDefecto()
         {
-            ListaArticulosActual = servicioArticulos.getAll();
+            ListaArticulosActual = servicioArticulos.GetAll();
         }
 
         private void ManejadorCommands()
@@ -71,7 +71,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
             {
                 if (m.Value)
                 {
-                    ListaArticulosActual = servicioArticulos.getAll(); // No seria necesario ya que la vista se carga otra vez al navegar
+                    ListaArticulosActual = servicioArticulos.GetAll(); // No seria necesario ya que la vista se carga otra vez al navegar
                 }
             });
         }

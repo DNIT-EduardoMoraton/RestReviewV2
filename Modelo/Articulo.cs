@@ -30,6 +30,15 @@ namespace GestorRestReview.Modelo
             set { SetProperty(ref autor, value); }
         }
 
+        private bool isPublicado;
+
+        public bool IsPublicado
+        {
+            get { return this.Url != "NULL"; }
+            set { SetProperty(ref isPublicado, value); }
+        }
+
+
 
         private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 

@@ -39,7 +39,7 @@ namespace GestorRestReview.BD.DAOs
                 command.Parameters.AddWithValue("@titulo", articulo.Titulo);
                 command.Parameters.AddWithValue("@imagen", articulo.Imagen);
                 command.Parameters.AddWithValue("@fechaPublicacion", articulo.FechaPublicacion);
-                command.Parameters.AddWithValue("@url", articulo.FechaPublicacion);
+                command.Parameters.AddWithValue("@url", articulo.Url);
 
                 result = command.ExecuteNonQuery();
             }
@@ -102,8 +102,8 @@ namespace GestorRestReview.BD.DAOs
             ArticuloEntity articulo = new ArticuloEntity();
             articulo.Id = reader.GetInt32(0);
             articulo.IdAutor = reader.GetInt32(1);
-            articulo.Texto = reader.GetString(2);
-            articulo.IdSeccion = reader.GetInt32(3);
+            articulo.IdSeccion = reader.GetInt32(2);
+            articulo.Texto = reader.GetString(3);    
             articulo.Titulo = reader.GetString(4);
             articulo.Imagen = reader.GetString(5);
             articulo.FechaPublicacion = reader.GetInt64(6);

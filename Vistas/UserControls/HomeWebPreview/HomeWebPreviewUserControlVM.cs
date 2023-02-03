@@ -59,8 +59,8 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
             //Servicio Articulo(Pruebas)
             ArticuloService articulosService = new ArticuloService();
             
-            PDFGenerator pdf = new PDFGenerator(articulosService.GetAll()[0]);
-            pdf.Generate();
+            //PDFGenerator pdf = new PDFGenerator(articulosService.GetAll()[0]);
+            //pdf.Generate();
 
 
         }

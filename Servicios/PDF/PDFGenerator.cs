@@ -8,16 +8,22 @@ using QuestPDF.Helpers;
 using QuestPDF.Previewer; 
 using QuestPDF.Infrastructure;
 using GestorRestReview.Modelo;
+using GestorRestReview.BD;
+using RestReviewV2.Servicios.BD;
 
 namespace RestReviewV2.Servicios.PDF
 {
     class PDFGenerator
     {
+
+        BlobService azureService;
         private Articulo articulo;
 
         public PDFGenerator(Articulo articulo)
         {
+            azureService = new BlobService();
             this.articulo = articulo;
+
         }
 
         public void Generate()
@@ -40,11 +46,13 @@ namespace RestReviewV2.Servicios.PDF
                         column.Item()
                         .Text(articulo.Texto)
                         .FontSize(18);
-                        /*
-                        column.Item()
-                        .AspectRatio(16 / 9f).Image(articulo.Imagen); */
-                    
-                        });
+
+                        string archivo = azureService.download(articulo.Imagen);
+                        
+                        /*column.Item()
+                         .Image(archivo);
+                         .AspectRatio(16 / 9f)*/
+                    });
 
                     page.Footer()
                     .AlignCenter()

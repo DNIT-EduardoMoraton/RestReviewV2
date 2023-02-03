@@ -1,9 +1,11 @@
 ﻿using Azure.Storage.Blobs;
+using GestorRestReview.Modelo;
 using GestorRestReview.Servicios;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +17,20 @@ namespace RestReviewV2.Servicios.BD
         {
 
         }
+        public string download(string url)
+        {
+            string fileName = Path.GetFileName(new Uri(url).LocalPath);
+            string path = "C:/Users/alumno/Documents/GitHub/Interfaces/RevistaProyecto/bin/Debug/reciclebin/" + fileName;
 
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile(url, path);
+            }
+            return path;
+        }
+            
+            
+        
 
         public string upload(string path)
         {

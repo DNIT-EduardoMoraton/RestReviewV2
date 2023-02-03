@@ -83,5 +83,15 @@ namespace GestorRestReview.BD
             }
             return false;
         }
+
+        public void Edit(Articulo articulo)
+        {
+            daoArticulos.EditArticulo(articulo);
+        }
+
+        public void Delete(Articulo articulo)
+        {
+            daoArticulos.Delete(articulo);
+        }
     }
 }

@@ -460,9 +460,15 @@
     <Resource Include="Assets\iconos\home.ico" />
     <Resource Include="Assets\iconos\add.ico" />
     <Resource Include="Assets\imgs\placeholder.png" />
-    <Content Include="Assets\web\fontawesome.css" />
-    <Content Include="Assets\web\fontface.css" />
-    <Content Include="Assets\web\w3.css" />
+    <Content Include="Assets\web\fontawesome.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\web\fontface.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\web\w3.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="Assets\iconos\save.ico" />
     <Resource Include="Assets\iconos\trash.ico" />
     <Resource Include="Assets\iconos\edit.ico" />

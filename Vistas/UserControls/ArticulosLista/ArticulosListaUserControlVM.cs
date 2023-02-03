@@ -6,6 +6,7 @@ using GestorRestReview.Mensajes.Difusion;
 using GestorRestReview.Modelo;
 using GestorRestReview.Servicios;
 using RestReviewV2.Mensajes.Difusion;
+using RestReviewV2.Mensajes.Solicitud;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,9 +20,9 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
     {
         // Getters y Setters
 
-        private ArticuloEntity articuloActual;
+        private Articulo articuloActual;
 
-        public ArticuloEntity ArticuloActual
+        public Articulo ArticuloActual
         {
             get { return articuloActual; }
             set { SetProperty(ref articuloActual, value); }
@@ -67,8 +68,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
         private void ManejadorCommands()
         {
             AnyadirArticuloCommand = new RelayCommand(AnyadirArticuloCommandFun);
-
-
+            BorrarArticuloCommand = new RelayCommand(BorrarArticuloCommandFun);
+            EditarArticuloCommand = new RelayCommand(EditarArticuloCommandFun);
 
             WeakReferenceMessenger.Default.Register<AnyadirArticuloValueChangedMessage>(this, (r, m) =>
             {
@@ -86,6 +87,20 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
             WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(true));
         }
 
+        private void BorrarArticuloCommandFun()
+        {
+            servicioArticulos.Delete(ArticuloActual);
+            ListaArticulosActual = servicioArticulos.GetAll();
+        }
+
+        private void EditarArticuloCommandFun()
+        {
+            WeakReferenceMessenger.Default.Register<ArticulosListaUserControlVM, ArticuloActualListaRequestMessage>
+                (this, (r, m) => {
+                    m.Reply(r.ArticuloActual);
+            });
+            WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(true));
+        }
 
     }
 }

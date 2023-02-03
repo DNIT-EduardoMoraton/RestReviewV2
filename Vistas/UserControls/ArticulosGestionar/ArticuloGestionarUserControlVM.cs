@@ -6,6 +6,7 @@ using GestorRestReview.Mensajes.Difusion;
 using GestorRestReview.Modelo;
 using GestorRestReview.Servicios;
 using RestReviewV2.Mensajes.Difusion;
+using RestReviewV2.Mensajes.Solicitud;
 using RestReviewV2.Servicios.BD;
 using RestReviewV2.Servicios.GuardarHTML;
 using System;
@@ -50,8 +51,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         public RelayCommand AbrirDialogoNuevaSeccionCommand { get; set; }
         public RelayCommand AbirDialogoNuevoAutorCommand { get; set; }
         public RelayCommand ExaminarImagenCommand { get; set; }
-
         public RelayCommand GuardarArticuloCommand { get; set; }
+ 
 
         // Services
 
@@ -87,6 +88,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             ArticuloActual = new Articulo();
             SeccionLista = servicioSeccion.GetAll();
             AutorLista = servicioAutores.GetAll();
+            //ArticuloActual = WeakReferenceMessenger.Default.Send<ArticuloActualListaRequestMessage>();
         }
 
         private void ManejadorCommands()
@@ -132,6 +134,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             {
                 servicioAlerta.MessageBoxError("Se ha guardado");
                 WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(false));
+                WeakReferenceMessenger.Default.Send(new AnyadirArticuloValueChangedMessage(true));
                 return;
             }
             servicioAlerta.MessageBoxError("No se ha creado");

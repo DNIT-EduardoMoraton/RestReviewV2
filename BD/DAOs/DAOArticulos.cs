@@ -95,6 +95,39 @@ namespace GestorRestReview.BD.DAOs
             return articulos;
         }
 
+        public void EditArticulo(ArticuloEntity articulo)
+        {
+            SqliteConnection con = bd.GetNewConnection();
+            con.Open();
+            string sql = "UPDATE articulos SET idAutor = @IdAutor, idSeccion = @IdSeccion, texto = @Texto, titulo = @Titulo, imagen = @Imagen, fechaPublicacion = @FechaPublicacion, url = @Url WHERE id = @Id";
+            SqliteCommand command = new SqliteCommand(sql, con);
+
+            command.Parameters.AddWithValue("@IdAutor", articulo.IdAutor);
+            command.Parameters.AddWithValue("@IdSeccion", articulo.IdSeccion);
+            command.Parameters.AddWithValue("@Texto", articulo.Texto);
+            command.Parameters.AddWithValue("@Titulo", articulo.Titulo);
+            command.Parameters.AddWithValue("@Imagen", articulo.Imagen);
+            command.Parameters.AddWithValue("@FechaPublicacion", articulo.FechaPublicacion);
+            command.Parameters.AddWithValue("@Url", articulo.Url);
+            command.Parameters.AddWithValue("@Id", articulo.Id);
+
+            command.ExecuteNonQuery();
+            con.Close();
+        }
+
+        public void Delete(ArticuloEntity articulo) // hacer comprobaciones de longitud
+        {
+            SqliteConnection con = bd.GetNewConnection();
+            con.Open();
+            string sql = "DELETE FROM articulos WHERE id = @Id";
+            SqliteCommand command = new SqliteCommand(sql, con);
+            command.Parameters.AddWithValue("@Id", articulo.Id);
+            command.ExecuteNonQuery();
+            con.Close();
+        }
+
+
+
 
 
         private ArticuloEntity readOne(SqliteDataReader reader)

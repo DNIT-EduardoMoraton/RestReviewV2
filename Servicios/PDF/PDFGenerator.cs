@@ -49,9 +49,10 @@ namespace RestReviewV2.Servicios.PDF
 
                         string archivo = azureService.download(articulo.Imagen);
                         
-                        /*column.Item()
-                         .Image(archivo);
-                         .AspectRatio(16 / 9f)*/
+                        column.Item()
+                        .AspectRatio(16 / 9f)
+                        .Image(archivo);
+                         
                     });
 
                     page.Footer()

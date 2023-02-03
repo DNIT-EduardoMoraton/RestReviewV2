@@ -24,7 +24,7 @@ namespace RestReviewV2.Servicios.BD
 
             using (WebClient client = new WebClient())
             {
-                client.DownloadFile(url, "./");
+                client.DownloadFile(url, path);
             }
             return path;
         }

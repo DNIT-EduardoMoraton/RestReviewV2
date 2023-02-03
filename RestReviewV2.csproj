@@ -460,6 +460,9 @@
     <Resource Include="Assets\iconos\home.ico" />
     <Resource Include="Assets\iconos\add.ico" />
     <Resource Include="Assets\imgs\placeholder.png" />
+    <Resource Include="Assets\imgs\facebook.png" />
+    <Resource Include="Assets\imgs\instagram.png" />
+    <Resource Include="Assets\imgs\twitter.png" />
     <Content Include="Assets\web\fontawesome.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

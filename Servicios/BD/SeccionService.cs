@@ -26,6 +26,7 @@ namespace GestorRestReview.BD
             }
 
             return false;
+
         }
 
         public ObservableCollection<Seccion> GetAll()

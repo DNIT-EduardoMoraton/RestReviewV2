@@ -13,14 +13,14 @@ using RestReviewV2.Servicios.BD;
 
 namespace RestReviewV2.Servicios.PDF
 {
-    class PDFGenerator
+    class PDFServicie
     {
 
         BlobService azureService;
         private Articulo articulo;
         private Autor autor;
 
-        public PDFGenerator(Articulo articulo/*,Autor autor*/)
+        public PDFServicie(Articulo articulo/*,Autor autor*/)
         {
             azureService = new BlobService();
             this.articulo = articulo;

@@ -49,12 +49,12 @@ namespace RestReviewV2.Servicios.Web
                 "<h1><b>Gusto Guru</b></h1>\n" +
                 "<div class='w3-section w3-bottombar w3-padding-16'>\n" +
                 "<span class='w3-margin-right'>Filtro:</span>\n" +
-                "<button class='w3-button w3-black'>TODOS</button>\n";
+                "<button class='w3-button w3-black' onclick='filtrarObjetos('todos')'>TODOS</button>\n";
 
             foreach (Articulo a in articuloscargados)
             {
                 seccion = a.Seccion.Nombre;
-                htmlContenido += "<button class='w3-button w3-white w3-hide-small'>" + seccion.ToUpper() + "</button>\n";
+                htmlContenido += "<button class='w3-button w3-white w3-hide-small' onclick='filtrarObjetos('" + seccion + "')>" + seccion.ToUpper() + "</button>\n";
             }
 
             htmlContenido +=
@@ -67,9 +67,10 @@ namespace RestReviewV2.Servicios.Web
             {
                 imagen = a.Imagen;
                 titulo = a.Titulo;
+                seccion = a.Seccion.Nombre;
                 texto = a.Texto.Substring(0, 10) + "...";
                 htmlArticulo =
-                    "<div class='w3-third w3-container w3-margin-bottom'>\n" +
+                    "<div class='w3-third w3-container w3-margin-bottom_"+ seccion +"'>\n" +
                     "<img src = '" + imagen + "' alt='Image' style='width:100%' class='w3-hover-opacity'>\n" +
                     "<div class='w3-container w3-white'>\n" +
                     "<p><b>" + titulo + "</b></p>\n" +
@@ -86,7 +87,7 @@ namespace RestReviewV2.Servicios.Web
             htmlContenido += "</div>\n";
                 
 
-            return htmlHeader + htmlContenido + "</div>\n" + "</body>\n" + "</html> ";
+            return htmlHeader + htmlContenido + "<script src='scripts.js'></script>\n" + "</div>\n" + "</body>\n" + "</html> ";
         }
 
         public void SaveTo(string path)
@@ -96,10 +97,15 @@ namespace RestReviewV2.Servicios.Web
             File.WriteAllText(path, GenerateHTML()); // Controlar errores
         }
 
-        public string getPreview()
+        public string GetPreview()
         {
             SaveTo("./Assets/web/webplantilla.html"); // G
             return "./Assets/web/webplantilla.html";
+        }
+
+        private void CrearHTMLdeSeccion()
+        {
+
         }
     }
 }

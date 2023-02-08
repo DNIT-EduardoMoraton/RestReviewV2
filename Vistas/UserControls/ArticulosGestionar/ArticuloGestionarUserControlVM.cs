@@ -122,7 +122,6 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
                 return;
             }
             ArticuloActual.Imagen = path;
-
         }
 
         private void GuardarArticuloFun()

@@ -85,11 +85,13 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         private void InicioPorDefecto()
         {
-            ArticuloActual = new Articulo();
+            
             SeccionLista = servicioSeccion.GetAll();
             AutorLista = servicioAutores.GetAll();
             ArticuloActual = WeakReferenceMessenger.Default.Send<ArticuloActualListaRequestMessage>();
-            
+            if (ArticuloActual==null)
+                ArticuloActual = new Articulo();
+
         }
 
         private void ManejadorCommands()
@@ -127,10 +129,18 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         {
             // MODERAR VA AQUI
             // Comprobar que todo articulo actual esta bien
-            ArticuloActual.Url = "NULL";
+
+
+
+
+
+            ArticuloActual.Url = "NULL"; // Sustituir por subida en articulo
+
+
 
             ArticuloActual.Imagen = servicioBlob.upload(ArticuloActual.Imagen);
             
+
             if (servicioArticulos.add(ArticuloActual))
             {
                 servicioAlerta.MessageBoxError("Se ha guardado");

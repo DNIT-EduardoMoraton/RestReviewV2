@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace RestReviewV2.Servicios.Moderacion
 {
-    class Moderator
+    class ModeratorService
     {
-        public Moderator()
+        public ModeratorService()
         {
         }
 

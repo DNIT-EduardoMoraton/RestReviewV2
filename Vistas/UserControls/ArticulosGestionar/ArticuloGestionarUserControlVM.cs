@@ -89,6 +89,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             SeccionLista = servicioSeccion.GetAll();
             AutorLista = servicioAutores.GetAll();
             ArticuloActual = WeakReferenceMessenger.Default.Send<ArticuloActualListaRequestMessage>();
+            
         }
 
         private void ManejadorCommands()

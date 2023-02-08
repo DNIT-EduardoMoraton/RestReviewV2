@@ -55,6 +55,8 @@ namespace GestorRestReview.Servicios
 
 
 
+
+
         // Dialogos
 
         public bool? AbreDialogoNuevaSeccionWindow()

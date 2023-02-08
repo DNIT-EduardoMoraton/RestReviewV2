@@ -82,8 +82,12 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
 
         // Commands functions
 
-        private void AnyadirArticuloCommandFun()
+        private void AnyadirArticuloCommandFun() // Quiza reducir el codigo y dejar solamente un comando para los 2 botones
         {
+            WeakReferenceMessenger.Default.Register<ArticulosListaUserControlVM, ArticuloActualListaRequestMessage>
+            (this, (r, m) => {
+                m.Reply(r.ArticuloActual);
+            });
             WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(true));
         }
 

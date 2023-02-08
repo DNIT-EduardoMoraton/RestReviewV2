@@ -84,7 +84,7 @@ namespace RestReviewV2.Servicios.PDF
                         .DefaultTextStyle(x => x.FontSize(16))
                         .Row(row =>
                         {
-                            row.AutoItem().Image(redSocial);
+                            //row.AutoItem().Image(redSocial);
                             row.AutoItem().PaddingHorizontal(10).LineVertical(1).LineColor(Colors.Grey.Medium);
                             row.AutoItem().Text(autor.NickName);
                         });

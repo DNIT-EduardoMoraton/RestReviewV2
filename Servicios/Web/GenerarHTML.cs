@@ -103,9 +103,5 @@ namespace RestReviewV2.Servicios.Web
             return "./Assets/web/webplantilla.html";
         }
 
-        private void CrearHTMLdeSeccion()
-        {
-
-        }
     }
 }

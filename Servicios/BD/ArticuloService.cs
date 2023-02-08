@@ -77,7 +77,7 @@ namespace GestorRestReview.BD
             articulo.IdSeccion = articulo.Seccion.Id;
             articulo.FechaPublicacionDate = DateTime.Now;
 
-            if(daoArticulos.insert(articulo) > 0)
+            if(daoArticulos.Insert(articulo) > 0)
             {
                 return true;
             }

@@ -101,7 +101,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
         {
             WeakReferenceMessenger.Default.Register<ArticulosListaUserControlVM, ArticuloActualListaRequestMessage>
                 (this, (r, m) => {
-                    m.Reply(r.ArticuloActual);
+                    if (!m.HasReceivedResponse)
+                        m.Reply(r.ArticuloActual);
             });
             WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(true));
         }

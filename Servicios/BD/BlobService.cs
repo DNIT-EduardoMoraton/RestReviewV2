@@ -39,21 +39,25 @@ namespace RestReviewV2.Servicios.BD
                 return "";
             }
 
+            if (!File.Exists(path))
+            {
+                return path;
+            }
 
-           
+
+
             string cadenaConexion = Properties.Resources.BlobCadenaConexion;
             string nombreContenedorBlobs = Properties.Resources.ContenedorDeBlobs;
-
-
 
             var clienteBlobService = new BlobServiceClient(cadenaConexion);
             var clienteContenedor = clienteBlobService.GetBlobContainerClient(nombreContenedorBlobs);
 
-
             Stream streamFile = File.OpenRead(path);
             string filename = Path.GetFileName(path);
+
             try
             {
+
                 clienteContenedor.UploadBlob(filename, streamFile);
             }
             catch (Azure.RequestFailedException)

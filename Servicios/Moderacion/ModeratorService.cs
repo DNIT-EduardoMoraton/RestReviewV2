@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace RestReviewV2.Servicios.Moderacion
 {
-    class ContentModeratorClient
+    class ModeratorService
     {
         private readonly string _baseUrl = "https://southafricanorth.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?";
         private readonly string _subscriptionKey = "e2ea035cffd64e74bf391609868d1faf";
 
-        public ContentModeratorClient(string subscriptionKey)
+        public ModeratorService(string subscriptionKey)
         {
             _subscriptionKey = subscriptionKey;
         }

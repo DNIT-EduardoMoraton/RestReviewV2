@@ -20,11 +20,11 @@ namespace RestReviewV2.Servicios.PDF
         private Articulo articulo;
         private Autor autor;
 
-        public PDFServicie(Articulo articulo/*,Autor autor*/)
+        public PDFServicie(Articulo articulo)
         {
             azureService = new BlobService();
             this.articulo = articulo;
-            /*this.autor = autor;*/
+            autor = articulo.Autor;
 
         }
 
@@ -55,15 +55,38 @@ namespace RestReviewV2.Servicios.PDF
                         .AspectRatio(16 / 9f)
                         .Image(archivo);
 
+                        ///////////////////////////////////
+
+                        string redSocial = autor.Redsocial;
+
+                        switch (redSocial)
+                        {
+                            case "Twitter":
+                                redSocial = "./Assets/imgs/twitter.png";
+                                break;
+                            case "Instagram":
+                                redSocial = "./Assets/imgs/instagram.png";
+                                break;
+                            case "Facebook":
+                                redSocial = "./Assets/imgs/facebook.png";
+                                break;
+                            default:
+                                break;
+                        }
+
+                        ///////////////////////////////////
+
+
+
                         column.Item()
                         .AlignCenter()
                         .Padding(15)
                         .DefaultTextStyle(x => x.FontSize(16))
                         .Row(row =>
                         {
-                            row.AutoItem().Text("Left text");//Poner aqui imagen de red social
+                            row.AutoItem().Image(redSocial);
                             row.AutoItem().PaddingHorizontal(10).LineVertical(1).LineColor(Colors.Grey.Medium);
-                            row.AutoItem().Text("Right text");//Poner aqui el nickname del autor
+                            row.AutoItem().Text(autor.NickName);
                         });
                         
                     });

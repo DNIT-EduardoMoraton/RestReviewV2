@@ -52,7 +52,10 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         public RelayCommand AbirDialogoNuevoAutorCommand { get; set; }
         public RelayCommand ExaminarImagenCommand { get; set; }
         public RelayCommand GuardarArticuloCommand { get; set; }
- 
+        public RelayCommand ValidateCommand { get; set; }
+        public RelayCommand UploadCommand { get; set; }
+
+        
 
         // Services
 
@@ -100,6 +103,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             AbirDialogoNuevoAutorCommand = new RelayCommand(AbirDialogoNuevoAutorFun);
             ExaminarImagenCommand = new RelayCommand(ExaminarImagenFun);
             GuardarArticuloCommand = new RelayCommand(GuardarArticuloFun);
+            ValidateCommand = new RelayCommand(ValidateFun);
+            UploadCommand = new RelayCommand(UploadFun);
         }
 
         // Commands functions
@@ -130,9 +135,6 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             // Comprobar que todo articulo actual esta bien
 
 
-
-
-
             ArticuloActual.Url = "NULL"; // Sustituir por subida en articulo
 
 
@@ -148,6 +150,16 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
                 return;
             }
             servicioAlerta.MessageBoxError("No se ha creado");
+        }
+
+        private void ValidateFun()
+        {
+
+        }
+
+        public void UploadFun()
+        {
+
         }
 
 

@@ -128,8 +128,6 @@ namespace GestorRestReview.BD.DAOs
 
 
 
-
-
         private ArticuloEntity readOne(SqliteDataReader reader)
         {
             ArticuloEntity articulo = new ArticuloEntity();

@@ -18,7 +18,7 @@
                 IsSelected="True"
                 Header="Home">
             <syncfusion:NavigationItem.Icon>
-                <Image Source="/RestReviewV2;component/Assets/iconos/home.ico"></Image>
+                <Image Source="/RestReviewV2;component/Assets/imgs/facebook.png"></Image>
             </syncfusion:NavigationItem.Icon>
           
         </syncfusion:NavigationItem>

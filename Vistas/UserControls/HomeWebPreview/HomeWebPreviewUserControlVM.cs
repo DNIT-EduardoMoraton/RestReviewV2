@@ -43,13 +43,13 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
             htmlService = new GenerarHTML();
             saveService = new LoadSaveDialogService();
             servicioAlerta = new AlertaServicio();
-            InicioPorDefecto();
+            InicioPorDefectoAsync();
 
 
             ManejadorCommands();
         }
 
-        private void InicioPorDefecto()
+        private async Task InicioPorDefectoAsync()
         {
 
             //servicioAlerta.MessageBoxError(new Moderator().ModerarTexto("hijo de puta"));
@@ -61,6 +61,9 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
             
             PDFServicie pdf = new PDFServicie(articulosService.GetAll()[0]);
             pdf.Generate();
+
+            ModeratorService client = new ModeratorService();
+            var response = await client.AddCustomListTerm(new CustomListTerm { ListId = "your-list-id", Term = "your-term", Language = "en" });
 
 
         }

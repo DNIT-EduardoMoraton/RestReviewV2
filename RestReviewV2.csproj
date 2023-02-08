@@ -317,6 +317,8 @@
     <Compile Include="Servicios\BD\AutoresService.cs" />
     <Compile Include="Servicios\BD\BlobService.cs" />
     <Compile Include="Servicios\BD\SeccionService.cs" />
+    <Compile Include="Servicios\Moderacion\CustomListResponse.cs" />
+    <Compile Include="Servicios\Moderacion\CustomListTerm.cs" />
     <Compile Include="Servicios\Moderacion\ModeratorService.cs" />
     <Compile Include="Servicios\NavegacionServicio.cs" />
     <Compile Include="Servicios\PDF\PDFServicie.cs" />

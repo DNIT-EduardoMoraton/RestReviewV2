@@ -15,8 +15,9 @@ namespace RestReviewV2.Servicios.Moderacion
         private readonly string _baseUrl = "https://southafricanorth.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?";
         private readonly string _subscriptionKey = "e2ea035cffd64e74bf391609868d1faf";
 
-        public ModeratorService()
+        public ModeratorService(string subscriptionKey)
         {
+            _subscriptionKey = subscriptionKey;
         }
 
         public T Get<T>(string endpoint)

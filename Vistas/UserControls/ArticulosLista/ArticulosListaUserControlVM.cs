@@ -78,21 +78,18 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
                     ListaArticulosActual = servicioArticulos.GetAll(); // No seria necesario ya que la vista se carga otra vez al navegar
                 }
             });
+            WeakReferenceMessenger.Default.Register<ArticulosListaUserControlVM, ArticuloActualListaRequestMessage>
+            (this, (r, m) => {
+                if (!m.HasReceivedResponse)
+                    m.Reply(r.ArticuloActual);
+            });
         }
 
         // Commands functions
 
         private void AnyadirArticuloCommandFun() // Quiza reducir el codigo y dejar solamente un comando para los 2 botones
         {
-            WeakReferenceMessenger.Default.Register<ArticulosListaUserControlVM, ArticuloActualListaRequestMessage>
-            (this, (r, m) => {
-                if (!m.HasReceivedResponse)
-                {
-                    r.ArticuloActual = new Articulo();
-                    m.Reply(r.ArticuloActual);
-                }
-               
-            });
+            ArticuloActual = new Articulo();
             WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(true));
         }
 
@@ -104,11 +101,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosLista
 
         private void EditarArticuloCommandFun()
         {
-            WeakReferenceMessenger.Default.Register<ArticulosListaUserControlVM, ArticuloActualListaRequestMessage>
-                (this, (r, m) => {
-                    if (!m.HasReceivedResponse)
-                        m.Reply(r.ArticuloActual);
-            });
+
             WeakReferenceMessenger.Default.Send(new ArticuloNavValueChangedMesage(true));
         }
 

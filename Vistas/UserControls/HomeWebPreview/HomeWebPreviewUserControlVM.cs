@@ -29,6 +29,7 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
         // Commands
 
         public RelayCommand GuardarHTMLCommand { get; set; } // Son solo muestras no son de aqui
+        public object ModeratorService { get; private set; }
 
         // Services
 
@@ -58,9 +59,12 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
 
             //Servicio Articulo(Pruebas)
             ArticuloService articulosService = new ArticuloService();
-            
-            PDFServicie pdf = new PDFServicie(articulosService.GetAll()[0]);
-            pdf.Generate();
+
+            //PDFServicie pdf = new PDFServicie(articulosService.GetAll()[0]);
+            //pdf.Generate();
+            //ModeratorService ms = new ModeratorService();
+            //servicioAlerta.MessageBoxCambio(ms.Get<string>("hijo puta"));
+           
 
             ModeratorService client = new ModeratorService();
             var response = await client.AddCustomListTerm(new CustomListTerm { ListId = "your-list-id", Term = "your-term", Language = "en" });

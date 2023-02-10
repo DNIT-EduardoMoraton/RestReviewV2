@@ -57,18 +57,18 @@ namespace RestReviewV2.Servicios.PDF
 
                         ///////////////////////////////////
 
-                        string redSocial = autor.Redsocial;
+                        string redSocial = "";
 
-                        switch (redSocial)
+                        switch (autor.Redsocial)
                         {
                             case "Twitter":
-                                redSocial = "./Assets/imgs/twitter.png";
+                                redSocial = "Assets/imgs/twitter-icono.jpg";
                                 break;
                             case "Instagram":
-                                redSocial = "./Assets/imgs/instagram.png";
+                                redSocial = "Assets/imgs/twitter.png";
                                 break;
                             case "Facebook":
-                                redSocial = "./Assets/imgs/facebook.png";
+                                redSocial = "Assets/imgs/twitter-icono.jpg";
                                 break;
                             default:
                                 break;
@@ -77,14 +77,14 @@ namespace RestReviewV2.Servicios.PDF
                         ///////////////////////////////////
 
 
-
+                        //column.Item().AspectRatio(16 / 9f).Image(redSocial);
                         column.Item()
                         .AlignCenter()
                         .Padding(15)
                         .DefaultTextStyle(x => x.FontSize(16))
                         .Row(row =>
                         {
-                            row.AutoItem().Image(redSocial);
+                            row.AutoItem().Width(2, Unit.Centimetre).Image(redSocial);
                             row.AutoItem().PaddingHorizontal(10).LineVertical(1).LineColor(Colors.Grey.Medium);
                             row.AutoItem().Text(autor.NickName);
                         });

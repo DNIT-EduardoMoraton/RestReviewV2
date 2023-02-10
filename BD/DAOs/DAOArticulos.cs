@@ -20,10 +20,15 @@ namespace GestorRestReview.BD.DAOs
         }
 
         // Create Articulos
-        public int insert(ArticuloEntity articulo)
+        public int Insert(ArticuloEntity articulo)
         {
             SqliteConnection con = bd.GetNewConnection();
             int result = -1;
+
+            if (this.exists(articulo))
+            {
+                return this.EditArticulo(articulo);
+            }
 
             try
             {
@@ -95,7 +100,7 @@ namespace GestorRestReview.BD.DAOs
             return articulos;
         }
 
-        public void EditArticulo(ArticuloEntity articulo)
+        public int EditArticulo(ArticuloEntity articulo)
         {
             SqliteConnection con = bd.GetNewConnection();
             con.Open();
@@ -113,6 +118,7 @@ namespace GestorRestReview.BD.DAOs
 
             command.ExecuteNonQuery();
             con.Close();
+            return 1;
         }
 
         public void Delete(ArticuloEntity articulo) // hacer comprobaciones de longitud
@@ -128,8 +134,6 @@ namespace GestorRestReview.BD.DAOs
 
 
 
-
-
         private ArticuloEntity readOne(SqliteDataReader reader)
         {
             ArticuloEntity articulo = new ArticuloEntity();
@@ -142,6 +146,40 @@ namespace GestorRestReview.BD.DAOs
             articulo.FechaPublicacion = reader.GetInt64(6);
             articulo.Url = reader.GetString(7);
             return articulo;
+        }
+
+        public bool exists(ArticuloEntity articulo)
+        {
+            SqliteConnection con = bd.GetNewConnection();
+            int result = -1;
+            bool exists = false;
+
+            try
+            {
+                con.Open();
+
+                string sql = "SELECT count(*) FROM articulos WHERE id=@id";
+
+                SqliteCommand command = new SqliteCommand(sql, con);
+                command.Parameters.AddWithValue("@id", articulo.Id);
+
+                result = Convert.ToInt32(command.ExecuteScalar());
+
+                if (result > 0)
+                {
+                    exists = true;
+                }
+            }
+            catch (Exception e)
+            {
+                servicioAlerta.MessageBoxError(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return exists;
         }
     }
 }

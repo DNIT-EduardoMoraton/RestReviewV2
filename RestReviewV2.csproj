@@ -469,6 +469,9 @@
     <Resource Include="Assets\iconos\home.ico" />
     <Resource Include="Assets\iconos\add.ico" />
     <Resource Include="Assets\imgs\placeholder.png" />
+    <Resource Include="Assets\iconos\spell.ico" />
+    <Resource Include="Assets\iconos\upload.ico" />
+    <Resource Include="Assets\iconos\swear.ico" />
     <Content Include="Assets\web\fontawesome.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

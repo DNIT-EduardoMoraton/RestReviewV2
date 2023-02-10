@@ -55,6 +55,7 @@ namespace RestReviewV2.Servicios.Web
             {
                 seccion = a.Seccion.Nombre;
                 htmlContenido += "<button class='w3-button w3-white w3-hide-small' onclick='filtrarObjetos('" + seccion + "')>" + seccion.ToUpper() + "</button>\n";
+                break;
             }
 
             htmlContenido +=
@@ -103,9 +104,5 @@ namespace RestReviewV2.Servicios.Web
             return "./Assets/web/webplantilla.html";
         }
 
-        private void CrearHTMLdeSeccion()
-        {
-
-        }
     }
 }

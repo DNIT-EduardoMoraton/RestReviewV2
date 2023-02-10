@@ -460,6 +460,9 @@
     <Resource Include="Assets\iconos\home.ico" />
     <Resource Include="Assets\iconos\add.ico" />
     <Resource Include="Assets\imgs\placeholder.png" />
+    <Content Include="Assets\imgs\twitter-icono.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\web\fontawesome.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

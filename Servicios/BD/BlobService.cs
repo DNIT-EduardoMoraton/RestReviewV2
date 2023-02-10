@@ -20,7 +20,8 @@ namespace RestReviewV2.Servicios.BD
         public string download(string url)
         {
             string fileName = Path.GetFileName(new Uri(url).LocalPath);
-            string path = "reciclebin/" + fileName;
+            string path = "reciclebin/" + fileName;//Si la imagen del articulo tiene el mismo nombre
+                                                   //que la foto de perfil del autor, da conflicto al guardarla
 
             using (WebClient client = new WebClient())
             {

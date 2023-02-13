@@ -11,6 +11,7 @@ using RestReviewV2.Servicios.BD;
 using RestReviewV2.Servicios.GuardarHTML;
 using RestReviewV2.Servicios.Moderacion;
 using RestReviewV2.Servicios.Moderacion.clases;
+using RestReviewV2.Servicios.PDF;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -68,14 +69,13 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         private LoadSaveDialogService saveService;
         private BlobService servicioBlob;
         private AlertaServicio servicioAlerta;
-        private ModeratorService servicioModeracion;
 
         public ArticuloGestionarUserControlVM()
         {
             servicioNavegacion = new NavegacionServicio();
             servicioArticulos = new ArticuloService();
             servicioAutores = new AutoresService();
-
+            servicioPDF = new PDFService();
             servicioSeccion = new SeccionService();
             saveService = new LoadSaveDialogService();
             servicioBlob = new BlobService();
@@ -172,7 +172,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         public void UploadFun()
         {
-
+            servicioPDF.Generate(ArticuloActual);
+            //Subir pdf a azure y borrarlo de local
         }
 
 

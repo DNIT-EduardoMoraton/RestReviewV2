@@ -322,7 +322,7 @@
     <Compile Include="Servicios\Moderacion\clases\APITermino.cs" />
     <Compile Include="Servicios\Moderacion\ModeratorService.cs" />
     <Compile Include="Servicios\NavegacionServicio.cs" />
-    <Compile Include="Servicios\PDF\PDFServicie.cs" />
+    <Compile Include="Servicios\PDF\PDFService.cs" />
     <Compile Include="Servicios\LoadSaveDialogService.cs" />
     <Compile Include="Servicios\RedesSocialesServicio.cs" />
     <Compile Include="Servicios\Web\GenerarHTML.cs" />

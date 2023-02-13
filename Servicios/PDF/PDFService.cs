@@ -13,23 +13,21 @@ using RestReviewV2.Servicios.BD;
 
 namespace RestReviewV2.Servicios.PDF
 {
-    class PDFServicie
+    class PDFService
     {
 
         BlobService azureService;
         private Articulo articulo;
         private Autor autor;
 
-        public PDFServicie(Articulo articulo)
+        public PDFService(){}
+
+        public void Generate(Articulo articulo)
         {
             azureService = new BlobService();
             this.articulo = articulo;
             autor = articulo.Autor;
 
-        }
-
-        public void Generate()
-        {
             Document.Create(document =>
             {
                 document.Page(page =>
@@ -49,11 +47,11 @@ namespace RestReviewV2.Servicios.PDF
                         .Text(articulo.Texto)
                         .FontSize(18);
 
-                        string archivo = azureService.download(articulo.Imagen);
+                        string articuloImagen = azureService.download(articulo.Imagen);
                         
                         column.Item()
                         .AspectRatio(16 / 9f)
-                        .Image(archivo);
+                        .Image(articuloImagen);
 
                         ///////////////////////////////////
 
@@ -87,6 +85,10 @@ namespace RestReviewV2.Servicios.PDF
                             row.AutoItem().Width(2, Unit.Centimetre).Image(redSocial);
                             row.AutoItem().PaddingHorizontal(10).LineVertical(1).LineColor(Colors.Grey.Medium);
                             row.AutoItem().Text(autor.NickName);
+                            row.AutoItem().PaddingHorizontal(10).LineVertical(1).LineColor(Colors.Grey.Medium);
+                            String autorImagen = azureService.download(autor.Imagen);
+                            row.AutoItem().Width(2,Unit.Centimetre).Image(autorImagen);
+
                         });
                         
                     });
@@ -95,27 +97,6 @@ namespace RestReviewV2.Servicios.PDF
                     .AlignCenter()
                     .Text(text =>
                     {
-                        /*column.Item()
-                        .Text(autor.NickName)
-                        .FontSize(12);
-                        string redSocial = autor.Redsocial;
-
-                        switch (redSocial)
-                        {
-                            case "Twitter":
-
-                                break;
-                            case "Instagram":
-
-                                break;
-                            case "Facebook":
-                                break;
-                            default:
-                                break;
-                        }
-                        column.Item()
-                        .Text(autor.Redsocial)
-                        .FontSize(18);*/
                         
                         text.DefaultTextStyle(x => x.FontSize(18));
                         text.CurrentPageNumber();

@@ -12,12 +12,12 @@ namespace RestReviewV2.Servicios.Web
 {
     class GenerarHTML
     {
-        private SeccionService seccions = new SeccionService();
+        private SeccionService secciones = new SeccionService();
         private ArticuloService articulos = new ArticuloService();
         string imagen, titulo, texto, seccion, htmlHeader, htmlArticulo, htmlContenido = "";
         int contador = 0;
+        ObservableCollection<Seccion> seccionescargadas;
         ObservableCollection<Articulo> articuloscargados;
-
         public GenerarHTML()
         {
             
@@ -25,44 +25,38 @@ namespace RestReviewV2.Servicios.Web
 
         public string GenerateHTML()
         {
+            seccionescargadas = secciones.GetAll();
             articuloscargados = articulos.GetAll();
 
             htmlContenido =
                 "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
-                "<title>GustoGuru</title>\n" +
-                "<meta charset = 'UTF-8'>\n" +
-                "<meta name = 'viewport' content = 'width=device-width, initial-scale=1'>\n" +
-                "<link rel = 'stylesheet' href = 'w3.css'>\n" +
-                "<link rel = 'stylesheet' href = 'fontface.css'>\n" +
-                "<style>\n" +
-                "body,h1,h2,h3,h4,h5,h6 {font - family: 'Raleway', sans - serif}\n" +
-                "</style>\n" +
+                    "<title>GustoGuru</title>\n" +
+                    "<meta charset = 'UTF-8'>\n" +
+                    "<meta name = 'viewport' content = 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>\n" +
+                    "<link rel = 'stylesheet' href = 'estilos.css'>\n" +
+                    "<link rel = 'stylesheet' href = 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700'>\n" +
+                    "<script src=0+'js / jquery - 3.2.1.js'></script>\n" +
+                    "<script src='js / script.js'></script>\n" +
                 "</head>\n" +
-                "<body class='w3-light-grey w3-content'>\n" +
+                "<body>\n" +
 
-                "<div class='w3-main'>\n" +
-
-                "<header id = 'portfolio'>\n" +
-                "<div class='w3-container'>\n" +
-                "<h1><b>Gusto Guru</b></h1>\n" +
-                "<div class='w3-section w3-bottombar w3-padding-16'>\n" +
-                "<span class='w3-margin-right'>Filtro:</span>\n" +
-                "<button class='w3-button w3-black' onclick='filtrarObjetos('todos')'>TODOS</button>\n";
+                    "<div class='wrap'>\n" +
+                        "<h1>Nombre</h1>\n" +
+                        "<div class='store-wrapper>\n" +
+                             "<div class='category_list'>\n" +
+                                "< a href = '#' class='category_item' category='all'>Todo</a>\n";
 
             foreach (Articulo a in articuloscargados)
             {
                 seccion = a.Seccion.Nombre;
-                htmlContenido += "<button class='w3-button w3-white w3-hide-small' onclick='filtrarObjetos('" + seccion + "')>" + seccion.ToUpper() + "</button>\n";
-                break;
+                htmlContenido += "< a href = '#' class='category_item' category='" + seccion + "'>Todo</a>\n";
             }
 
             htmlContenido +=
                 "</div>\n" +
-                "</div>\n" +
-                "</header>\n" +
-                "<div class='w3-row-padding'>\n";
+                "<section class='products - list'>\n";
 
             foreach(Articulo a in articuloscargados)
             {
@@ -70,25 +64,22 @@ namespace RestReviewV2.Servicios.Web
                 titulo = a.Titulo;
                 seccion = a.Seccion.Nombre;
                 texto = a.Texto.Substring(0, 10) + "...";
-                htmlArticulo =
-                    "<div class='w3-third w3-container w3-margin-bottom_"+ seccion +"'>\n" +
-                    "<img src = '" + imagen + "' alt='Image' style='width:100%' class='w3-hover-opacity'>\n" +
-                    "<div class='w3-container w3-white'>\n" +
-                    "<p><b>" + titulo + "</b></p>\n" +
-                    "<p>" + texto + "</p>\n</div>\n</div>\n";
+                htmlArticulo = "<div class='product - item' category='laptops'>\n" +
+                    "<img src='images / laptop_hp.jpg' alt='' >\n" +
+                    "<a href='#'>Laptop Hp</a>\n" +
+                    "</div>\n";
 
                 htmlContenido += htmlArticulo;
-                contador++;
-
-                if (contador % 3 == 0)
-                {
-                    htmlContenido = htmlContenido + "</div>\n" + "<div class='w3-row-padding'>\n";
-                }
+               
             }
-            htmlContenido += "</div>\n";
+            htmlContenido += "</section>\n" +
+                "</div>\n" +
+                "</div>\n" +
+                "</body>\n" +
+                "</html>\n";
                 
 
-            return htmlHeader + htmlContenido + "<script src='scripts.js'></script>\n" + "</div>\n" + "</body>\n" + "</html> ";
+            return htmlContenido;
         }
 
         public void SaveTo(string path)

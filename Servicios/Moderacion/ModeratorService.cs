@@ -36,6 +36,8 @@ namespace RestReviewV2.Servicios.Moderacion
             return res.Terms.Select(t => t.Term).ToList();
         }
 
+        public 
+
 
     }
 }

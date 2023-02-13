@@ -317,6 +317,9 @@
     <Compile Include="Servicios\BD\AutoresService.cs" />
     <Compile Include="Servicios\BD\BlobService.cs" />
     <Compile Include="Servicios\BD\SeccionService.cs" />
+    <Compile Include="Servicios\Moderacion\clases\APIRootMod.cs" />
+    <Compile Include="Servicios\Moderacion\clases\APIStatus.cs" />
+    <Compile Include="Servicios\Moderacion\clases\APITermino.cs" />
     <Compile Include="Servicios\Moderacion\ModeratorService.cs" />
     <Compile Include="Servicios\NavegacionServicio.cs" />
     <Compile Include="Servicios\PDF\PDFServicie.cs" />

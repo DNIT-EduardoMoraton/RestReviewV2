@@ -60,10 +60,6 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
             //Servicio Articulo(Pruebas)
             ArticuloService articulosService = new ArticuloService();
 
-            //PDFServicie pdf = new PDFServicie(articulosService.GetAll()[0]);
-            //pdf.Generate();
-            //ModeratorService ms = new ModeratorService();
-            //servicioAlerta.MessageBoxCambio(ms.Get<string>("hijo puta"));
            
 
             ModeratorService client = new ModeratorService();

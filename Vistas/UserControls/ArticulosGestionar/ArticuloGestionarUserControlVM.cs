@@ -155,6 +155,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         private void ValidateFun()
         {
 
+
+
         }
 
         public void UploadFun()

@@ -12,20 +12,22 @@ namespace RestReviewV2.Servicios.Moderacion
 {
     class ModeratorService
     {
-        private readonly string _baseUrl = "https://southafricanorth.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?";
+        private readonly string _baseUrl = "https://restmodreview.cognitiveservices.azure.com/";
         private readonly string _subscriptionKey = "e2ea035cffd64e74bf391609868d1faf";
+        private readonly string terms = "contentmoderator/moderate/v1.0/ProcessText/Screen";
 
         public ModeratorService()
         {
         }
 
-        public async Task<CustomListResponse> AddCustomListTerm(CustomListTerm term)
+        public async Task<CustomListResponse> AddCustomListTerm()
         {
             var client = new RestClient(_baseUrl);
-            var request = new RestRequest("terms", Method.POST);
+            var request = new RestRequest(terms, Method.POST);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
-            request.AddHeader("Content-Type", "application/json");
-            request.AddJsonBody(term);
+            request.AddHeader("Content-Type", "text/plain");
+            request.AddParameter("listId", );
+            request.AddParameter("text/plain", "texto");
 
             var response = await client.ExecuteAsync<CustomListResponse>(request);
             return response.Data;

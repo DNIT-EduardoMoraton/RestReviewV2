@@ -2,12 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using GestorRestReview.BD;
 using GestorRestReview.Servicios;
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace GestorRestReview.Vistas.UserControls.Home
@@ -25,6 +19,7 @@ namespace GestorRestReview.Vistas.UserControls.Home
 
         // Commands
 
+        public RelayCommand ModeracionCommand { get; set; }
         public RelayCommand AutorCommand { get; set; }
         public RelayCommand ArticuloComand { get; set; }
         public RelayCommand HomeWebPreview { get; set; }
@@ -53,6 +48,8 @@ namespace GestorRestReview.Vistas.UserControls.Home
 
         private void ManejadorCommands()
         {
+            AutorCommand = new RelayCommand(AutoresFun);
+            ModeracionCommand = new RelayCommand(ModeracionFun);
             ArticuloComand = new RelayCommand(ArticuloCommandFun);
             HomeWebPreview = new RelayCommand(HomeWebPreviewFun);
         }
@@ -67,6 +64,16 @@ namespace GestorRestReview.Vistas.UserControls.Home
         private void HomeWebPreviewFun()
         {
             ActualUserControl = servicioNavegacion.IrHomeWebPreviewUserControl();
+        }
+
+        private void ModeracionFun()
+        {
+            ActualUserControl = servicioNavegacion.IrModeracionUserControl();
+        }
+
+        private void AutoresFun()
+        {
+            ActualUserControl = servicioNavegacion.IrAutoresUserControl();
         }
     }
 }

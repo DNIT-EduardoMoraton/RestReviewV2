@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GestorRestReview.Vistas.UserControls.Example
+namespace RestReviewV2.Vistas.UserControls.Moderacion
 {
     /// <summary>
-    /// Lógica de interacción para ExampleUserControl.xaml
+    /// Lógica de interacción para ModeracionUserControl.xaml
     /// </summary>
-    public partial class ExampleUserControl : UserControl
+    public partial class ModeracionUserControl : UserControl
     {
-        public ExampleUserControl()
+        public ModeracionUserControl()
         {
             InitializeComponent();
         }

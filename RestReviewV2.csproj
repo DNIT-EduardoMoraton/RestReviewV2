@@ -340,10 +340,6 @@
       <DependentUpon>AutoresUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\UserControls\Autores\AutoresUserControlVM.cs" />
-    <Compile Include="Vistas\UserControls\Example\ExampleUserControl.xaml.cs">
-      <DependentUpon>ExampleUserControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Vistas\UserControls\Example\ExampleUserControlVM.cs" />
     <Compile Include="Vistas\UserControls\HomeWebPreview\HomeWebPreviewUserControl.xaml.cs">
       <DependentUpon>HomeWebPreviewUserControl.xaml</DependentUpon>
     </Compile>
@@ -352,6 +348,9 @@
       <DependentUpon>HomeUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\UserControls\Home\HomeUserControlVM.cs" />
+    <Compile Include="Vistas\UserControls\Moderacion\ModeracionUserControl.xaml.cs">
+      <DependentUpon>ModeracionUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\Windows\Dialogos\DialogoNuevaSeccion\DialogoNuevaSeccionVM.cs" />
     <Compile Include="Vistas\Windows\Dialogos\DialogoNuevaSeccion\DialogoNuevaSeccionWindow.xaml.cs">
       <DependentUpon>DialogoNuevaSeccionWindow.xaml</DependentUpon>
@@ -394,10 +393,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Vistas\UserControls\Example\ExampleUserControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Vistas\UserControls\HomeWebPreview\HomeWebPreviewUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -405,6 +400,10 @@
     <Page Include="Vistas\UserControls\Home\HomeUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vistas\UserControls\Moderacion\ModeracionUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\Windows\Dialogos\DialogoNuevaSeccion\DialogoNuevaSeccionWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

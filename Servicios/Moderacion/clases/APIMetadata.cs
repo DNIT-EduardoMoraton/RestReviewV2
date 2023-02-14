@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GestorRestReview.Vistas.UserControls.Example
+namespace RestReviewV2.Servicios.Moderacion.clases
 {
-    class ExampleUserControlVM
+    class APIMetadata
     {
     }
 }

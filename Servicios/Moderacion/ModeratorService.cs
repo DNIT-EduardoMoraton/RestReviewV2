@@ -1,5 +1,6 @@
 ﻿using GestorRestReview.Servicios;
 using Newtonsoft.Json;
+using RestReviewV2.Servicios.Moderacion.clases;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,22 +13,31 @@ namespace RestReviewV2.Servicios.Moderacion
 {
     class ModeratorService
     {
-        private readonly string _baseUrl = "https://southafricanorth.api.cognitive.microsoft.com/contentmoderator/moderate/v1.0/ProcessText/Screen?";
+        private readonly string _baseUrl = "https://restmodreview.cognitiveservices.azure.com/contentmoderator/";
         private readonly string _subscriptionKey = "e2ea035cffd64e74bf391609868d1faf";
+        AlertaServicio servicioAlerta;
 
-        public ModeratorService(string subscriptionKey)
+        public ModeratorService()
         {
-            _subscriptionKey = subscriptionKey;
+            servicioAlerta = new AlertaServicio();
         }
 
-        public T Get<T>(string endpoint)
+        public List<string> Moderate(string text)
         {
-            var client = new RestClient(_baseUrl + endpoint);
-            var request = new RestRequest(Method.GET);
+            var client = new RestClient(_baseUrl + "moderate/v1.0/ProcessText/Screen");
+            var request = new RestRequest(Method.POST);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
+            request.AddHeader("Content-Type", "text/plain");
+            request.AddParameter("text/plain", text, ParameterType.RequestBody);
 
             var response = client.Execute(request);
-            return JsonConvert.DeserializeObject<T>(response.Content);
+            servicioAlerta.MessageBoxError(response.StatusCode.ToString());
+            APIRootMod res = JsonConvert.DeserializeObject<APIRootMod>(response.Content);
+            return res.Terms.Select(t => t.Term).ToList();
         }
+
+        public 
+
+
     }
 }

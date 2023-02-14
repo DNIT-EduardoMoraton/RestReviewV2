@@ -9,6 +9,8 @@ using RestReviewV2.Mensajes.Difusion;
 using RestReviewV2.Mensajes.Solicitud;
 using RestReviewV2.Servicios.BD;
 using RestReviewV2.Servicios.GuardarHTML;
+using RestReviewV2.Servicios.Moderacion;
+using RestReviewV2.Servicios.Moderacion.clases;
 using RestReviewV2.Servicios.PDF;
 using System;
 using System.Collections.Generic;
@@ -68,7 +70,6 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         private LoadSaveDialogService saveService;
         private BlobService servicioBlob;
         private AlertaServicio servicioAlerta;
-        private PDFService servicioPDF;
 
         public ArticuloGestionarUserControlVM()
         {
@@ -80,6 +81,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             saveService = new LoadSaveDialogService();
             servicioBlob = new BlobService();
             servicioAlerta = new AlertaServicio();
+
+            servicioModeracion = new ModeratorService();
 
             InicioPorDefecto();
 
@@ -157,7 +160,15 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         private void ValidateFun()
         {
-
+            List<string> malasPalabras = servicioModeracion.Moderate(ArticuloActual.Texto);
+            string palabrasJuntas = "";
+            foreach (string p in malasPalabras)
+            {
+                palabrasJuntas += p + "/";
+            }
+            servicioAlerta.MessageBoxCambio(palabrasJuntas);
+            
+           
         }
 
         public void UploadFun()

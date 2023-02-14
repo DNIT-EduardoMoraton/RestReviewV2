@@ -13,6 +13,7 @@ using RestReviewV2.Servicios.PDF;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -161,8 +162,18 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         public void UploadFun()
         {
-            servicioPDF.Generate(ArticuloActual);
-            //Subir pdf a azure y borrarlo de local
+            
+            //Genera PDF
+            string pdfRutaLocal = servicioPDF.Generate(ArticuloActual);
+            //FileStream pdfFs = new FileStream(pdfRutaLocal, FileMode.Open);
+            //Sube el PDF a Azure
+            string rutaAzure = servicioBlob.upload(pdfRutaLocal);
+            //Borra de local el PDF
+            File.Delete(pdfRutaLocal);
+            //Asigna la url de Azure del pdf a la propiedad del Articulo
+            ArticuloActual.Url = rutaAzure;
+
+            
         }
 
 

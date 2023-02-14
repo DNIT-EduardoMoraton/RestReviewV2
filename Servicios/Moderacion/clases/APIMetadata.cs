@@ -8,5 +8,6 @@ namespace RestReviewV2.Servicios.Moderacion.clases
 {
     class APIMetadata
     {
+
     }
 }

@@ -10,6 +10,7 @@ using QuestPDF.Infrastructure;
 using GestorRestReview.Modelo;
 using GestorRestReview.BD;
 using RestReviewV2.Servicios.BD;
+using System.IO;
 
 namespace RestReviewV2.Servicios.PDF
 {
@@ -19,14 +20,44 @@ namespace RestReviewV2.Servicios.PDF
         BlobService azureService;
         private Articulo articulo;
         private Autor autor;
+        private string rutapdf;
+
 
         public PDFService(){}
 
-        public void Generate(Articulo articulo)
+        public string Generate(Articulo articulo)
         {
             azureService = new BlobService();
             this.articulo = articulo;
             autor = articulo.Autor;
+            rutapdf = "pdfarticulos/" + "Articulo_" + articulo.Id + ".pdf";
+            FileStream articuloImagenFs;
+            FileStream fotoAutorFs;
+            FileStream fotoRedSocial;
+            //Descarga Imagenes de Azure
+            string autorImagen = azureService.download(autor.Imagen);
+            string articuloImagen = azureService.download(articulo.Imagen);
+            string redSocialImagen = "";
+            switch (autor.Redsocial)
+            {
+                case "Twitter":
+                    redSocialImagen = "Assets/imgs/twitter.png";
+                    break;
+                case "Instagram":
+                    redSocialImagen = "Assets/imgs/instagram.png";
+                    break;
+                case "Facebook":
+                    redSocialImagen = "Assets/imgs/facebook.png";
+                    break;
+                default:
+                    break;
+            }
+            //Abre el stream de cada una
+            fotoAutorFs = new FileStream(autorImagen, FileMode.Open);
+            articuloImagenFs = new FileStream(articuloImagen, FileMode.Open);
+            fotoRedSocial = new FileStream(redSocialImagen, FileMode.Open);
+
+
 
             Document.Create(document =>
             {
@@ -47,47 +78,26 @@ namespace RestReviewV2.Servicios.PDF
                         .Text(articulo.Texto)
                         .FontSize(18);
 
-                        string articuloImagen = azureService.download(articulo.Imagen);
-                        
                         column.Item()
                         .AspectRatio(16 / 9f)
-                        .Image(articuloImagen);
-
-                        ///////////////////////////////////
-
-                        string redSocial = "";
-
-                        switch (autor.Redsocial)
-                        {
-                            case "Twitter":
-                                redSocial = "Assets/imgs/twitter-icono.jpg";
-                                break;
-                            case "Instagram":
-                                redSocial = "Assets/imgs/twitter.png";
-                                break;
-                            case "Facebook":
-                                redSocial = "Assets/imgs/twitter-icono.jpg";
-                                break;
-                            default:
-                                break;
-                        }
+                        .Image(articuloImagenFs);
 
                         ///////////////////////////////////
 
 
-                        //column.Item().AspectRatio(16 / 9f).Image(redSocial);
                         column.Item()
                         .AlignCenter()
                         .Padding(15)
                         .DefaultTextStyle(x => x.FontSize(16))
                         .Row(row =>
                         {
-                            row.AutoItem().Width(2, Unit.Centimetre).Image(redSocial);
+                            row.AutoItem().Width(2, Unit.Centimetre).Image(redSocialImagen);
                             row.AutoItem().PaddingHorizontal(10).LineVertical(1).LineColor(Colors.Grey.Medium);
                             row.AutoItem().Text(autor.NickName);
                             row.AutoItem().PaddingHorizontal(10).LineVertical(1).LineColor(Colors.Grey.Medium);
-                            String autorImagen = azureService.download(autor.Imagen);
-                            row.AutoItem().Width(2,Unit.Centimetre).Image(autorImagen);
+                            row.AutoItem().Width(2,Unit.Centimetre).Image(fotoAutorFs);
+
+                            
 
                         });
                         
@@ -104,7 +114,18 @@ namespace RestReviewV2.Servicios.PDF
                         text.TotalPages();
                     });
                 });
-            }).GeneratePdf("pdfarticulos/" + "Articulo_" + articulo.Id +".pdf");
+                
+            }).GeneratePdf(rutapdf);
+
+            //Close
+            articuloImagenFs.Close();
+            fotoAutorFs.Close();
+            fotoRedSocial.Close();
+            //Delete
+            File.Delete(autorImagen);
+            File.Delete(articuloImagen);
+
+            return rutapdf;
         }
     }
 }

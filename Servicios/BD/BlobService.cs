@@ -46,7 +46,6 @@ namespace RestReviewV2.Servicios.BD
             }
 
 
-
             string cadenaConexion = Properties.Resources.BlobCadenaConexion;
             string nombreContenedorBlobs = Properties.Resources.ContenedorDeBlobs;
 
@@ -55,6 +54,7 @@ namespace RestReviewV2.Servicios.BD
 
             Stream streamFile = File.OpenRead(path);
             string filename = Path.GetFileName(path);
+
 
             try
             {
@@ -70,7 +70,7 @@ namespace RestReviewV2.Servicios.BD
 
             var clienteBlobImagen = clienteContenedor.GetBlobClient(filename);
             string urlImagen = clienteBlobImagen.Uri.AbsoluteUri;
-
+            streamFile.Close();
 
             return urlImagen;
         }

@@ -26,9 +26,10 @@ namespace RestReviewV2.Servicios.Moderacion
             set { SetProperty(ref id, value); }
         }
 
-        public ListaModeracion()
+        public ListaModeracion(ObservableCollection<string> listaPalabras, string id)
         {
-
+            Id = id;
+            ListaPalabras = listaPalabras;
         }
 
 

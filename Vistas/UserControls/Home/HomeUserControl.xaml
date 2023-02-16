@@ -38,7 +38,7 @@
         </syncfusion:NavigationItem>
         
         <syncfusion:NavigationItem Header="Moderación"
-                                   Command="{Binding AutoresCommand}">
+                                   Command="{Binding ModeracionCommand}">
             <syncfusion:NavigationItem.Icon>
                 <Image Source="/RestReviewV2;component/Assets/iconos/spell.ico"></Image>
             </syncfusion:NavigationItem.Icon>

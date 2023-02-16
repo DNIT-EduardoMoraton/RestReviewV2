@@ -20,9 +20,12 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
     /// </summary>
     public partial class ModeracionUserControl : UserControl
     {
+        private ModeracionUserControlVM vm;
         public ModeracionUserControl()
         {
             InitializeComponent();
+            vm = new ModeracionUserControlVM();
+            this.DataContext = vm;
         }
     }
 }

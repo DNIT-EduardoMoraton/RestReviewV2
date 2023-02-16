@@ -1,9 +1,11 @@
-﻿using GestorRestReview.Servicios;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using GestorRestReview.Servicios;
 using Newtonsoft.Json;
 using RestReviewV2.Servicios.Moderacion.clases;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -11,11 +13,14 @@ using System.Threading.Tasks;
 
 namespace RestReviewV2.Servicios.Moderacion
 {
-    class ModeratorService
+    class ModeratorService : ObservableObject
     {
         private readonly string _baseUrl = "https://restmodreview.cognitiveservices.azure.com/contentmoderator/";
         private readonly string _subscriptionKey = "e2ea035cffd64e74bf391609868d1faf";
-        AlertaServicio servicioAlerta;
+
+
+
+        private AlertaServicio servicioAlerta;
 
         public ModeratorService()
         {
@@ -36,7 +41,27 @@ namespace RestReviewV2.Servicios.Moderacion
             return res.Terms.Select(t => t.Term).ToList();
         }
 
-        public 
+        public List<string> Moderate(string text, string id)
+        {
+            return null;
+        }
+
+
+        // Gestion de listas
+
+        public ObservableCollection<ListaModeracion> GetAllLists()
+        {
+            ObservableCollection<ListaModeracion> lista = new ObservableCollection<ListaModeracion>();
+            var client = new RestClient(_baseUrl + "moderate/v1.0/ProcessText/Screen");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
+            request.AddHeader("Content-Type", "text/plain");
+            request.AddParameter("text/plain", ParameterType.RequestBody);
+
+
+            return null;
+
+        }
 
 
     }

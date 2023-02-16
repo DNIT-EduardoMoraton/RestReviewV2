@@ -7,6 +7,33 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".5*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <StackPanel DockPanel.Dock="Bottom">
+                <Button HorizontalAlignment="Center" Margin="20"> ADD </Button>
+            </StackPanel>
+            <ListBox ItemsSource="{Binding Path=ListasModeracion}">
+                
+            </ListBox>
+        </DockPanel>
+        <DockPanel Grid.Column="1">
+            <TextBlock DockPanel.Dock="Top" FontSize="36">
+                <Run>Lista :</Run>
+                <Run>23</Run>
+            </TextBlock>
+            <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="20">
+                <Button> DEL </Button>
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                <TextBox Width="260" Margin="20"></TextBox>
+                <Button Margin="20">ADD</Button>
+            </StackPanel>
+            <ListBox>
+                
+            </ListBox>
+        </DockPanel>
     </Grid>
 </UserControl>

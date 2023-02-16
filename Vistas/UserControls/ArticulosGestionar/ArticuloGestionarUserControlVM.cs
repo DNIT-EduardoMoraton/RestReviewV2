@@ -70,6 +70,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
         private LoadSaveDialogService saveService;
         private BlobService servicioBlob;
         private AlertaServicio servicioAlerta;
+        private PDFService servicioPDF;
+        private ModeratorService servicioModeracion;
 
         public ArticuloGestionarUserControlVM()
         {

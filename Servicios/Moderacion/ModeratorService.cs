@@ -29,7 +29,7 @@ namespace RestReviewV2.Servicios.Moderacion
             servicioAlerta = new AlertaServicio();
         }
 
-        public List<string> Moderate(string text)
+        public async Task<List<string>> Moderate(string text)
         {
             var client = new RestClient(_baseUrl + "moderate/v1.0/ProcessText/Screen");
             var request = new RestRequest(Method.POST);
@@ -37,9 +37,9 @@ namespace RestReviewV2.Servicios.Moderacion
             request.AddHeader("Content-Type", "text/plain");
             request.AddParameter("text/plain", text, ParameterType.RequestBody);
 
-            var response = client.Execute(request);
-            
-            APIRootMod res = JsonConvert.DeserializeObject<APIRootMod>(response.Content);
+
+
+            APIRootMod res = await LaunchAzureApi<APIRootMod>(client, request);
             return res.Terms.Select(t => t.Term).ToList();
         }
 
@@ -57,9 +57,9 @@ namespace RestReviewV2.Servicios.Moderacion
             var client = new RestClient(_baseUrl + "lists/v1.0/termlists");
             var request = new RestRequest(Method.GET);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
-            var response = client.Execute(request);
+            
 
-            List<APIRootListMod> listAPI = await LaunchAzureApi<List<APIRootListMod>>(client, request, "Error");
+            List<APIRootListMod> listAPI = await LaunchAzureApi<List<APIRootListMod>>(client, request);
             lista = new ObservableCollection<ListaModeracion>(listAPI
                 .Select(a => new ListaModeracion(null, a.Id.ToString()))
                 .ToList());
@@ -69,14 +69,13 @@ namespace RestReviewV2.Servicios.Moderacion
         }
 
         public async Task<ObservableCollection<string>> GetTerms(string id)
-        {
-            
+        {  
             var client = new RestClient(_baseUrl + $"lists/v1.0/termlists/{id}/terms");
             var request = new RestRequest(Method.GET);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
             request.AddParameter("language", "spa");
 
-            APIRootList rootList = await LaunchAzureApi<APIRootList>(client, request, "Error").ConfigureAwait(true);
+            APIRootList rootList = await LaunchAzureApi<APIRootList>(client, request).ConfigureAwait(true);
 
             List<string> list = new List<string>();
 
@@ -89,7 +88,23 @@ namespace RestReviewV2.Servicios.Moderacion
             return new ObservableCollection<string>(list);
         }
 
-        private async Task<T> LaunchAzureApi<T>(RestClient cli, RestRequest req, string exclude)
+        
+        public bool AddTerm(String listId, String term)
+        {
+            var client = new RestClient(_baseUrl + $"lists / v1.0 / termlists /{listId}/ terms /{term}");
+            var request = new RestRequest(Method.POST);
+            request.AddParameter("language", "spa");
+
+            RestResponse response = (RestResponse) client.Execute(request);
+            if (((int)response.StatusCode) == 201)
+            {
+                return true;
+            }
+            return false;
+        }
+
+
+        private async Task<T> LaunchAzureApi<T>(RestClient cli, RestRequest req)
         {
             T res = default(T);
             int retries = 0;

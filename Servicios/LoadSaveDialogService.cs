@@ -9,8 +9,18 @@ using System.Threading.Tasks;
 
 namespace RestReviewV2.Servicios.GuardarHTML
 {
+
+
+    /// <summary>
+    /// Clase que proporciona métodos para mostrar diálogos de selección de archivos.
+    /// </summary>
     class LoadSaveDialogService
     {
+
+        /// <summary>
+        /// Muestra un diálogo para guardar un archivo HTML y devuelve la ruta del archivo seleccionado.
+        /// </summary>
+        /// <returns>La ruta del archivo seleccionado o null si el usuario canceló la operación.</returns>
         public string MostrarSaveDialogHTML()
         {
             GenerarHTML generar = new GenerarHTML();
@@ -29,6 +39,10 @@ namespace RestReviewV2.Servicios.GuardarHTML
         }
 
 
+        /// <summary>
+        /// Muestra un diálogo para seleccionar una imagen y devuelve la ruta del archivo seleccionado.
+        /// </summary>
+        /// <returns>La ruta del archivo seleccionado o null si el usuario canceló la operación.</returns>
         public string MostrarOpenDialogImages()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

@@ -14,6 +14,10 @@ using System.IO;
 
 namespace RestReviewV2.Servicios.PDF
 {
+
+    /// <summary>
+    /// Servicio encargado de generar un archivo PDF con los datos del artículo y autor proporcionados.
+    /// </summary>
     class PDFService
     {
 
@@ -23,8 +27,17 @@ namespace RestReviewV2.Servicios.PDF
         private string rutapdf;
 
 
+        /// <summary>
+        /// Constructor de la clase PDFService.
+        /// </summary>
         public PDFService(){}
 
+
+        /// <summary>
+        /// Genera un archivo PDF a partir de los datos de un artículo.
+        /// </summary>
+        /// <param name="articulo">Artículo a partir del cual se va a generar el PDF.</param>
+        /// <returns>Ruta donde se encuentra el archivo PDF generado.</returns>
         public string Generate(Articulo articulo)
         {
             azureService = new BlobService();

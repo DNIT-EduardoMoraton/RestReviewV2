@@ -15,12 +15,20 @@ using System.Threading.Tasks;
 
 namespace GestorRestReview.Servicios
 {
+
+    /// <summary>
+    /// Clase que provee servicios de navegación y diálogos para la aplicación.
+    /// </summary>
     class NavegacionServicio
     {
 
 
         private ArticulosListaUserControl listaArticulosUserControl;
         private AutoresUserControl autoresUserControl;
+
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
         public NavegacionServicio()
         {
             
@@ -28,27 +36,49 @@ namespace GestorRestReview.Servicios
 
 
         // Home --------------------------------------------------------------
+
+        /// <summary>
+        /// Muestra la vista HomeUserControl.
+        /// </summary>
+        /// <returns>Un objeto de tipo HomeUserControl.</returns>
         public HomeUserControl IrHomeUSerControl() // Usado desde main window
         {
             return new HomeUserControl();
         }
 
+        /// <summary>
+        /// Muestra la vista HomeWebPreviewUserControl.
+        /// </summary>
+        /// <returns>Un objeto de tipo HomeWebPreviewUserControl.</returns>
         public HomeWebPreviewUserControl IrHomeWebPreviewUserControl()
         {
             return new HomeWebPreviewUserControl();
         }
 
         // Articulos ----------------------------------------------------
+
+        /// <summary>
+        /// Muestra la vista ArticulosUserControl.
+        /// </summary>
+        /// <returns>Un objeto de tipo ArticulosUserControl.</returns>
         public ArticulosUserControl IrArticulosUserControl()
         {
             return new ArticulosUserControl();
         }
-        
+
+        /// <summary>
+        /// Muestra la vista ArticuloGestionarUserControl.
+        /// </summary>
+        /// <returns>Un objeto de tipo ArticuloGestionarUserControl.</returns>
         public ArticuloGestionarUserControl IrArticulosGestionarUserControl()
         {
             return new ArticuloGestionarUserControl();
         }
 
+        /// <summary>
+        /// Muestra la vista ArticulosListaUserControl. Si ya está creada la vista, devuelve la instancia existente.
+        /// </summary>
+        /// <returns>Un objeto de tipo ArticulosListaUserControl.</returns>
         public ArticulosListaUserControl IrArticulosListaUserControl()
         {
             if (listaArticulosUserControl == null)
@@ -59,6 +89,11 @@ namespace GestorRestReview.Servicios
 
         // Autores
 
+
+        /// <summary>
+        /// Muestra la vista AutoresUserControl. Si ya está creada la vista, devuelve la instancia existente.
+        /// </summary>
+        /// <returns>Un objeto de tipo AutoresUserControl.</returns>
         public AutoresUserControl IrAutoresUserControl()
         {
             if (autoresUserControl == null)
@@ -71,6 +106,10 @@ namespace GestorRestReview.Servicios
 
         // Moderacion
 
+        /// <summary>
+        /// Muestra la vista ModeracionUserControl.
+        /// </summary>
+        /// <returns>Un objeto de tipo ModeracionUserControl.</returns>
         public ModeracionUserControl IrModeracionUserControl()
         {
             return new ModeracionUserControl();
@@ -79,6 +118,10 @@ namespace GestorRestReview.Servicios
 
         // Dialogos
 
+        /// <summary>
+        /// Abre el diálogo DialogoNuevaSeccionWindow.
+        /// </summary>
+        /// <returns>Un valor booleano que indica si el usuario ha pulsado Aceptar o Cancelar.</returns>
         public bool? AbreDialogoNuevaSeccionWindow()
         {
             DialogoNuevaSeccionWindow w = new DialogoNuevaSeccionWindow();
@@ -86,6 +129,10 @@ namespace GestorRestReview.Servicios
             
         }
 
+        /// <summary>
+        /// Abre el diálogo DialogoNuevoAutor.
+        /// </summary>
+        /// <returns>Un valor booleano que indica si el usuario ha pulsado Aceptar o Cancelar.</returns>
         public bool? AbreDialogoNuevoAutor()
         {
             DialogoNuevoAutorWindow w = new DialogoNuevoAutorWindow();

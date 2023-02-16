@@ -10,6 +10,10 @@ using System.Threading.Tasks;
 
 namespace RestReviewV2.Servicios.Web
 {
+
+    /// <summary>
+    /// Clase que genera un archivo HTML con contenido dinámico basado en datos de secciones y artículos.
+    /// </summary>
     class GenerarHTML
     {
         private SeccionService secciones = new SeccionService();
@@ -18,11 +22,19 @@ namespace RestReviewV2.Servicios.Web
         int contador = 0;
         ObservableCollection<Seccion> seccionescargadas;
         ObservableCollection<Articulo> articuloscargados;
+
+        /// <summary>
+        /// Constructor de la clase.
+        /// </summary>
         public GenerarHTML()
         {
             
         }
 
+        /// <summary>
+        /// Genera un archivo HTML con contenido dinámico basado en datos de secciones y artículos.
+        /// </summary>
+        /// <returns>El contenido del archivo HTML generado.</returns>
         public string GenerateHTML()
         {
             seccionescargadas = secciones.GetAll();
@@ -82,6 +94,10 @@ namespace RestReviewV2.Servicios.Web
             return htmlContenido;
         }
 
+        /// <summary>
+        /// Guarda el contenido generado en un archivo HTML en la ruta especificada.
+        /// </summary>
+        /// <param name="path">La ruta donde se guardará el archivo HTML.</param>
         public void SaveTo(string path)
         {
             if (path==null)
@@ -89,6 +105,11 @@ namespace RestReviewV2.Servicios.Web
             File.WriteAllText(path, GenerateHTML()); // Controlar errores
         }
 
+
+        /// <summary>
+        /// Genera el archivo HTML y lo guarda en la ruta "./Assets/web/webplantilla.html".
+        /// </summary>
+        /// <returns>La ruta donde se guardó el archivo HTML.</returns>
         public string GetPreview()
         {
             SaveTo("./Assets/web/webplantilla.html"); // G

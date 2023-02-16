@@ -52,15 +52,26 @@ namespace RestReviewV2.Servicios.Moderacion
         public ObservableCollection<ListaModeracion> GetAllLists()
         {
             ObservableCollection<ListaModeracion> lista = new ObservableCollection<ListaModeracion>();
-            var client = new RestClient(_baseUrl + "moderate/v1.0/ProcessText/Screen");
-            var request = new RestRequest(Method.POST);
+            var client = new RestClient(_baseUrl + "contentmoderator/lists/v1.0/termlists");
+            var request = new RestRequest(Method.GET);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
-            request.AddHeader("Content-Type", "text/plain");
-            request.AddParameter("text/plain", ParameterType.RequestBody);
+            var response = client.Execute(request);
+
+            List<APIRootListMod> listAPI = JsonConvert.DeserializeObject<List<APIRootListMod>>(response.Content);
+            lista = new ObservableCollection<ListaModeracion>(listAPI
+                .Select(a => new ListaModeracion(GetTerms(a.Id.ToString()), a.Id.ToString()))
+                .ToList());
+
+            return lista;
+
+        }
+
+        public ObservableCollection<string> GetTerms(string id)
+        {
+            List<string> list = new List<string>();
 
 
-            return null;
-
+            return new ObservableCollection<string>(list);
         }
 
 

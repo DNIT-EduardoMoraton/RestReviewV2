@@ -1,9 +1,11 @@
 ﻿using GestorRestReview.Vistas.UserControls.Articulos;
 using GestorRestReview.Vistas.UserControls.ArticulosGestionar;
 using GestorRestReview.Vistas.UserControls.ArticulosLista;
+using GestorRestReview.Vistas.UserControls.Autores;
 using GestorRestReview.Vistas.UserControls.Home;
 using GestorRestReview.Vistas.UserControls.HomeWebPreview;
 using GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevaSeccion;
+using RestReviewV2.Vistas.UserControls.Moderacion;
 using RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevoAutor;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,7 @@ namespace GestorRestReview.Servicios
 
 
         private ArticulosListaUserControl listaArticulosUserControl;
+        private AutoresUserControl autoresUserControl;
         public NavegacionServicio()
         {
             
@@ -54,7 +57,24 @@ namespace GestorRestReview.Servicios
         }
 
 
+        // Autores
 
+        public AutoresUserControl IrAutoresUserControl()
+        {
+            if (autoresUserControl == null)
+            {
+                autoresUserControl = new AutoresUserControl();
+            }
+            return autoresUserControl;
+        }
+
+
+        // Moderacion
+
+        public ModeracionUserControl IrModeracionUserControl()
+        {
+            return new ModeracionUserControl();
+        }
 
 
         // Dialogos

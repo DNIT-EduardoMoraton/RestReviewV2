@@ -1,5 +1,6 @@
 ﻿using GestorRestReview.Servicios;
 using Newtonsoft.Json;
+using RestReviewV2.Servicios.Moderacion.clases;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -12,25 +13,31 @@ namespace RestReviewV2.Servicios.Moderacion
 {
     class ModeratorService
     {
-        private readonly string _baseUrl = "https://restmodreview.cognitiveservices.azure.com/";
+        private readonly string _baseUrl = "https://restmodreview.cognitiveservices.azure.com/contentmoderator/";
         private readonly string _subscriptionKey = "e2ea035cffd64e74bf391609868d1faf";
-        private readonly string terms = "contentmoderator/moderate/v1.0/ProcessText/Screen";
+        AlertaServicio servicioAlerta;
 
         public ModeratorService()
         {
+            servicioAlerta = new AlertaServicio();
         }
 
-        public async Task<CustomListResponse> AddCustomListTerm()
+        public List<string> Moderate(string text)
         {
-            var client = new RestClient(_baseUrl);
-            var request = new RestRequest(terms, Method.POST);
+            var client = new RestClient(_baseUrl + "moderate/v1.0/ProcessText/Screen");
+            var request = new RestRequest(Method.POST);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
             request.AddHeader("Content-Type", "text/plain");
-            request.AddParameter("listId", );
-            request.AddParameter("text/plain", "texto");
+            request.AddParameter("text/plain", text, ParameterType.RequestBody);
 
-            var response = await client.ExecuteAsync<CustomListResponse>(request);
-            return response.Data;
+            var response = client.Execute(request);
+            servicioAlerta.MessageBoxError(response.StatusCode.ToString());
+            APIRootMod res = JsonConvert.DeserializeObject<APIRootMod>(response.Content);
+            return res.Terms.Select(t => t.Term).ToList();
         }
+
+        public 
+
+
     }
 }

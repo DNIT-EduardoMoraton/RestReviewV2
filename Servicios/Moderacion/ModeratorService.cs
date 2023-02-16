@@ -15,6 +15,9 @@ using System.Threading.Tasks;
 
 namespace RestReviewV2.Servicios.Moderacion
 {
+    /// <summary>
+    /// Servicio para realizar moderación de texto y gestionar listas de palabras prohibidas
+    /// </summary>
     class ModeratorService : ObservableObject
     {
         private readonly string _baseUrl = "https://restmodreview.cognitiveservices.azure.com/contentmoderator/";
@@ -29,6 +32,12 @@ namespace RestReviewV2.Servicios.Moderacion
             servicioAlerta = new AlertaServicio();
         }
 
+
+        /// <summary>
+        /// Realiza moderación de texto utilizando el servicio de moderación de Azure
+        /// </summary>
+        /// <param name="text">Texto a moderar</param>
+        /// <returns>Lista de términos que violan las políticas de moderación</returns>
         public List<string> Moderate(string text)
         {
             var client = new RestClient(_baseUrl + "moderate/v1.0/ProcessText/Screen");
@@ -38,11 +47,18 @@ namespace RestReviewV2.Servicios.Moderacion
             request.AddParameter("text/plain", text, ParameterType.RequestBody);
 
             var response = client.Execute(request);
-            
+
             APIRootMod res = JsonConvert.DeserializeObject<APIRootMod>(response.Content);
             return res.Terms.Select(t => t.Term).ToList();
         }
 
+
+        /// <summary>
+        /// Realiza moderación de texto utilizando el servicio de moderación de Azure y el identificador de la lista de palabras prohibidas
+        /// </summary>
+        /// <param name="text">Texto a moderar</param>
+        /// <param name="id">Identificador de la lista de palabras prohibidas</param>
+        /// <returns>Lista de términos que violan las políticas de moderación</returns>
         public List<string> Moderate(string text, string id)
         {
             return null;
@@ -51,6 +67,10 @@ namespace RestReviewV2.Servicios.Moderacion
 
         // Gestion de listas
 
+        /// <summary>
+        /// Obtiene todas las listas de palabras prohibidas
+        /// </summary>
+        /// <returns>Una colección observable de listas de palabras prohibidas</returns>
         public async Task<ObservableCollection<ListaModeracion>> GetAllLists()
         {
             ObservableCollection<ListaModeracion> lista = new ObservableCollection<ListaModeracion>();
@@ -68,9 +88,16 @@ namespace RestReviewV2.Servicios.Moderacion
 
         }
 
+
+
+        /// <summary>
+        /// Obtiene los términos de una lista de palabras prohibidas especificada por el identificador
+        /// </summary>
+        /// <param name="id">Identificador de la lista de palabras prohibidas</param>
+        /// <returns>Una colección observable de términos de la lista de palabras prohibidas</returns>
         public async Task<ObservableCollection<string>> GetTerms(string id)
         {
-            
+
             var client = new RestClient(_baseUrl + $"lists/v1.0/termlists/{id}/terms");
             var request = new RestRequest(Method.GET);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
@@ -80,15 +107,20 @@ namespace RestReviewV2.Servicios.Moderacion
 
             List<string> list = new List<string>();
 
-            if (list!=null)
+            if (list != null)
             {
                 rootList.Data.Terms.ForEach(t => list.Add(t.Term));
             }
-            
+
 
             return new ObservableCollection<string>(list);
         }
 
+        /// <summary>
+        /// Obtiene los términos de una lista de palabras prohibidas especificada por el identificador
+        /// </summary>
+        /// <param name="id">Identificador de la lista de palabras prohibidas</param>
+        /// <returns>Una colección observable de términos de la lista de palabras prohibidas</returns>
         private async Task<T> LaunchAzureApi<T>(RestClient cli, RestRequest req, string exclude)
         {
             T res = default(T);
@@ -109,7 +141,7 @@ namespace RestReviewV2.Servicios.Moderacion
                         continue;
                     }
                     res = JsonConvert.DeserializeObject<T>(response.Content);
-                    
+
                     retry = false;
                 }
                 catch (Exception)

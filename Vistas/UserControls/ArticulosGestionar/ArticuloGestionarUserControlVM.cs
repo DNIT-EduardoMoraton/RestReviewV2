@@ -162,7 +162,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         private void ValidateFun()
         {
-            List<string> malasPalabras = servicioModeracion.Moderate(ArticuloActual.Texto);
+            List<string> malasPalabras = servicioModeracion.Moderate(ArticuloActual.Texto).Result;
             string palabrasJuntas = "";
             foreach (string p in malasPalabras)
             {

@@ -38,10 +38,18 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
             set { SetProperty(ref palabraActual, value);  }
         }
 
+        private string textoPalabraNueva;
+        public string TextoPalabraNueva
+        {
+            get { return textoPalabraNueva; }
+            set { SetProperty(ref textoPalabraNueva, value); }
+        }
+
         // Commands
 
         public RelayCommand CreateListCommand { get; set; }
         public RelayCommand CreatePalabraCommand { get; set; }
+        public RelayCommand DeletePalabraCommand { get; set; }
 
         // Servicios
 
@@ -57,7 +65,11 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
         private async Task InicioPorDefectoAsync()
         {
             ListaModeracionActual = new ListaModeracion(new ObservableCollection<string>(), "");
+            UpdateLists();
+        }
 
+        private async Task UpdateLists()
+        {
             Task t = Task.Run(async () =>
             {
                 ListasModeracion = servicioModeracion.GetAllLists().Result;
@@ -68,13 +80,13 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
                 }
 
             });
-
         }
 
         private void ManejadorCommands()
         {
             CreateListCommand = new RelayCommand(CreateListFun);
             CreatePalabraCommand = new RelayCommand(CreatePalabraFun);
+            DeletePalabraCommand = new RelayCommand(DeletePalabraFun);
         }
 
         private void CreateListFun()
@@ -83,6 +95,17 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
         }
 
         private void CreatePalabraFun()
+        {
+            if (TextoPalabraNueva != null || TextoPalabraNueva != "")
+            {
+                if (servicioModeracion.AddTerm(ListaModeracionActual.Id, TextoPalabraNueva))
+                {
+                    UpdateLists();
+                }
+            }
+        }
+
+        private void DeletePalabraFun()
         {
 
         }

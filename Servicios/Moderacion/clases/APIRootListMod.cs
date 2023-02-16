@@ -11,6 +11,5 @@ namespace RestReviewV2.Servicios.Moderacion.clases
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public APIMetadata Metadata { get; set; }
     }
 }

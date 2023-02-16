@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace RestReviewV2.Vistas.UserControls.Moderacion
 {
@@ -20,13 +21,14 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
             set { SetProperty(ref listasModeracion, value); }
         }
 
-        private ObservableCollection<string> listaPalabras;
+        private ListaModeracion listaModeracionActual;
 
-        public ObservableCollection<string> ListaPalabras
+        public ListaModeracion ListaModeracionActual
         {
-            get { return listaPalabras; }
-            set { SetProperty(ref listaPalabras, value);  }
+            get { return listaModeracionActual; }
+            set { SetProperty(ref listaModeracionActual, value); }
         }
+
 
         private string palabraActual;
 
@@ -48,13 +50,25 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
         public ModeracionUserControlVM()
         {
             servicioModeracion = new ModeratorService();
-            InicioPorDefecto();
+            InicioPorDefectoAsync();
             ManejadorCommands();
         }
 
-        private void InicioPorDefecto()
+        private async Task InicioPorDefectoAsync()
         {
-            ListasModeracion = servicioModeracion.GetAllLists();
+            ListaModeracionActual = new ListaModeracion(new ObservableCollection<string>(), "");
+
+            Task t = Task.Run(async () =>
+            {
+                ListasModeracion = servicioModeracion.GetAllLists().Result;
+
+                foreach (var item in ListasModeracion)
+                {
+                    item.ListaPalabras = await servicioModeracion.GetTerms(item.Id);
+                }
+
+            });
+
         }
 
         private void ManejadorCommands()

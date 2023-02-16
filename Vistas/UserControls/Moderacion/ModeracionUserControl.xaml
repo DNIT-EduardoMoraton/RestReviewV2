@@ -15,14 +15,14 @@
             <StackPanel DockPanel.Dock="Bottom">
                 <Button HorizontalAlignment="Center" Margin="20"> ADD </Button>
             </StackPanel>
-            <ListBox ItemsSource="{Binding Path=ListasModeracion}">
+            <ListBox ItemsSource="{Binding Path=ListasModeracion}" SelectedItem="{Binding Path=ListaModeracionActual}">
                 
             </ListBox>
         </DockPanel>
         <DockPanel Grid.Column="1">
             <TextBlock DockPanel.Dock="Top" FontSize="36">
                 <Run>Lista :</Run>
-                <Run>23</Run>
+                <Run Text="{Binding Path=ListaModeracionActual.Id}"></Run>
             </TextBlock>
             <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="20">
                 <Button> DEL </Button>
@@ -31,7 +31,7 @@
                 <TextBox Width="260" Margin="20"></TextBox>
                 <Button Margin="20">ADD</Button>
             </StackPanel>
-            <ListBox>
+            <ListBox ItemsSource="{Binding Path=ListaModeracionActual.ListaPalabras}">
                 
             </ListBox>
         </DockPanel>

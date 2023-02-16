@@ -10,5 +10,9 @@ namespace RestReviewV2.Servicios.Moderacion.clases
     {
         public APIData Data { get; set; }
         public APIPaging Paging { get; set; }
+        public override string ToString()
+        {
+            return Data.Terms.Count().ToString();
+        }
     }
 }

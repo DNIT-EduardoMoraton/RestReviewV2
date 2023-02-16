@@ -318,7 +318,6 @@
     <Compile Include="Servicios\BD\BlobService.cs" />
     <Compile Include="Servicios\BD\SeccionService.cs" />
     <Compile Include="Servicios\Moderacion\clases\APIData.cs" />
-    <Compile Include="Servicios\Moderacion\clases\APIMetadata.cs" />
     <Compile Include="Servicios\Moderacion\clases\APIPaging.cs" />
     <Compile Include="Servicios\Moderacion\clases\APIRootList.cs" />
     <Compile Include="Servicios\Moderacion\clases\APIRootListMod.cs" />

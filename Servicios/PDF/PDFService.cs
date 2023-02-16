@@ -30,6 +30,7 @@ namespace RestReviewV2.Servicios.PDF
             azureService = new BlobService();
             this.articulo = articulo;
             autor = articulo.Autor;
+            Directory.CreateDirectory("pdfarticulos/");
             rutapdf = "pdfarticulos/" + "Articulo_" + articulo.Id + ".pdf";
             FileStream articuloImagenFs;
             FileStream fotoAutorFs;

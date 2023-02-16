@@ -13,10 +13,19 @@ namespace RestReviewV2.Servicios.BD
 {
     class BlobService
     {
+        /// <summary>
+        /// Clase que proporciona servicios para descargar y cargar archivos en Azure Blob Storage.
+        /// </summary>
         public BlobService()
         {
 
         }
+
+        /// <summary>
+        /// Descarga un archivo de una URL y lo guarda localmente en una carpeta llamada "reciclebin".
+        /// </summary>
+        /// <param name="url">La URL del archivo a descargar.</param>
+        /// <returns>La ruta del archivo guardado.</returns>
         public string download(string url)
         {
             string fileName = Path.GetFileName(new Uri(url).LocalPath);
@@ -29,10 +38,14 @@ namespace RestReviewV2.Servicios.BD
             }
             return path;
         }
-            
-            
-        
 
+
+
+        /// <summary>
+        /// Carga un archivo en Azure Blob Storage y devuelve la URL del archivo cargado.
+        /// </summary>
+        /// <param name="path">La ruta local del archivo a cargar.</param>
+        /// <returns>La URL del archivo cargado.</returns>
         public string upload(string path)
         {
             if (path == null)

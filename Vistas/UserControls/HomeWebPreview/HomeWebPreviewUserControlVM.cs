@@ -63,7 +63,6 @@ namespace GestorRestReview.Vistas.UserControls.HomeWebPreview
            
 
             ModeratorService client = new ModeratorService();
-            var response = await client.AddCustomListTerm(new CustomListTerm { ListId = "your-list-id", Term = "your-term", Language = "en" });
 
 
         }

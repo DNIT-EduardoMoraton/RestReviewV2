@@ -322,6 +322,7 @@
     <Compile Include="Servicios\Moderacion\clases\APIRootMod.cs" />
     <Compile Include="Servicios\Moderacion\clases\APIStatus.cs" />
     <Compile Include="Servicios\Moderacion\clases\APITermino.cs" />
+    <Compile Include="Servicios\Moderacion\ListaModeracion.cs" />
     <Compile Include="Servicios\Moderacion\ModeratorService.cs" />
     <Compile Include="Servicios\NavegacionServicio.cs" />
     <Compile Include="Servicios\PDF\PDFService.cs" />
@@ -356,6 +357,7 @@
     <Compile Include="Vistas\UserControls\Moderacion\ModeracionUserControl.xaml.cs">
       <DependentUpon>ModeracionUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\UserControls\Moderacion\ModeracionUserControlVM.cs" />
     <Compile Include="Vistas\Windows\Dialogos\DialogoNuevaSeccion\DialogoNuevaSeccionVM.cs" />
     <Compile Include="Vistas\Windows\Dialogos\DialogoNuevaSeccion\DialogoNuevaSeccionWindow.xaml.cs">
       <DependentUpon>DialogoNuevaSeccionWindow.xaml</DependentUpon>

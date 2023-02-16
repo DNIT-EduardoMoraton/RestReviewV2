@@ -18,8 +18,8 @@ namespace RestReviewV2.Servicios.Web
     {
         private SeccionService secciones = new SeccionService();
         private ArticuloService articulos = new ArticuloService();
-        string imagen, titulo, texto, seccion, htmlHeader, htmlArticulo, htmlContenido = "";
-        int contador = 0;
+        DateTime fecha;
+        string imagen, titulo, seccion, texto, htmlArticulo, htmlContenido = "";
         ObservableCollection<Seccion> seccionescargadas;
         ObservableCollection<Articulo> articuloscargados;
 
@@ -44,49 +44,69 @@ namespace RestReviewV2.Servicios.Web
                 "<!DOCTYPE html>\n" +
                 "<html>\n" +
                 "<head>\n" +
-                    "<title>GustoGuru</title>\n" +
-                    "<meta charset = 'UTF-8'>\n" +
-                    "<meta name = 'viewport' content = 'width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>\n" +
-                    "<link rel = 'stylesheet' href = 'estilos.css'>\n" +
-                    "<link rel = 'stylesheet' href = 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700'>\n" +
-                    "<script src=0+'js / jquery - 3.2.1.js'></script>\n" +
-                    "<script src='js / script.js'></script>\n" +
+                    "<meta charset='utf-8'>\n" +
+                    "<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
+                    "<title>Tu Restaurante</title>\n" +
+                    "<meta name='viewport' content='width=device-width, initial-scale=1'>\n" +
+                    "<link rel='stylesheet' href='main.css'>\n" +
+                    "<script src='https://kit.fontawesome.com/dbed6b6114.js' crossorigin='anonymous'></script>\n" +
                 "</head>\n" +
                 "<body>\n" +
 
-                    "<div class='wrap'>\n" +
-                        "<h1>Nombre</h1>\n" +
-                        "<div class='store-wrapper>\n" +
-                             "<div class='category_list'>\n" +
-                                "< a href = '#' class='category_item' category='all'>Todo</a>\n";
+                    "<div class='main-container'>\n" +
+                        "<h1>Restaurant Review</h1>\n" +
+                        "<p>Reseña de tu restaurante favorito</p>\n" +
+                        "<div class = 'filter-container'>\n" +
+                             "<div class='category-head'>\n" +
+                             "<ul>\n" +
+                             "<div class = 'category-title active' id = 'all'>\n" +
+                             "<li>Todo</li>\n" +
+                                "<span><i class = 'fas fa-border-all'></i></span>\n" +
+                                "</div>\n";
 
-            foreach (Articulo a in articuloscargados)
+            foreach (Seccion s in seccionescargadas)
             {
-                seccion = a.Seccion.Nombre;
-                htmlContenido += "< a href = '#' class='category_item' category='" + seccion + "'>Todo</a>\n";
+                seccion = s.Nombre;
+                htmlContenido += "<div class = 'category-title active' id = '" + seccion.ToLower() + "'>\n" +
+                                    "<li>" + seccion + "</li>\n" +
+                                    "<span><i class = 'fas fa-hamburger'></i></span>\n" +
+                                "</div>\n";
             }
 
-            htmlContenido +=
+            htmlContenido += "</ul>\n" +
                 "</div>\n" +
-                "<section class='products - list'>\n";
+                "<div class = 'posts-collect'>\n" +
+                "<div class = 'posts-main-container'>\n";
 
             foreach(Articulo a in articuloscargados)
             {
+                fecha = a.FechaPublicacionDate;
                 imagen = a.Imagen;
                 titulo = a.Titulo;
                 seccion = a.Seccion.Nombre;
                 texto = a.Texto.Substring(0, 10) + "...";
-                htmlArticulo = "<div class='product - item' category='laptops'>\n" +
-                    "<img src='images / laptop_hp.jpg' alt='' >\n" +
-                    "<a href='#'>Laptop Hp</a>\n" +
-                    "</div>\n";
+                htmlArticulo = "<div class = 'articulo'>\n" +
+                                    "<div class = 'post-img'>\n" +
+                                        "<img src = '" + imagen + "' alt = 'post'>\n" +
+                                        "<span class = 'category-name'>" + seccion.ToLower() +"</span>\n" +
+                                    "</div>\n" +
+                                    "<div class = 'post-content'>\n" +
+                                        "<div class = 'post-content-top'>\n" +
+                                            "<span><i class = 'fas fa-calendar'></i>" + fecha + "</span>\n" +
+                                            "<h2>" + titulo + "</h2>" +
+                                            "<p class='cutoff-text'>" + texto + "</p>" +
+                                        "</div>" +
+                                        "<button type = 'button' class = 'read-btn'>Read All</button>" +
+                                    "</div>";
 
                 htmlContenido += htmlArticulo;
                
             }
-            htmlContenido += "</section>\n" +
+            htmlContenido += "</div>\n" +
                 "</div>\n" +
                 "</div>\n" +
+                "</div>\n" +
+                "<script src = 'script.js'></script>\n" +
                 "</body>\n" +
                 "</html>\n";
                 

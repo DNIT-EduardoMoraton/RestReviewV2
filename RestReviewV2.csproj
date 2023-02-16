@@ -485,6 +485,12 @@
     <Content Include="Assets\web\fontface.css">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\web\main.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\web\script.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\web\scripts.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

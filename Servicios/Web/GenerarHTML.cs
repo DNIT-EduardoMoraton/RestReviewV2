@@ -38,7 +38,7 @@ namespace RestReviewV2.Servicios.Web
         public string GenerateHTML()
         {
             seccionescargadas = secciones.GetAll();
-            articuloscargados = articulos.GetAll();
+            articuloscargados = articulos.GetAllPublicados();
 
             htmlContenido =
                 "<!DOCTYPE html>\n" +
@@ -96,7 +96,6 @@ namespace RestReviewV2.Servicios.Web
                                         "<h2>" + titulo + "</h2>\n" +
                                         "<p class='cutoff-text'>" + texto + "</p>\n" +
                                     "</div>\n" +
-                                    "<button type = 'button' class = 'read-btn'>Read All</button>\n" +
                                 "</div>\n";
 
                 htmlContenido += htmlArticulo;

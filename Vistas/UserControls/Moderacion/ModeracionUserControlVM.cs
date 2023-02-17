@@ -39,6 +39,15 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
             set { SetProperty(ref palabraActual, value);  }
         }
 
+        private string textoNuevaLista;
+
+        public string TextoNuevaLista
+        {
+            get { return textoNuevaLista; }
+            set { SetProperty(ref textoNuevaLista, value); }
+        }
+        
+
         private string textoPalabraNueva;
         public string TextoPalabraNueva
         {
@@ -51,6 +60,8 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
         public RelayCommand CreateListCommand { get; set; }
         public RelayCommand CreatePalabraCommand { get; set; }
         public RelayCommand DeletePalabraCommand { get; set; }
+        public RelayCommand DeleteListCommand { get; set; }
+        
 
         // Servicios
 
@@ -97,11 +108,36 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
             CreateListCommand = new RelayCommand(CreateListFun);
             CreatePalabraCommand = new RelayCommand(CreatePalabraFun);
             DeletePalabraCommand = new RelayCommand(DeletePalabraFun);
+            DeleteListCommand = new RelayCommand(DeleteListFun);
         }
 
+        private void DeleteListFun()
+        {
+            if (ListaModeracionActual==null)
+            {
+                return;
+            }
+            Task t = Task.Run(async () =>
+            {
+                await servicioModeracion.DeleteList(ListaModeracionActual.Id);
+                await UpdateLists();
+            });
+        }
         private void CreateListFun()
         {
+            if (ListasModeracion.Count >= 5)
+            {
+                return;
+            } else
+            {
+                Task t = Task.Run(async () =>
+                {
+                    await servicioModeracion.CreateNewList(TextoNuevaLista);
+                    await UpdateLists();
+                });
+            }
 
+            
         }
 
         private async void CreatePalabraFun()
@@ -113,7 +149,7 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
                     Debug.WriteLine("añadiendo" + TextoPalabraNueva);
                     if (servicioModeracion.AddTerm(ListaModeracionActual.Id, TextoPalabraNueva).Result)
                     {
-                        UpdateCurrList();
+                        await UpdateCurrList();
                     }
                 }
             });
@@ -126,7 +162,7 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
                 {
                     if (servicioModeracion.DeleteTerm(ListaModeracionActual.Id, PalabraActual).Result)
                     {
-                        UpdateCurrList();
+                        await UpdateCurrList();
                     }
                 }
             });

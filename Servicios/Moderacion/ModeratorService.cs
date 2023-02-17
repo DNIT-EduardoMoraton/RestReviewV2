@@ -93,10 +93,11 @@ namespace RestReviewV2.Servicios.Moderacion
             ObservableCollection<ListaModeracion> lista = new ObservableCollection<ListaModeracion>();
             var client = new RestClient(_baseUrl + "lists/v1.0/termlists");
             var request = new RestRequest(Method.POST);
+           
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
             request.AddParameter("application/json", JsonConvert.SerializeObject(listaInsertar), ParameterType.RequestBody);
 
-
+            
             return LaunchAzureApiForCode(client, request, 201).Result;
         }
 
@@ -111,7 +112,11 @@ namespace RestReviewV2.Servicios.Moderacion
             APIRootList rootList = await LaunchAzureApi<APIRootList>(client, request).ConfigureAwait(true);
 
             List<string> list = new List<string>();
-             if (rootList.Data.Terms.Count > 0)
+            if (rootList.Data.Terms == null)
+            {
+                return new ObservableCollection<string>(list);
+            }
+            if (rootList.Data.Terms.Count > 0)
             {
                 rootList.Data.Terms.ForEach(t => list.Add(t.Term));
             }
@@ -137,13 +142,22 @@ namespace RestReviewV2.Servicios.Moderacion
 
             return await LaunchAzureApiForCode(client, request, 204); 
         }
+        public async Task<bool> DeleteList(string id)
+        {
+            var client = new RestClient(_baseUrl + $"lists/v1.0/termlists/{id}?language=spa");
+            var request = new RestRequest(Method.DELETE);
+            request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
 
-        /// <summary>
-        /// Método que obtiene los términos de una lista de moderación.
-        /// </summary>
-        /// <param name="id">Identificador de la lista.</param>
-        /// <returns>Colección observable de términos de la lista.</returns>
-        private async Task<T> LaunchAzureApi<T>(RestClient cli, RestRequest req)
+            return await LaunchAzureApiForCode(client, request, 204);
+        }
+        
+    
+    /// <summary>
+    /// Método que obtiene los términos de una lista de moderación.
+    /// </summary>
+    /// <param name="id">Identificador de la lista.</param>
+    /// <returns>Colección observable de términos de la lista.</returns>
+    private async Task<T> LaunchAzureApi<T>(RestClient cli, RestRequest req)
         {
             T res = default(T);
             int retries = 0;
@@ -188,6 +202,7 @@ namespace RestReviewV2.Servicios.Moderacion
                     Debug.WriteLine(retries);
                     retry = false;
                     response = (RestResponse) cli.Execute(req);
+                    Debug.WriteLine(response.Content);
                     if (((int)response.StatusCode) != expectedCode)
                     {
                         retry = true;

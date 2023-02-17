@@ -12,8 +12,10 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Column="0">
-            <StackPanel DockPanel.Dock="Bottom">
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
+                <TextBox Width="100" Margin="20" Text="{Binding Path=TextoNuevaLista}"></TextBox>
                 <Button HorizontalAlignment="Center" Margin="20" Command="{Binding CreateListCommand}"> ADD </Button>
+                <Button HorizontalAlignment="Center" Margin="20" Command="{Binding DeleteListCommand}">DEL</Button>
             </StackPanel>
             <ListBox ItemsSource="{Binding Path=ListasModeracion}" SelectedItem="{Binding Path=ListaModeracionActual}">
                 

@@ -49,6 +49,21 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             set { SetProperty(ref autorLista, value); }
         }
 
+        private ObservableCollection<ListaModeracion> listasModeracion;
+        public ObservableCollection<ListaModeracion> ListasModeracion
+        {
+            get { return listasModeracion; }
+            set { SetProperty(ref listasModeracion, value); }
+        }
+
+        private ListaModeracion listaModeracionActual;
+
+        public ListaModeracion ListaModeracionActual
+        {
+            get { return listaModeracionActual; }
+            set { SetProperty(ref listaModeracionActual, value); }
+        }
+
 
         // Commands
 
@@ -102,6 +117,7 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             ArticuloActual = WeakReferenceMessenger.Default.Send<ArticuloActualListaRequestMessage>();
             if (ArticuloActual==null)
                 ArticuloActual = new Articulo();
+            UpdateLists();
 
         }
 
@@ -162,15 +178,28 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         private void ValidateFun()
         {
-            List<string> malasPalabras = servicioModeracion.Moderate(ArticuloActual.Texto).Result;
             string palabrasJuntas = "";
-            foreach (string p in malasPalabras)
+            Task t = Task.Run(async () =>
             {
-                palabrasJuntas += p + "/";
-            }
-            servicioAlerta.MessageBoxCambio(palabrasJuntas);
-            
+                List<string> malasPalabras = null;
+                if (ListaModeracionActual.Id == null)
+                {
+                    malasPalabras = servicioModeracion.Moderate(ArticuloActual.Texto, null).Result;
+                } else
+                {
+                    malasPalabras = servicioModeracion.Moderate(ArticuloActual.Texto, ListaModeracionActual.Id).Result;
+                }     
+
            
+                foreach (string p in malasPalabras)
+                {
+                    palabrasJuntas += p + "/";
+                }
+                servicioAlerta.MessageBoxCambio(palabrasJuntas);
+            });
+            
+
+
         }
 
         public void UploadFun()
@@ -206,6 +235,22 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
                     AutorLista = servicioAutores.GetAll();
                 }
             });
+        }
+
+        private async Task UpdateLists()
+        {
+            ListasModeracion = new ObservableCollection<ListaModeracion>();
+            Task t = Task.Run(async () =>
+            {
+                ListasModeracion = servicioModeracion.GetAllLists().Result;
+
+                foreach (var item in ListasModeracion)
+                {
+                    item.ListaPalabras = await servicioModeracion.GetTerms(item.Id);
+                }
+
+            });
+            ListasModeracion.Add(new ListaModeracion(null, null, "Azure por defecto"));
         }
 
     }

@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Column="0">
             <StackPanel DockPanel.Dock="Bottom">
-                <Button HorizontalAlignment="Center" Margin="20"> ADD </Button>
+                <Button HorizontalAlignment="Center" Margin="20" Command="{Binding CreateListCommand}"> ADD </Button>
             </StackPanel>
             <ListBox ItemsSource="{Binding Path=ListasModeracion}" SelectedItem="{Binding Path=ListaModeracionActual}">
                 
@@ -28,13 +28,13 @@
                 <Run Text="{Binding Path=ListaModeracionActual.Id}"></Run>
             </TextBlock>
             <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="20">
-                <Button> DEL </Button>
+                <Button Command="{Binding DeletePalabraCommand}"> DEL </Button>
             </StackPanel>
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
                 <TextBox Width="260" Margin="20" Text="{Binding Path=TextoPalabraNueva}"></TextBox>
                 <syncfusion:ButtonAdv Command="{Binding CreatePalabraCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="50" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
             </StackPanel>
-            <ListBox ItemsSource="{Binding Path=ListaModeracionActual.ListaPalabras}">
+            <ListBox ItemsSource="{Binding Path=ListaModeracionActual.ListaPalabras}" SelectedItem="{Binding Path=PalabraActual}">
                 
             </ListBox>
         </DockPanel>

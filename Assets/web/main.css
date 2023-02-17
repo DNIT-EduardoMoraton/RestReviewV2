@@ -127,7 +127,7 @@ body{
 
 
 
-/***************/
+/**************
 @media(max-width: 1170px){
     .posts-main-container{
         grid-template-columns: repeat(2, 1fr);
@@ -138,7 +138,7 @@ body{
         grid-template-columns: 1fr;
     }
 }
-
+*/
 
 /***********/
 
@@ -169,12 +169,6 @@ body{
     background: #f6f6f6;
 }
 
-.cutoff-text {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
 /***********
 
 .cutoff-text {

@@ -4,6 +4,7 @@ using RestReviewV2.Servicios.Moderacion;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -82,6 +83,15 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
             });
         }
 
+        private async Task UpdateCurrList()
+        {
+            Task t = Task.Run(async () =>
+            {
+                ListaModeracionActual.ListaPalabras = await servicioModeracion.GetTerms(ListaModeracionActual.Id);
+
+            });
+        }
+
         private void ManejadorCommands()
         {
             CreateListCommand = new RelayCommand(CreateListFun);
@@ -96,11 +106,12 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
 
         private void CreatePalabraFun()
         {
-            if (TextoPalabraNueva != null || TextoPalabraNueva != "")
+            if (TextoPalabraNueva != null && TextoPalabraNueva != "")
             {
-                if (servicioModeracion.AddTerm(ListaModeracionActual.Id, TextoPalabraNueva))
+                Debug.WriteLine("añadiendo" + TextoPalabraNueva);
+                if (servicioModeracion.AddTerm(ListaModeracionActual.Id, TextoPalabraNueva).Result)
                 {
-                    UpdateLists();
+                    UpdateCurrList();
                 }
             }
         }

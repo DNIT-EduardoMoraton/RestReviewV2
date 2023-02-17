@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading;
@@ -80,6 +81,36 @@ namespace RestReviewV2.Servicios.Moderacion
             return lista;
         }
 
+        public async Task<ObservableCollection<string>> GetTerms(string id)
+        {
+
+            var client = new RestClient(_baseUrl + $"lists/v1.0/termlists/{id}/terms");
+            var request = new RestRequest(Method.GET);
+            request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
+            request.AddParameter("language", "spa");
+
+            APIRootList rootList = await LaunchAzureApi<APIRootList>(client, request).ConfigureAwait(true);
+
+            List<string> list = new List<string>();
+             if (rootList.Data.Terms.Count > 0)
+            {
+                rootList.Data.Terms.ForEach(t => list.Add(t.Term));
+            }
+
+            return new ObservableCollection<string>(list);
+        }
+
+
+        public async Task<bool> AddTerm(string id, string term)
+        {
+            var client = new RestClient(_baseUrl + $"lists/v1.0/termlists/{id}/terms/{term}?language=spa");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
+
+            RestResponse response = (RestResponse)client.Execute(request);
+            Debug.WriteLine(response.Content);
+            return response.StatusCode == HttpStatusCode.Created;
+        }
 
         /// <summary>
         /// Método que obtiene los términos de una lista de moderación.
@@ -97,16 +128,18 @@ namespace RestReviewV2.Servicios.Moderacion
                 retries++;
                 try
                 {
+
+                    
                     Debug.WriteLine(retries);
                     retry = false;
                     RestResponse response = (RestResponse)await cli.ExecuteAsync(req);
                     if (((int)response.StatusCode) == 429)
                     {
                         retry = true;
+                        ForceWait(600);
                         continue;
                     }
-                    res = JsonConvert.DeserializeObject<T>(response.Content);
-                    
+                    res = JsonConvert.DeserializeObject<T>(response.Content);              
                     retry = false;
                 }
                 catch (Exception)
@@ -117,6 +150,15 @@ namespace RestReviewV2.Servicios.Moderacion
 
             return res;
         }
+
+        public void ForceWait(Double ms)
+        {
+            DateTime wait = DateTime.Now.AddMilliseconds(ms);
+            while (DateTime.Now < wait) { }
+            return;
+            
+        }
+        
 
 
 

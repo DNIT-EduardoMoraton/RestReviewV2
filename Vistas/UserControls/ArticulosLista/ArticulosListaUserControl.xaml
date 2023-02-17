@@ -11,9 +11,9 @@
 
         
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Right">
-            <syncfusion:ButtonAdv Command="{Binding AnyadirArticuloCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
-            <syncfusion:ButtonAdv Command="{Binding EditarArticuloCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/edit.ico"/>
-            <syncfusion:ButtonAdv Command="{Binding BorrarArticuloCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/trash.ico"/>
+            <syncfusion:ButtonAdv Command="{Binding AnyadirArticuloCommand}" Margin="10,10,10,10" DockPanel.Dock="Right" SizeMode="Small" Width="50" Height="40" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
+            <syncfusion:ButtonAdv Command="{Binding EditarArticuloCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="50" Height="40" SmallIcon="/RestReviewV2;component/Assets/iconos/edit.ico"/>
+            <syncfusion:ButtonAdv Command="{Binding BorrarArticuloCommand}" Margin="10,0,30,0" DockPanel.Dock="Right" SizeMode="Small" Width="50" Height="40" SmallIcon="/RestReviewV2;component/Assets/iconos/trash.ico"/>
         </StackPanel>
         <syncfusion:SfDataGrid ItemsSource="{Binding Path=ListaArticulosActual}" SelectedItem="{Binding Path=ArticuloActual}"></syncfusion:SfDataGrid>
     </DockPanel>

@@ -82,6 +82,7 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
 
         private async Task UpdateLists()
         {
+            ListasModeracion = new ObservableCollection<ListaModeracion>();
             Task t = Task.Run(async () =>
             {
                 ListasModeracion = servicioModeracion.GetAllLists().Result;
@@ -111,7 +112,7 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
             DeleteListCommand = new RelayCommand(DeleteListFun);
         }
 
-        private void DeleteListFun()
+        private async void DeleteListFun()
         {
             if (ListaModeracionActual==null)
             {
@@ -119,22 +120,29 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
             }
             Task t = Task.Run(async () =>
             {
-                await servicioModeracion.DeleteList(ListaModeracionActual.Id);
-                await UpdateLists();
+                if(servicioModeracion.DeleteList(ListaModeracionActual.Id).Result)
+                {
+                    await UpdateLists();
+                }
+                
             });
         }
-        private void CreateListFun()
+        private async void CreateListFun()
         {
             if (ListasModeracion.Count >= 5)
             {
                 return;
             } else
             {
-                Task t = Task.Run(async () =>
+                Task.Run(async () =>
                 {
-                    await servicioModeracion.CreateNewList(TextoNuevaLista);
-                    await UpdateLists();
+                    if (servicioModeracion.CreateNewList(TextoNuevaLista).Result)
+                    {
+                        await UpdateLists();
+                    }
+
                 });
+                
             }
 
             

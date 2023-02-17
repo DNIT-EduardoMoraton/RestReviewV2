@@ -205,7 +205,11 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
 
         public void UploadFun()
         {
-            
+            if (ArticuloActual.Imagen==null)
+            {
+                return;
+                servicioAlerta.MessageBoxError("No has seleccionado una imagen");
+            }
             //Genera PDF
             string pdfRutaLocal = servicioPDF.Generate(ArticuloActual);
             //FileStream pdfFs = new FileStream(pdfRutaLocal, FileMode.Open);

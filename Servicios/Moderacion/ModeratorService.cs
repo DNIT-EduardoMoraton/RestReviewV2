@@ -98,7 +98,7 @@ namespace RestReviewV2.Servicios.Moderacion
             request.AddParameter("application/json", JsonConvert.SerializeObject(listaInsertar), ParameterType.RequestBody);
 
             
-            return LaunchAzureApiForCode(client, request, 201).Result;
+            return LaunchAzureApiForCode(client, request, 200).Result;
         }
 
         public async Task<ObservableCollection<string>> GetTerms(string id)
@@ -112,7 +112,7 @@ namespace RestReviewV2.Servicios.Moderacion
             APIRootList rootList = await LaunchAzureApi<APIRootList>(client, request).ConfigureAwait(true);
 
             List<string> list = new List<string>();
-            if (rootList.Data.Terms == null)
+            if (rootList.Data == null)
             {
                 return new ObservableCollection<string>(list);
             }
@@ -148,7 +148,7 @@ namespace RestReviewV2.Servicios.Moderacion
             var request = new RestRequest(Method.DELETE);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
 
-            return await LaunchAzureApiForCode(client, request, 204);
+            return await LaunchAzureApiForCode(client, request, 200);
         }
         
     
@@ -171,10 +171,11 @@ namespace RestReviewV2.Servicios.Moderacion
                     Debug.WriteLine(retries);
                     retry = false;
                     RestResponse response = (RestResponse)await cli.ExecuteAsync(req);
+                    Debug.WriteLine((int)response.StatusCode);
                     if (((int)response.StatusCode) == 429)
                     {
                         retry = true;
-                        ForceWait(600);
+                        ForceWait(1000);
                         continue;
                     }
                     res = JsonConvert.DeserializeObject<T>(response.Content);              
@@ -203,10 +204,11 @@ namespace RestReviewV2.Servicios.Moderacion
                     retry = false;
                     response = (RestResponse) cli.Execute(req);
                     Debug.WriteLine(response.Content);
+                    Debug.WriteLine((int)response.StatusCode);
                     if (((int)response.StatusCode) != expectedCode)
                     {
                         retry = true;
-                        ForceWait(600);
+                        ForceWait(1200);
                         continue;
                     }
                     retry = false;

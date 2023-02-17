@@ -313,7 +313,6 @@
     <Compile Include="Mensajes\Difusion\ArticuloNavValueChangedMesage.cs" />
     <Compile Include="Mensajes\Solicitud\ArticuloActualListaRequestMessage.cs" />
     <Compile Include="Mensajes\Solicitud\AutorActualListaRequestMessage.cs" />
-    <Compile Include="Modelo\ArticuloMostrarLista.cs" />
     <Compile Include="Servicios\AlertaServicio.cs" />
     <Compile Include="Servicios\BD\ArticuloService.cs" />
     <Compile Include="Servicios\BD\AutoresService.cs" />

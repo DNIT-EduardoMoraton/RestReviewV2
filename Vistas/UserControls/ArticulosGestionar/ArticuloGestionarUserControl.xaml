@@ -33,7 +33,7 @@
                         </inputLayout:SfTextInputLayout>
                         <syncfusion:ButtonAdv Command="{Binding AbirDialogoNuevoAutorCommand}" DockPanel.Dock="Right" SizeMode="Small" Width="30" Height="30" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
                     </Syncfusion:StackPanel>
-                    <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
+                    <StackPanel Margin="20,0,0,0" Orientation="Horizontal" Width="263">
                         <Ellipse Height="100" Width="100" Margin="150,0,0,0">
                             <Ellipse.Fill>
                                 <ImageBrush ImageSource="{Binding Path=ArticuloActual.Autor.Imagen}"/>
@@ -73,7 +73,7 @@
                         </TextBox.RenderTransform>
                     </TextBox>
                 </inputLayout:SfTextInputLayout>
-                <Image Grid.Column="1" Source="{Binding Path=ArticuloActual.Imagen}"></Image>
+                <Image Grid.Column="1" Source="{Binding Path=ArticuloActual.Imagen}" Margin="67,-42,45,0"></Image>
 
             </Grid>
         </DockPanel>

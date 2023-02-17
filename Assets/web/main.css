@@ -71,7 +71,7 @@ body{
 .post-img{
     position: relative;
 }
-.category-name{
+.category-name {
     position: absolute;
     top: 20px;
     left: 20px;
@@ -80,23 +80,8 @@ body{
     color: #fff;
     padding: 4px 10px;
     border-radius: 2px;
-}
-.business .category-name{
     background: #00a7ea;
 }
-.culture .category-name{
-    background: #f03250;
-}
-.politics .category-name{
-    background: #f0544f;
-}
-.finance .category-name{
-    background: #2c2a4a;
-}
-.sports .category-name{
-    background: #a1e44d;
-}
-
 
 .post-content{
     padding: 25px;

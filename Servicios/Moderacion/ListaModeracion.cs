@@ -35,15 +35,29 @@ namespace RestReviewV2.Servicios.Moderacion
             set { SetProperty(ref id, value); }
         }
 
+        private string nombre;
+
+        public string Nombre
+        {
+            get { return nombre; }
+            set { SetProperty(ref nombre, value); }
+        }
+
         /// <summary>
         /// Inicializa una nueva instancia de la clase ListaModeracion.
         /// </summary>
         /// <param name="listaPalabras">La lista de palabras a moderar.</param>
         /// <param name="id">El identificador de la lista.</param>
-        public ListaModeracion(ObservableCollection<string> listaPalabras, string id)
+        public ListaModeracion(ObservableCollection<string> listaPalabras, string id, string nombre)
         {
+            Nombre = nombre;
             Id = id;
             ListaPalabras = listaPalabras;
+        }
+
+        public override string ToString()
+        {
+            return this.Nombre;
         }
     }
 }

@@ -15,7 +15,7 @@
             <syncfusion:ButtonAdv Command="{Binding UploadCommand}" Margin="20" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/upload.ico"/>
             <syncfusion:ButtonAdv Command="{Binding ValidateCommand}" Margin="20" DockPanel.Dock="Right" SizeMode="Small" Width="20" SmallIcon="/RestReviewV2;component/Assets/iconos/swear.ico"/>
             <inputLayout:SfTextInputLayout DockPanel.Dock="Right" Hint="Listas de palabras" ContainerType="None" >
-                <ComboBox Width="200" ></ComboBox>
+                <ComboBox Width="200" ItemsSource="{Binding Path=ListasModeracion}" SelectedItem="{Binding Path=ListaModeracionActual}"></ComboBox>
             </inputLayout:SfTextInputLayout>
         </DockPanel>
 

@@ -25,13 +25,13 @@
                 <Run Text="{Binding Path=ListaModeracionActual.Id}"></Run>
             </TextBlock>
             <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="20">
-                <Button> DEL </Button>
+                <Button Command="{Binding DeletePalabraCommand}"> DEL </Button>
             </StackPanel>
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
                 <TextBox Width="260" Margin="20" Text="{Binding Path=TextoPalabraNueva}"></TextBox>
                 <Button Margin="20" Command="{Binding CreatePalabraCommand}">ADD</Button>
             </StackPanel>
-            <ListBox ItemsSource="{Binding Path=ListaModeracionActual.ListaPalabras}">
+            <ListBox ItemsSource="{Binding Path=ListaModeracionActual.ListaPalabras}" SelectedItem="{Binding Path=PalabraActual}">
                 
             </ListBox>
         </DockPanel>

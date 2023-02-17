@@ -65,7 +65,7 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
 
         private async Task InicioPorDefectoAsync()
         {
-            ListaModeracionActual = new ListaModeracion(new ObservableCollection<string>(), "");
+            ListaModeracionActual = new ListaModeracion(new ObservableCollection<string>(), "", "");
             UpdateLists();
         }
 
@@ -104,27 +104,32 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
 
         }
 
-        private void CreatePalabraFun()
+        private async void CreatePalabraFun()
         {
-            if (TextoPalabraNueva != null && TextoPalabraNueva != "")
-            {
-                Debug.WriteLine("añadiendo" + TextoPalabraNueva);
-                if (servicioModeracion.AddTerm(ListaModeracionActual.Id, TextoPalabraNueva).Result)
+            Task t = Task.Run(async () => { 
+
+                if (TextoPalabraNueva != null && TextoPalabraNueva != "")
                 {
-                    UpdateCurrList();
+                    Debug.WriteLine("añadiendo" + TextoPalabraNueva);
+                    if (servicioModeracion.AddTerm(ListaModeracionActual.Id, TextoPalabraNueva).Result)
+                    {
+                        UpdateCurrList();
+                    }
                 }
-            }
+            });
         }
 
         private void DeletePalabraFun()
         {
-            if (PalabraActual != null)
-            {
-                if (servicioModeracion.DeleteTerm(ListaModeracionActual.Id, PalabraActual).Result)
+            Task t = Task.Run(async () => {
+                if (PalabraActual != null)
                 {
-                    UpdateCurrList();
+                    if (servicioModeracion.DeleteTerm(ListaModeracionActual.Id, PalabraActual).Result)
+                    {
+                        UpdateCurrList();
+                    }
                 }
-            }
+            });
         }
     }
 }

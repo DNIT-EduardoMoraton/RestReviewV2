@@ -39,12 +39,18 @@ namespace RestReviewV2.Servicios.Moderacion
         /// </summary>
         /// <param name="text">Texto a moderar.</param>
         /// <returns>Lista de términos moderados.</returns>
-        public async Task<List<string>> Moderate(string text)
+        public async Task<List<string>> Moderate(string text, string listId)
         {
             var client = new RestClient(_baseUrl + "moderate/v1.0/ProcessText/Screen");
             var request = new RestRequest(Method.POST);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
             request.AddHeader("Content-Type", "text/plain");
+
+            if (listId!=null)
+            {
+                request.AddParameter("listId", listId);
+            }
+           
             request.AddParameter("text/plain", text, ParameterType.RequestBody);
 
             APIRootMod res = await LaunchAzureApi<APIRootMod>(client, request);
@@ -57,10 +63,7 @@ namespace RestReviewV2.Servicios.Moderacion
         /// <param name="text">Texto a moderar.</param>
         /// <param name="id">Identificador del texto.</param>
         /// <returns>Lista de términos moderados.</returns>
-        public List<string> Moderate(string text, string id)
-        {
-            return null;
-        }
+
 
         /// <summary>
         /// Método que obtiene todas las listas de moderación disponibles.
@@ -75,10 +78,26 @@ namespace RestReviewV2.Servicios.Moderacion
 
             List<APIRootListMod> listAPI = await LaunchAzureApi<List<APIRootListMod>>(client, request);
             lista = new ObservableCollection<ListaModeracion>(listAPI
-                .Select(a => new ListaModeracion(null, a.Id.ToString()))
+                .Select(a => new ListaModeracion(null, a.Id.ToString(), a.Name))
                 .ToList());
 
             return lista;
+        }
+
+        public async Task<bool> CreateNewList(string name)
+        {
+
+            APIRootListMod listaInsertar = new APIRootListMod();
+            listaInsertar.Name = name;
+
+            ObservableCollection<ListaModeracion> lista = new ObservableCollection<ListaModeracion>();
+            var client = new RestClient(_baseUrl + "lists/v1.0/termlists");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
+            request.AddParameter("application/json", JsonConvert.SerializeObject(listaInsertar), ParameterType.RequestBody);
+
+
+            return LaunchAzureApiForCode(client, request, 201).Result;
         }
 
         public async Task<ObservableCollection<string>> GetTerms(string id)
@@ -88,7 +107,7 @@ namespace RestReviewV2.Servicios.Moderacion
             var request = new RestRequest(Method.GET);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
             request.AddParameter("language", "spa");
-
+            
             APIRootList rootList = await LaunchAzureApi<APIRootList>(client, request).ConfigureAwait(true);
 
             List<string> list = new List<string>();
@@ -107,19 +126,16 @@ namespace RestReviewV2.Servicios.Moderacion
             var request = new RestRequest(Method.POST);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
 
-            RestResponse response = (RestResponse)client.Execute(request);
-            Debug.WriteLine(response.Content);
-            return response.StatusCode == HttpStatusCode.Created;
+            return await LaunchAzureApiForCode(client, request, (int)HttpStatusCode.Created);
         }
 
         public async Task<bool> DeleteTerm(string id, string term)
         {
             var client = new RestClient(_baseUrl + $"lists/v1.0/termlists/{id}/terms/{term}?language=spa");
-            var request = new RestRequest(Method.POST);
+            var request = new RestRequest(Method.DELETE);
             request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
 
-            RestResponse response = (RestResponse)client.Execute(request);
-            return (int)response.StatusCode == 200;
+            return await LaunchAzureApiForCode(client, request, 204); 
         }
 
         /// <summary>
@@ -138,8 +154,6 @@ namespace RestReviewV2.Servicios.Moderacion
                 retries++;
                 try
                 {
-
-                    
                     Debug.WriteLine(retries);
                     retry = false;
                     RestResponse response = (RestResponse)await cli.ExecuteAsync(req);
@@ -159,6 +173,36 @@ namespace RestReviewV2.Servicios.Moderacion
             }
 
             return res;
+        }
+
+        private async Task<bool> LaunchAzureApiForCode(RestClient cli, RestRequest req, int expectedCode)
+        {
+            int retries = 0;
+            bool retry = true;
+            RestResponse response = null;
+            while (retry)
+            {
+                retries++;
+                try
+                {
+                    Debug.WriteLine(retries);
+                    retry = false;
+                    response = (RestResponse) cli.Execute(req);
+                    if (((int)response.StatusCode) != expectedCode)
+                    {
+                        retry = true;
+                        ForceWait(600);
+                        continue;
+                    }
+                    retry = false;
+                }
+                catch (Exception)
+                {
+
+                }
+            }
+
+            return true;
         }
 
         public void ForceWait(Double ms)

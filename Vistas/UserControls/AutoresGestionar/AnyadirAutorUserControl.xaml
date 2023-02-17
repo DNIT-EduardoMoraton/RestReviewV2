@@ -20,21 +20,21 @@
 
         <!-- First TextInputLayout with TextBox -->
         <inputLayout:SfTextInputLayout Grid.Row="0" Margin="20" Hint="First Name">
-            <TextBox/>
+            <TextBox Text="{Binding Path=AutorActual.Nombre}"></TextBox>
         </inputLayout:SfTextInputLayout>
 
         <!-- Second TextInputLayout with TextBox -->
         <inputLayout:SfTextInputLayout Grid.Row="1" Margin="20" Hint="Last Name">
-            <TextBox/>
+            <TextBox Text="{Binding Path=AutorActual.NickName}"></TextBox>
         </inputLayout:SfTextInputLayout>
 
         <!-- Third TextInputLayout with ComboBox -->
         <inputLayout:SfTextInputLayout Grid.Row="2" Margin="20" Hint="Gender">
-            <ComboBox ItemsSource="{Binding GenderList}" SelectedItem="{Binding SelectedGender}"/>
+            <ComboBox ItemsSource="{Binding Path=RSSList}" SelectedItem="{Binding Path=AutorActual.Redsocial}"/>
         </inputLayout:SfTextInputLayout>
 
         <!-- Button with ImageBrush -->
-        <Button Grid.Row="4" Margin="20" Background="{x:Null}">
+        <Button Grid.Row="4" Margin="20" Background="{x:Null}" Command="{Binding OpenImageCommand}">
             <Border  CornerRadius="200" BorderBrush="Black" BorderThickness="2" Background="White">
                 <Grid>
                     <Ellipse Height="100" Width="100">
@@ -46,5 +46,17 @@
                 </Grid>
             </Border>
         </Button>
+        <Grid Grid.Row="6" Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Margin="5" Content="Cancel" Click="Button_Click"/>
+            <Button Grid.Column="2" Margin="5" Content="Save"/>
+        </Grid>
+        
     </Grid>
+    
 </UserControl>

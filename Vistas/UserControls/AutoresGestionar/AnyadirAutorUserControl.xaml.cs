@@ -27,5 +27,10 @@ namespace RestReviewV2.Vistas.UserControls.AutoresGestionar
             vm = new AnyadirAutorUserControlVM();
             this.DataContext = vm;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            vm.createFun();
+        }
     }
 }

@@ -159,8 +159,8 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
             // MODERAR VA AQUI
             // Comprobar que todo articulo actual esta bien
 
-
-            ArticuloActual.Url = "NULL"; // Sustituir por subida en articulo
+            if (ArticuloActual.Url == null)
+                ArticuloActual.Url = "NULL"; // Sustituir por subida en articulo
 
 
 

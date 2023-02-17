@@ -22,7 +22,7 @@ namespace RestReviewV2.Vistas.UserControls.AutoresLista
         public Autor AutorActual
         {
             get { return autorActual; }
-            set { autorActual = value; }
+            set { SetProperty(ref autorActual, value); }
         }
 
         private ObservableCollection<Autor> listaAutoresActual;
@@ -30,7 +30,7 @@ namespace RestReviewV2.Vistas.UserControls.AutoresLista
         public ObservableCollection<Autor> ListaAutoresActual
         {
             get { return listaAutoresActual; }
-            set { listaAutoresActual = value; }
+            set { SetProperty(ref listaAutoresActual, value); }
         }
 
         public RelayCommand AnyadirAutorCommand { get; set; }

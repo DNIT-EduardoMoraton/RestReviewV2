@@ -24,17 +24,22 @@ namespace GestorRestReview.BD.DAOs
             SqliteConnection con = bd.GetNewConnection();
             int result = -1;
 
+            if (this.exists(autor))
+            {
+                return this.EditAutor(autor);
+            }
+
             try
             {
                 con.Open();
 
-                string sql = "INSERT INTO autores (nombre, imagen, nickName, redsocial) " +
-                             "VALUES (@nombre, @imagen, @nickName, @redsocial)";
+                string sql = "INSERT INTO autores (nombre, imagen, nickname, redsocial) " +
+                             "VALUES (@nombre, @imagen, @nickname, @redsocial)";
 
                 SqliteCommand command = new SqliteCommand(sql, con);
                 command.Parameters.AddWithValue("@nombre", autor.Nombre);
                 command.Parameters.AddWithValue("@imagen", autor.Imagen);
-                command.Parameters.AddWithValue("@nickName", autor.NickName);
+                command.Parameters.AddWithValue("@nickname", autor.NickName);
                 command.Parameters.AddWithValue("@redsocial", autor.Redsocial);
 
                 result = command.ExecuteNonQuery();
@@ -94,17 +99,67 @@ namespace GestorRestReview.BD.DAOs
             con.Close();
             return result;
         }
+        public int EditAutor(AutorEntity autor)
+        {
+            SqliteConnection con = bd.GetNewConnection();
+            con.Open();
+            string sql = "UPDATE autores SET nombre = @nombre, imagen = @imagen, nickname = @nickname, redsocial = @redsocial WHERE id = @id";
+            SqliteCommand command = new SqliteCommand(sql, con);
+
+            command.Parameters.AddWithValue("@nombre", autor.Nombre);
+            command.Parameters.AddWithValue("@imagen", autor.Imagen);
+            command.Parameters.AddWithValue("@nickname", autor.NickName);
+            command.Parameters.AddWithValue("@redsocial", autor.Redsocial);
+            command.Parameters.AddWithValue("@id", autor.Id);
+
+            command.ExecuteNonQuery();
+            con.Close();
+            return 1;
+        }
         public void Delete(AutorEntity autor) // hacer comprobaciones de longitud
         {
             SqliteConnection con = bd.GetNewConnection();
             con.Open();
-            string sql = "DELETE FROM autores WHERE id = @Id";
+            string sql = "DELETE FROM autores WHERE id = @id";
             SqliteCommand command = new SqliteCommand(sql, con);
-            command.Parameters.AddWithValue("@Id", autor.Id);
+            command.Parameters.AddWithValue("@id", autor.Id);
             command.ExecuteNonQuery();
             con.Close();
         }
 
+        public bool exists(AutorEntity autor)
+        {
+            SqliteConnection con = bd.GetNewConnection();
+            int result = -1;
+            bool exists = false;
 
+            try
+            {
+                con.Open();
+
+                string sql = "SELECT count(*) FROM autores WHERE id=@id";
+
+                SqliteCommand command = new SqliteCommand(sql, con);
+                command.Parameters.AddWithValue("@id", autor.Id);
+
+                result = Convert.ToInt32(command.ExecuteScalar());
+
+                if (result > 0)
+                {
+                    exists = true;
+                }
+            }
+            catch (Exception e)
+            {
+                servicioAlerta.MessageBoxError(e.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return exists;
+        }
     }
 }
+

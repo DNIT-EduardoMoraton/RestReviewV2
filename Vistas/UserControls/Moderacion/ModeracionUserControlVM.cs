@@ -120,7 +120,10 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
         {
             if (PalabraActual != null)
             {
-                if (servicioModeracion.DeleteTerm(List))
+                if (servicioModeracion.DeleteTerm(ListaModeracionActual.Id, PalabraActual).Result)
+                {
+                    UpdateCurrList();
+                }
             }
         }
     }

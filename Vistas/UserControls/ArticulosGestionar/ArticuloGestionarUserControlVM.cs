@@ -18,6 +18,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
@@ -195,10 +196,10 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
                 {
                     palabrasJuntas += p + "/";
                 }
-                servicioAlerta.MessageBoxCambio(palabrasJuntas);
+                
             });
-            
-
+            Thread.Sleep(2000);
+            servicioAlerta.MessageBoxCambio(palabrasJuntas);
 
         }
 
@@ -248,9 +249,10 @@ namespace GestorRestReview.Vistas.UserControls.ArticulosGestionar
                 {
                     item.ListaPalabras = await servicioModeracion.GetTerms(item.Id);
                 }
+                ListasModeracion.Add(new ListaModeracion(null, null, "Azure por defecto"));
 
             });
-            ListasModeracion.Add(new ListaModeracion(null, null, "Azure por defecto"));
+            
         }
 
     }

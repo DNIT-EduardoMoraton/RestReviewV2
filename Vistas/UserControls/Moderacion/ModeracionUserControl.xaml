@@ -4,6 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RestReviewV2.Vistas.UserControls.Moderacion"
+             xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+             xmlns:Syncfusion="http://schemas.microsoft.com/netfx/2009/xaml/presentation"
+             xmlns:inputLayout="clr-namespace:Syncfusion.UI.Xaml.TextInputLayout;assembly=Syncfusion.SfTextInputLayout.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -31,7 +34,7 @@
             </StackPanel>
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
                 <TextBox Width="260" Margin="20" Text="{Binding Path=TextoPalabraNueva}"></TextBox>
-                <Button Margin="20" Command="{Binding CreatePalabraCommand}">ADD</Button>
+                <syncfusion:ButtonAdv Command="{Binding CreatePalabraCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="50" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
             </StackPanel>
             <ListBox ItemsSource="{Binding Path=ListaModeracionActual.ListaPalabras}" SelectedItem="{Binding Path=PalabraActual}">
                 

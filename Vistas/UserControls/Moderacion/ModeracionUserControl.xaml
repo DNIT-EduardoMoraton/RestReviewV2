@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Column="0">
             <StackPanel DockPanel.Dock="Bottom">
-                <Button HorizontalAlignment="Center" Margin="20"> ADD </Button>
+                <Button HorizontalAlignment="Center" Margin="20" Command="{Binding CreateListCommand}"> ADD </Button>
             </StackPanel>
             <ListBox ItemsSource="{Binding Path=ListasModeracion}" SelectedItem="{Binding Path=ListaModeracionActual}">
                 

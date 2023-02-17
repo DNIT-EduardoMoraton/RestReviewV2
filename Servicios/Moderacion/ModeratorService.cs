@@ -112,6 +112,16 @@ namespace RestReviewV2.Servicios.Moderacion
             return response.StatusCode == HttpStatusCode.Created;
         }
 
+        public async Task<bool> DeleteTerm(string id, string term)
+        {
+            var client = new RestClient(_baseUrl + $"lists/v1.0/termlists/{id}/terms/{term}?language=spa");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("Ocp-Apim-Subscription-Key", _subscriptionKey);
+
+            RestResponse response = (RestResponse)client.Execute(request);
+            return (int)response.StatusCode == 200;
+        }
+
         /// <summary>
         /// Método que obtiene los términos de una lista de moderación.
         /// </summary>

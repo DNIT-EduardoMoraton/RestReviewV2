@@ -118,7 +118,10 @@ namespace RestReviewV2.Vistas.UserControls.Moderacion
 
         private void DeletePalabraFun()
         {
-
+            if (PalabraActual != null)
+            {
+                if (servicioModeracion.DeleteTerm(List))
+            }
         }
     }
 }

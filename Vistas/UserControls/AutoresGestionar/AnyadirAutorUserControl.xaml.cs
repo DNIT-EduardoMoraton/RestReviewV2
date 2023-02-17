@@ -13,18 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GestorRestReview.Vistas.UserControls.Autores
+namespace RestReviewV2.Vistas.UserControls.AutoresGestionar
 {
     /// <summary>
-    /// Lógica de interacción para AutoresUserControl.xaml
+    /// Lógica de interacción para AnyadirAutorUserControl.xaml
     /// </summary>
-    public partial class AutoresUserControl : UserControl
+    public partial class AnyadirAutorUserControl : UserControl
     {
-        AutoresUserControlVM vm;
-        public AutoresUserControl()
+        AnyadirAutorUserControlVM vm;
+        public AnyadirAutorUserControl()
         {
             InitializeComponent();
-            vm = new AutoresUserControlVM();
+            vm = new AnyadirAutorUserControlVM();
             this.DataContext = vm;
         }
     }

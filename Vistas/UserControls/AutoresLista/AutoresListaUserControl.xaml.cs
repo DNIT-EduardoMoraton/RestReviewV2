@@ -13,18 +13,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GestorRestReview.Vistas.UserControls.Autores
+namespace RestReviewV2.Vistas.UserControls.AutoresLista
 {
     /// <summary>
-    /// Lógica de interacción para AutoresUserControl.xaml
+    /// Lógica de interacción para AutoresListaUserControl.xaml
     /// </summary>
-    public partial class AutoresUserControl : UserControl
+    public partial class AutoresListaUserControl : UserControl
     {
-        AutoresUserControlVM vm;
-        public AutoresUserControl()
+        AutoresListaUserControlVM vm;
+        public AutoresListaUserControl()
         {
             InitializeComponent();
-            vm = new AutoresUserControlVM();
+            vm = new AutoresListaUserControlVM();
             this.DataContext = vm;
         }
     }

@@ -5,6 +5,8 @@ using GestorRestReview.Vistas.UserControls.Autores;
 using GestorRestReview.Vistas.UserControls.Home;
 using GestorRestReview.Vistas.UserControls.HomeWebPreview;
 using GestorRestReview.Vistas.Windows.Dialogos.DialogoNuevaSeccion;
+using RestReviewV2.Vistas.UserControls.AutoresGestionar;
+using RestReviewV2.Vistas.UserControls.AutoresLista;
 using RestReviewV2.Vistas.UserControls.Moderacion;
 using RestReviewV2.Vistas.Windows.Dialogos.DialogoNuevoAutor;
 using System;
@@ -12,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace GestorRestReview.Servicios
 {
@@ -25,6 +28,7 @@ namespace GestorRestReview.Servicios
 
         private ArticulosListaUserControl listaArticulosUserControl;
         private AutoresUserControl autoresUserControl;
+        private AutoresListaUserControl listaAutoresUserControl;
 
         /// <summary>
         /// Constructor por defecto.
@@ -45,6 +49,7 @@ namespace GestorRestReview.Servicios
         {
             return new HomeUserControl();
         }
+
 
         /// <summary>
         /// Muestra la vista HomeWebPreviewUserControl.
@@ -94,13 +99,21 @@ namespace GestorRestReview.Servicios
         /// Muestra la vista AutoresUserControl. Si ya está creada la vista, devuelve la instancia existente.
         /// </summary>
         /// <returns>Un objeto de tipo AutoresUserControl.</returns>
+        /// 
         public AutoresUserControl IrAutoresUserControl()
         {
-            if (autoresUserControl == null)
-            {
-                autoresUserControl = new AutoresUserControl();
-            }
-            return autoresUserControl;
+            return new AutoresUserControl();
+        }
+        public AnyadirAutorUserControl IrAnyadirAutorUserControl()
+        {
+            return new AnyadirAutorUserControl();
+        }
+
+        public AutoresListaUserControl IrAutoresListaUserControl()
+        {
+            if (listaAutoresUserControl == null)
+                listaAutoresUserControl = new AutoresListaUserControl();
+            return listaAutoresUserControl;
         }
 
 

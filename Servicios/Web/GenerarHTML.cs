@@ -43,31 +43,30 @@ namespace RestReviewV2.Servicios.Web
             htmlContenido =
                 "<!DOCTYPE html>\n" +
                 "<html>\n" +
-                "<head>\n" +
-                    "<meta charset='utf-8'>\n" +
-                    "<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
-                    "<title>Tu Restaurante</title>\n" +
-                    "<meta name='viewport' content='width=device-width, initial-scale=1'>\n" +
-                    "<link rel='stylesheet' href='main.css'>\n" +
-                    "<script src='https://kit.fontawesome.com/dbed6b6114.js' crossorigin='anonymous'></script>\n" +
-                "</head>\n" +
-                "<body>\n" +
-
-                    "<div class='main-container'>\n" +
-                        "<h1>Restaurant Review</h1>\n" +
-                        "<p>Reseña de tu restaurante favorito</p>\n" +
-                        "<div class = 'filter-container'>\n" +
-                             "<div class='category-head'>\n" +
-                             "<ul>\n" +
-                             "<div class = 'category-title active' id = 'all'>\n" +
-                             "<li>Todo</li>\n" +
-                                "<span><i class = 'fas fa-border-all'></i></span>\n" +
-                                "</div>\n";
+                    "<head>\n" +
+                        "<meta charset='utf-8'>\n" +
+                        "<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n" +
+                        "<title>Tu Restaurante</title>\n" +
+                        "<meta name='viewport' content='width=device-width, initial-scale=1'>\n" +
+                        "<link rel='stylesheet' href='main.css'>\n" +
+                        "<script src='https://kit.fontawesome.com/dbed6b6114.js' crossorigin='anonymous'></script>\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+                        "<div class='main-container'>\n" +
+                            "<h1>Restaurant Review</h1>\n" +
+                            "<p>Reseña de tu restaurante favorito</p>\n" +
+                            "<div class = 'filter-container'>\n" +
+                                 "<div class='category-head'>\n" +
+                                 "<ul>\n" +
+                                 "<div class = 'category-title active' id = 'all'>\n" +
+                                 "<li>Todo</li>\n" +
+                                    "<span><i class = 'fas fa-border-all'></i></span>\n" +
+                                    "</div>\n";
 
             foreach (Seccion s in seccionescargadas)
             {
                 seccion = s.Nombre;
-                htmlContenido += "<div class = 'category-title active' id = '" + seccion.ToLower() + "'>\n" +
+                htmlContenido += "<div class = 'category-title' id = '" + seccion.ToLower() + "'>\n" +
                                     "<li>" + seccion + "</li>\n" +
                                     "<span><i class = 'fas fa-hamburger'></i></span>\n" +
                                 "</div>\n";
@@ -84,8 +83,8 @@ namespace RestReviewV2.Servicios.Web
                 imagen = a.Imagen;
                 titulo = a.Titulo;
                 seccion = a.Seccion.Nombre;
-                texto = a.Texto.Substring(0, 10) + "...";
-                htmlArticulo = "<div class = 'articulo'>\n" +
+                texto = a.Texto;
+                htmlArticulo = "<div class = 'all " + seccion.ToLower() + "'>\n" +
                                     "<div class = 'post-img'>\n" +
                                         "<img src = '" + imagen + "' alt = 'post'>\n" +
                                         "<span class = 'category-name'>" + seccion.ToLower() +"</span>\n" +
@@ -93,22 +92,22 @@ namespace RestReviewV2.Servicios.Web
                                     "<div class = 'post-content'>\n" +
                                         "<div class = 'post-content-top'>\n" +
                                             "<span><i class = 'fas fa-calendar'></i>" + fecha + "</span>\n" +
-                                            "<h2>" + titulo + "</h2>" +
-                                            "<p class='cutoff-text'>" + texto + "</p>" +
-                                        "</div>" +
-                                        "<button type = 'button' class = 'read-btn'>Read All</button>" +
-                                    "</div>";
+                                        "</div>\n" +
+                                        "<h2>" + titulo + "</h2>\n" +
+                                        "<p class='cutoff-text'>" + texto + "</p>\n" +
+                                    "</div>\n" +
+                                    "<button type = 'button' class = 'read-btn'>Read All</button>\n" +
+                                "</div>\n";
 
                 htmlContenido += htmlArticulo;
-               
             }
             htmlContenido += "</div>\n" +
-                "</div>\n" +
-                "</div>\n" +
+                        "</div>\n" +
+                    "</div>\n" +
                 "</div>\n" +
                 "<script src = 'script.js'></script>\n" +
-                "</body>\n" +
-                "</html>\n";
+            "</body>\n" +
+        "</html>\n";
                 
 
             return htmlContenido;

@@ -94,6 +94,16 @@ namespace GestorRestReview.BD.DAOs
             con.Close();
             return result;
         }
+        public void Delete(AutorEntity autor) // hacer comprobaciones de longitud
+        {
+            SqliteConnection con = bd.GetNewConnection();
+            con.Open();
+            string sql = "DELETE FROM autores WHERE id = @Id";
+            SqliteCommand command = new SqliteCommand(sql, con);
+            command.Parameters.AddWithValue("@Id", autor.Id);
+            command.ExecuteNonQuery();
+            con.Close();
+        }
 
 
     }

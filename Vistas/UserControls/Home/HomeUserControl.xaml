@@ -24,7 +24,7 @@
         </syncfusion:NavigationItem>
         
         <syncfusion:NavigationItem Header="Autores"
-                                   Command="{Binding AutoresCommand}">
+                                   Command="{Binding AutorCommand}">
             <syncfusion:NavigationItem.Icon>
                 <Image Source="/RestReviewV2;component/Assets/iconos/autores.ico"></Image>
             </syncfusion:NavigationItem.Icon>

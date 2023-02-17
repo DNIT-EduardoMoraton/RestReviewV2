@@ -19,7 +19,7 @@ namespace RestReviewV2.Servicios.Web
         private SeccionService secciones = new SeccionService();
         private ArticuloService articulos = new ArticuloService();
         DateTime fecha;
-        string imagen, titulo, seccion, texto, htmlArticulo, htmlContenido = "";
+        string imagen, titulo, seccion, texto, htmlArticulo, enlacePDF, htmlContenido = "";
         ObservableCollection<Seccion> seccionescargadas;
         ObservableCollection<Articulo> articuloscargados;
 
@@ -38,7 +38,7 @@ namespace RestReviewV2.Servicios.Web
         public string GenerateHTML()
         {
             seccionescargadas = secciones.GetAll();
-            articuloscargados = articulos.GetAllPublicados();
+            articuloscargados = articulos.GetAll();
 
             htmlContenido =
                 "<!DOCTYPE html>\n" +
@@ -84,6 +84,7 @@ namespace RestReviewV2.Servicios.Web
                 titulo = a.Titulo;
                 seccion = a.Seccion.Nombre;
                 texto = a.Texto;
+                enlacePDF = a.Url;
                 htmlArticulo = "<div class = 'all " + seccion.ToLower() + "'>\n" +
                                     "<div class = 'post-img'>\n" +
                                         "<img src = '" + imagen + "' alt = 'post'>\n" +
@@ -94,7 +95,10 @@ namespace RestReviewV2.Servicios.Web
                                             "<span><i class = 'fas fa-calendar'></i>" + fecha + "</span>\n" +
                                         "</div>\n" +
                                         "<h2>" + titulo + "</h2>\n" +
-                                        "<p class='cutoff-text'>" + texto + "</p>\n" +
+                                        "<p>" + texto + "</p>\n" +
+                                        "<a href='" + enlacePDF + "'>\n" +
+                                        "<button type = 'button' class = 'read-btn'>Seguir leyendo</button>\n" +
+                                        "</a>\n" +
                                     "</div>\n" +
                                 "</div>\n";
 

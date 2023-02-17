@@ -155,6 +155,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Globalization.Calendars, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Globalization.Calendars.4.0.1\lib\net46\System.Globalization.Calendars.dll</HintPath>
       <Private>True</Private>
@@ -285,6 +286,7 @@
       <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -311,6 +313,7 @@
     <Compile Include="Mensajes\Difusion\AnyadirAutorValueChangedMessage.cs" />
     <Compile Include="Mensajes\Difusion\AnyadirSeccionValueChangedMessage.cs" />
     <Compile Include="Mensajes\Difusion\ArticuloNavValueChangedMesage.cs" />
+    <Compile Include="Mensajes\Difusion\AutorNavValueChangedMessage.cs" />
     <Compile Include="Mensajes\Solicitud\ArticuloActualListaRequestMessage.cs" />
     <Compile Include="Mensajes\Solicitud\AutorActualListaRequestMessage.cs" />
     <Compile Include="Servicios\AlertaServicio.cs" />
@@ -346,6 +349,14 @@
       <DependentUpon>ArticulosUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Vistas\UserControls\Articulos\ArticulosUserControlVM.cs" />
+    <Compile Include="Vistas\UserControls\AutoresGestionar\AnyadirAutorUserControl.xaml.cs">
+      <DependentUpon>AnyadirAutorUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\UserControls\AutoresGestionar\AnyadirAutorUserControlVM.cs" />
+    <Compile Include="Vistas\UserControls\AutoresLista\AutoresListaUserControl.xaml.cs">
+      <DependentUpon>AutoresListaUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\UserControls\AutoresLista\AutoresListaUserControlVM.cs" />
     <Compile Include="Vistas\UserControls\Autores\AutoresUserControl.xaml.cs">
       <DependentUpon>AutoresUserControl.xaml</DependentUpon>
     </Compile>
@@ -399,6 +410,14 @@
     <Page Include="Vistas\UserControls\Articulos\ArticulosUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vistas\UserControls\AutoresGestionar\AnyadirAutorUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vistas\UserControls\AutoresLista\AutoresListaUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Vistas\UserControls\Autores\AutoresUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>

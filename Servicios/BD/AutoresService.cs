@@ -57,5 +57,10 @@ namespace GestorRestReview.BD
             return false;
         }
 
+        public void Delete(Autor autor)
+        {
+            dao.Delete(autor);
+        }
+
     }
 }

@@ -12,81 +12,58 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace GestorRestReview.Vistas.UserControls.Autores
 {
     class AutoresUserControlVM : ObservableRecipient
     {
-        private Autor autorActual;
+        private UserControl currUserControl;
 
-        public Autor AutorActual
+        public UserControl CurrUserControl
         {
-            get { return autorActual; }
-            set { autorActual = value; }
+            get { return currUserControl; }
+            set { SetProperty(ref currUserControl, value); }
         }
 
-        private ObservableCollection<Autor> listaAutoresActual;
+        // Commands
 
-        public ObservableCollection<Autor> ListaAutoresActual
-        {
-            get { return listaAutoresActual; }
-            set { listaAutoresActual = value; }
-        }
 
-        public RelayCommand AnyadirAutorCommand { get; set; }
-        public RelayCommand EditarAutorCommand { get; set; }
-        public RelayCommand BorrarAutorCommand { get; set; }
+
+        // Services
 
         private NavegacionServicio servicioNavegacion;
-        private AutoresService servicioAutores;
+
 
         public AutoresUserControlVM()
         {
             servicioNavegacion = new NavegacionServicio();
-            servicioAutores = new AutoresService();
             InicioPorDefecto();
 
-            ManejadorCommands();
+
+            ManejadorMensajes();
         }
+
 
         private void InicioPorDefecto()
         {
-            listaAutoresActual = servicioAutores.GetAll();
+            CurrUserControl = servicioNavegacion.IrAutoresListaUserControl();
         }
 
-        private void ManejadorCommands()
-        {
-            AnyadirAutorCommand = new RelayCommand(AnyadirAutorCommandFun);
-            EditarAutorCommand = new RelayCommand(BorrarAutorCommandFun);
-            BorrarAutorCommand = new RelayCommand(EditarAutorCommandFun);
 
-            WeakReferenceMessenger.Default.Register<AnyadirAutorValueChangedMessage>(this, (r, m) =>
+        private void ManejadorMensajes()
+        {
+            WeakReferenceMessenger.Default.Register<AutorNavValueChangedMessage>(this, (r, m) =>
             {
                 if (m.Value)
                 {
-                    listaAutoresActual = servicioAutores.GetAll();
+                    CurrUserControl = servicioNavegacion.IrAnyadirAutorUserControl();
+                }
+                else
+                {
+                    CurrUserControl = servicioNavegacion.IrAutoresListaUserControl();
                 }
             });
-            WeakReferenceMessenger.Default.Register<AutoresUserControlVM, AutorActualListaRequestMessage>
-            (this, (r, m) => {
-                if (!m.HasReceivedResponse)
-                    m.Reply(r.AutorActual);
-            });
-        }
-
-        private void EditarAutorCommandFun()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void BorrarAutorCommandFun()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AnyadirAutorCommandFun()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -15,14 +15,16 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Column="0">
-            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal">
-                <TextBox Width="100" Margin="20" Text="{Binding Path=TextoNuevaLista}"></TextBox>
-                <Button HorizontalAlignment="Center" Margin="20" Command="{Binding CreateListCommand}"> ADD </Button>
-                <Button HorizontalAlignment="Center" Margin="20" Command="{Binding DeleteListCommand}">DEL</Button>
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="85">
+
+                <inputLayout:SfTextInputLayout Hint="Añadir Lista" ContainerType="Filled" HorizontalAlignment="Left" Margin="0,20,0,0" Width="145">
+                    <TextBox Width="100" Margin="0,0,0,0" VerticalAlignment="Center" Text="{Binding TextoNuevaLista}"/>
+                </inputLayout:SfTextInputLayout>
+
+                <syncfusion:ButtonAdv Command="{Binding CreateListCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="50" Height="40" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
+                <syncfusion:ButtonAdv Command="{Binding DeleteListCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="50" Height="40" SmallIcon="/RestReviewV2;component/Assets/iconos/trash.ico"/>
             </StackPanel>
-            <ListBox ItemsSource="{Binding Path=ListasModeracion}" SelectedItem="{Binding Path=ListaModeracionActual}" Margin="0,0,0,25">
-                
-            </ListBox>
+            <ListBox ItemsSource="{Binding Path=ListasModeracion}" SelectedItem="{Binding Path=ListaModeracionActual}" Margin="0,45,0,0"/>
         </DockPanel>
         <DockPanel Grid.Column="1">
             <TextBlock DockPanel.Dock="Top" FontSize="36">
@@ -30,7 +32,7 @@
                 <Run Text="{Binding Path=ListaModeracionActual.Id}"></Run>
             </TextBlock>
             <StackPanel DockPanel.Dock="Right" Orientation="Vertical" VerticalAlignment="Center" Margin="20">
-                <Button Command="{Binding DeletePalabraCommand}"> DEL </Button>
+                <syncfusion:ButtonAdv Command="{Binding DeletePalabraCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="50" Height="40" SmallIcon="/RestReviewV2;component/Assets/iconos/trash.ico"/>
             </StackPanel>
             <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" Height="85">
                 <inputLayout:SfTextInputLayout DockPanel.Dock="Top" Hint="Añadir Palabra" ContainerType="Filled" HorizontalAlignment="Left" Margin="20" Width="350">
@@ -39,7 +41,7 @@
                 <syncfusion:ButtonAdv Command="{Binding CreatePalabraCommand}" Margin="10" DockPanel.Dock="Right" SizeMode="Small" Width="50" Height="40" SmallIcon="/RestReviewV2;component/Assets/iconos/add.ico"/>
             </StackPanel>
             <ListBox ItemsSource="{Binding Path=ListaModeracionActual.ListaPalabras}" SelectedItem="{Binding Path=PalabraActual}">
-                
+
             </ListBox>
         </DockPanel>
     </Grid>
